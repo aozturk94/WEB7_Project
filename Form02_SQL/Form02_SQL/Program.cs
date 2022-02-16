@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Form01_Kontroller
+namespace Form02_SQL
 {
     static class Program
     {

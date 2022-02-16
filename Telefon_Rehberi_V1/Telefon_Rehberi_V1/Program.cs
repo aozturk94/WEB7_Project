@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Form01_Kontroller
+namespace Telefon_Rehberi_V1
 {
     static class Program
     {
@@ -16,7 +16,7 @@ namespace Form01_Kontroller
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form4());
+            Application.Run(new Form1());
         }
     }
 }
