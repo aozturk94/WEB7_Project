@@ -54,21 +54,21 @@ namespace Telefon_Rehberi_V1
             this.txtSoyad.Location = new System.Drawing.Point(94, 94);
             this.txtSoyad.Name = "txtSoyad";
             this.txtSoyad.Size = new System.Drawing.Size(108, 20);
-            this.txtSoyad.TabIndex = 0;
+            this.txtSoyad.TabIndex = 4;
             // 
             // txtAd
             // 
             this.txtAd.Location = new System.Drawing.Point(94, 59);
             this.txtAd.Name = "txtAd";
             this.txtAd.Size = new System.Drawing.Size(108, 20);
-            this.txtAd.TabIndex = 1;
+            this.txtAd.TabIndex = 3;
             // 
             // txtTelNo
             // 
             this.txtTelNo.Location = new System.Drawing.Point(94, 179);
             this.txtTelNo.Name = "txtTelNo";
             this.txtTelNo.Size = new System.Drawing.Size(108, 20);
-            this.txtTelNo.TabIndex = 2;
+            this.txtTelNo.TabIndex = 7;
             // 
             // rdbKadin
             // 
@@ -77,7 +77,7 @@ namespace Telefon_Rehberi_V1
             this.rdbKadin.Location = new System.Drawing.Point(94, 128);
             this.rdbKadin.Name = "rdbKadin";
             this.rdbKadin.Size = new System.Drawing.Size(58, 17);
-            this.rdbKadin.TabIndex = 3;
+            this.rdbKadin.TabIndex = 5;
             this.rdbKadin.TabStop = true;
             this.rdbKadin.Text = "KADIN";
             this.rdbKadin.UseVisualStyleBackColor = true;
@@ -88,7 +88,7 @@ namespace Telefon_Rehberi_V1
             this.rdbErkek.Location = new System.Drawing.Point(94, 149);
             this.rdbErkek.Name = "rdbErkek";
             this.rdbErkek.Size = new System.Drawing.Size(61, 17);
-            this.rdbErkek.TabIndex = 4;
+            this.rdbErkek.TabIndex = 6;
             this.rdbErkek.TabStop = true;
             this.rdbErkek.Text = "ERKEK";
             this.rdbErkek.UseVisualStyleBackColor = true;
@@ -142,14 +142,15 @@ namespace Telefon_Rehberi_V1
             this.dgwKisiler.AllowUserToDeleteRows = false;
             this.dgwKisiler.AllowUserToResizeColumns = false;
             this.dgwKisiler.AllowUserToResizeRows = false;
-            this.dgwKisiler.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.dgwKisiler.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgwKisiler.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgwKisiler.Location = new System.Drawing.Point(267, 95);
             this.dgwKisiler.Name = "dgwKisiler";
             this.dgwKisiler.ReadOnly = true;
+            this.dgwKisiler.RowHeadersVisible = false;
             this.dgwKisiler.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgwKisiler.Size = new System.Drawing.Size(349, 164);
-            this.dgwKisiler.TabIndex = 9;
+            this.dgwKisiler.TabIndex = 2;
             this.dgwKisiler.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgwKisiler_CellEnter);
             // 
             // btnAra
@@ -157,43 +158,48 @@ namespace Telefon_Rehberi_V1
             this.btnAra.Location = new System.Drawing.Point(541, 56);
             this.btnAra.Name = "btnAra";
             this.btnAra.Size = new System.Drawing.Size(75, 23);
-            this.btnAra.TabIndex = 10;
+            this.btnAra.TabIndex = 1;
             this.btnAra.Text = "ARA";
             this.btnAra.UseVisualStyleBackColor = true;
+            this.btnAra.Click += new System.EventHandler(this.btnAra_Click);
             // 
             // btnYeni
             // 
             this.btnYeni.Location = new System.Drawing.Point(15, 220);
             this.btnYeni.Name = "btnYeni";
             this.btnYeni.Size = new System.Drawing.Size(75, 39);
-            this.btnYeni.TabIndex = 11;
+            this.btnYeni.TabIndex = 8;
             this.btnYeni.Text = "Yeni";
             this.btnYeni.UseVisualStyleBackColor = true;
+            this.btnYeni.Click += new System.EventHandler(this.btnYeni_Click);
             // 
             // btnDuzelt
             // 
             this.btnDuzelt.Location = new System.Drawing.Point(96, 220);
             this.btnDuzelt.Name = "btnDuzelt";
             this.btnDuzelt.Size = new System.Drawing.Size(75, 39);
-            this.btnDuzelt.TabIndex = 12;
+            this.btnDuzelt.TabIndex = 9;
             this.btnDuzelt.Text = "Düzelt";
             this.btnDuzelt.UseVisualStyleBackColor = true;
+            this.btnDuzelt.Click += new System.EventHandler(this.btnDuzelt_Click);
             // 
             // btnSil
             // 
             this.btnSil.Location = new System.Drawing.Point(177, 220);
             this.btnSil.Name = "btnSil";
             this.btnSil.Size = new System.Drawing.Size(75, 39);
-            this.btnSil.TabIndex = 13;
+            this.btnSil.TabIndex = 10;
             this.btnSil.Text = "Sil";
             this.btnSil.UseVisualStyleBackColor = true;
+            this.btnSil.Click += new System.EventHandler(this.btnSil_Click);
             // 
             // txtAranan
             // 
             this.txtAranan.Location = new System.Drawing.Point(267, 58);
             this.txtAranan.Name = "txtAranan";
             this.txtAranan.Size = new System.Drawing.Size(268, 20);
-            this.txtAranan.TabIndex = 14;
+            this.txtAranan.TabIndex = 0;
+            this.txtAranan.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtAranan_KeyUp);
             // 
             // label5
             // 
@@ -218,7 +224,7 @@ namespace Telefon_Rehberi_V1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(659, 369);
+            this.ClientSize = new System.Drawing.Size(659, 301);
             this.Controls.Add(this.lblID);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtAranan);
