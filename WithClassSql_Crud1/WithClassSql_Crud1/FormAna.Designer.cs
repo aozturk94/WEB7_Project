@@ -86,7 +86,7 @@ namespace WithClassSql_Crud1
             this.Name = "FormAna";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Hastane Otomasyonu";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormAna_FormClosed);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormAna_FormClosing);
             this.Load += new System.EventHandler(this.FormAna_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvHastalar)).EndInit();
             this.ResumeLayout(false);

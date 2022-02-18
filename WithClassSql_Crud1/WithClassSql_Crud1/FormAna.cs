@@ -31,7 +31,7 @@ namespace WithClassSql_Crud1
             this.Hide();
         }
 
-        private void FormAna_FormClosed(object sender, FormClosedEventArgs e)
+        private void FormAna_FormClosing(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
         }
