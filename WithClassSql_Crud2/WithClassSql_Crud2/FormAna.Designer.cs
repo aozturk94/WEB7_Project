@@ -32,6 +32,7 @@ namespace WithClassSql_Crud2
             this.btnHastalar = new System.Windows.Forms.Button();
             this.btnBolumler = new System.Windows.Forms.Button();
             this.btnDoktorlar = new System.Windows.Forms.Button();
+            this.btnRandevu = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnHastalar
@@ -50,7 +51,7 @@ namespace WithClassSql_Crud2
             // 
             this.btnBolumler.BackColor = System.Drawing.SystemColors.ControlDark;
             this.btnBolumler.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnBolumler.Location = new System.Drawing.Point(77, 134);
+            this.btnBolumler.Location = new System.Drawing.Point(77, 118);
             this.btnBolumler.Name = "btnBolumler";
             this.btnBolumler.Size = new System.Drawing.Size(214, 68);
             this.btnBolumler.TabIndex = 1;
@@ -62,7 +63,7 @@ namespace WithClassSql_Crud2
             // 
             this.btnDoktorlar.BackColor = System.Drawing.SystemColors.ControlDark;
             this.btnDoktorlar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnDoktorlar.Location = new System.Drawing.Point(77, 235);
+            this.btnDoktorlar.Location = new System.Drawing.Point(77, 203);
             this.btnDoktorlar.Name = "btnDoktorlar";
             this.btnDoktorlar.Size = new System.Drawing.Size(214, 68);
             this.btnDoktorlar.TabIndex = 2;
@@ -70,11 +71,24 @@ namespace WithClassSql_Crud2
             this.btnDoktorlar.UseVisualStyleBackColor = false;
             this.btnDoktorlar.Click += new System.EventHandler(this.btnDoktorlar_Click);
             // 
+            // btnRandevu
+            // 
+            this.btnRandevu.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.btnRandevu.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnRandevu.Location = new System.Drawing.Point(77, 286);
+            this.btnRandevu.Name = "btnRandevu";
+            this.btnRandevu.Size = new System.Drawing.Size(214, 68);
+            this.btnRandevu.TabIndex = 3;
+            this.btnRandevu.Text = "RENDEVU";
+            this.btnRandevu.UseVisualStyleBackColor = false;
+            this.btnRandevu.Click += new System.EventHandler(this.btnRandevu_Click);
+            // 
             // FormAna
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(366, 335);
+            this.ClientSize = new System.Drawing.Size(366, 391);
+            this.Controls.Add(this.btnRandevu);
             this.Controls.Add(this.btnDoktorlar);
             this.Controls.Add(this.btnBolumler);
             this.Controls.Add(this.btnHastalar);
@@ -92,6 +106,7 @@ namespace WithClassSql_Crud2
         private System.Windows.Forms.Button btnHastalar;
         private System.Windows.Forms.Button btnBolumler;
         private System.Windows.Forms.Button btnDoktorlar;
+        private System.Windows.Forms.Button btnRandevu;
     }
 }
 

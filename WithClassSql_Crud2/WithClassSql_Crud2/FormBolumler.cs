@@ -31,6 +31,11 @@ namespace WithClassSql_Crud2
             dgvBolumler.DataSource = vt.Listele(sorguCumlesi);
         }
 
+        void Aktar()
+        {
+            txtBolumAd.Text = dgvBolumler.CurrentRow.Cells[1].Value.ToString();
+        }
+
         void Yeni()
         {
             btnYeni.Text = "KAYDET";
@@ -103,6 +108,11 @@ namespace WithClassSql_Crud2
             {
                 MessageBox.Show("Silme işleminden vazgeçildi.");
             }
+        }
+
+        private void dgvBolumler_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            Aktar();
         }
     }
 }

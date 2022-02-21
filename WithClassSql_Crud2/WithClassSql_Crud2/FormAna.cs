@@ -43,7 +43,16 @@ namespace WithClassSql_Crud2
 
         private void btnDoktorlar_Click(object sender, EventArgs e)
         {
+            FormDoktorlar doktorlarForm = new FormDoktorlar();
+            doktorlarForm.Show();
+            this.Hide();
+        }
 
+        private void btnRandevu_Click(object sender, EventArgs e)
+        {
+            FormRandevu randevuForm = new FormRandevu();
+            randevuForm.Show();
+            this.Hide();
         }
     }
 }

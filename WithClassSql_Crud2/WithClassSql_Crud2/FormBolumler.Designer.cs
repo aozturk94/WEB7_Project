@@ -84,6 +84,7 @@ namespace WithClassSql_Crud2
             this.dgvBolumler.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvBolumler.Size = new System.Drawing.Size(456, 170);
             this.dgvBolumler.TabIndex = 21;
+            this.dgvBolumler.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBolumler_CellEnter);
             // 
             // txtBolumAd
             // 

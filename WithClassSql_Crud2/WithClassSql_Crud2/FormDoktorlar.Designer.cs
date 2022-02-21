@@ -193,6 +193,8 @@ namespace WithClassSql_Crud2
             this.Name = "FormDoktorlar";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Doktorlar";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormDoktorlar_FormClosing);
+            this.Load += new System.EventHandler(this.FormDoktorlar_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDoktorlar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
