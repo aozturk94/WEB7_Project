@@ -21,7 +21,7 @@ namespace KutuphaneProjesi
             string dName = "aKutuphane";
             string uName = "sa";
             string pass = "123";
-            string baglantiCumlesi = $"Server {sName}; Database={dName}; User={uName}; Pwd{pass}";
+            string baglantiCumlesi = $"Server={sName}; Database={dName}; User={uName}; Pwd={pass}";
             baglanti = new SqlConnection(baglantiCumlesi);
 
         }
@@ -34,17 +34,49 @@ namespace KutuphaneProjesi
         }
         void Kapat()
         {
-            if (baglanti.State==ConnectionState.Open)
+            if (baglanti.State == ConnectionState.Open)
             {
                 baglanti.Close();
             }
         }
         public string TableName { get; set; }
+        
+        public DataTable dt;
         public void Islem() 
         {
-            string sorguCumlesi = $"SELECT * FROM {TableName}";
-            SqlDataAdapter adaptor = new SqlDataAdapter(sorguCumlesi,baglanti);
+            string kosul = "WHERE Durum='False'";
+            if (TableName!="tblOdunc")
+            {
+                kosul = "";
+            }
+            string sorguCumlesi = $"SELECT * FROM {TableName} {kosul}";
+            SqlDataAdapter adaptor = new SqlDataAdapter(sorguCumlesi, baglanti);
+            dt = new DataTable();
+            adaptor.Fill(dt);
+        }
 
+        public void Islem(Odunc yeniOdunc)
+        {
+            string sorguCumlesi = "INSERT INTO tblOdunc (UyeID, KitapISBN, VerilisTarihi, Durum) VALUES" +
+                "(@uyeID,@kitapISBN,@verilisTarihi,@durum)";
+            SqlCommand komut = new SqlCommand(sorguCumlesi, baglanti);
+            komut.Parameters.AddWithValue("@uyeID", yeniOdunc.UyeID);
+            komut.Parameters.AddWithValue("@kitapISBN", yeniOdunc.KitapISBN);
+            komut.Parameters.AddWithValue("@verilisTarihi", yeniOdunc.VerilisTarihi.ToString("yyyy-MM-dd"));
+            komut.Parameters.AddWithValue("@durum", yeniOdunc.Durum);
+            Ac();
+            komut.ExecuteNonQuery();
+            Kapat();
+        }
+
+        public void Islem(string silinecekID)
+        {
+            string sorguCumlesi = $"UPDATE {TableName} SET Durum='TRUE' WHERE ID=@silinecekid";
+            SqlCommand komut = new SqlCommand(sorguCumlesi, baglanti);
+            komut.Parameters.AddWithValue("@silinecekid", silinecekID);
+            Ac();
+            komut.ExecuteNonQuery();
+            Kapat();
         }
     }
 }
