@@ -28,6 +28,7 @@ namespace PersonelTakipProgramı
         private void FormAna_Load(object sender, EventArgs e)
         {
             RefreshAll();
+            dgvCalisanlar.Columns[0].Visible = false;
         }
 
         public void ClearTools()
@@ -54,6 +55,7 @@ namespace PersonelTakipProgramı
         }
         private void btnTemizle_Click(object sender, EventArgs e)
         {
+            RefreshAll();
             ClearTools();
         }
 
@@ -182,6 +184,56 @@ namespace PersonelTakipProgramı
                     }
                 }
             }
+        }
+        private void btnHepsiniSil_Click(object sender, EventArgs e)
+        {
+            DialogResult answer = MessageBox.Show("Bu işlem tüm kayıtları KALICI olarak silecektir!\nEmin misiniz?","DİKKAT!",MessageBoxButtons.YesNo);
+            if (answer==DialogResult.Yes)
+            {
+                bool result = calisanDAL.Delete();
+                if (result)
+                {
+                    RefreshAll();
+                    ClearTools();
+                    MessageBox.Show("Tablodaki tüm veriler silinmiştir.");
+                }
+            }
+        }
+        string CreateQuaryString()
+        {
+            string quary = string.Empty;
+            //string quary = "";
+            List<string> conditions = new List<string>();
+            foreach (Control control in pnlAraclar.Controls)
+            {
+                if (control.GetType() == typeof(Label)) continue;
+                if (String.IsNullOrEmpty(control.Text) || control.Text == " ") continue;
+                string columnName = control.Tag.ToString();
+                string value;
+                if (control.GetType()==typeof(DateTimePicker))
+                {
+                    value = Convert.ToDateTime(control.Text).ToString("yyyy-MM-dd");
+                    conditions.Add($"{columnName} = '{value}'");
+                }
+                else
+                {
+                    value = control.Text;
+                    if (cbxTamEslesme.Checked)
+                    {
+                        conditions.Add($"{columnName} = '{value}'");
+                    }
+                    else
+                    {
+                        conditions.Add($"{columnName} LIKE '%{value}%'");
+                    }
+                }
+            }
+            quary = "WHERE "+string.Join(" AND ", conditions);//Birleştirmek için bu şekilde ilerleyebiliriz.
+            return quary;
+        }
+        private void btnBul_Click(object sender, EventArgs e)
+        {
+            dgvCalisanlar.DataSource = calisanDAL.GetAll(CreateQuaryString());
         }
     }
 }

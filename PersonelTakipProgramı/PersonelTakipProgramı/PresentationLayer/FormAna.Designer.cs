@@ -57,6 +57,7 @@ namespace PersonelTakipProgramı
             this.btnTemizle = new System.Windows.Forms.Button();
             this.btnSil = new System.Windows.Forms.Button();
             this.dgvCalisanlar = new System.Windows.Forms.DataGridView();
+            this.cbxTamEslesme = new System.Windows.Forms.CheckBox();
             this.pnlAraclar.SuspendLayout();
             this.pnlButonlar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCalisanlar)).BeginInit();
@@ -94,6 +95,7 @@ namespace PersonelTakipProgramı
             this.dtpIseBaslamaTarihi.Name = "dtpIseBaslamaTarihi";
             this.dtpIseBaslamaTarihi.Size = new System.Drawing.Size(156, 20);
             this.dtpIseBaslamaTarihi.TabIndex = 5;
+            this.dtpIseBaslamaTarihi.Tag = "IseBaslamaTarihi";
             this.dtpIseBaslamaTarihi.ValueChanged += new System.EventHandler(this.dtpIseBaslamaTarihi_ValueChanged);
             // 
             // dtpDogumTarihi
@@ -103,6 +105,7 @@ namespace PersonelTakipProgramı
             this.dtpDogumTarihi.Name = "dtpDogumTarihi";
             this.dtpDogumTarihi.Size = new System.Drawing.Size(156, 20);
             this.dtpDogumTarihi.TabIndex = 4;
+            this.dtpDogumTarihi.Tag = "DogumTarihi";
             this.dtpDogumTarihi.ValueChanged += new System.EventHandler(this.dtpDogumTarihi_ValueChanged);
             // 
             // cmbDepartman
@@ -118,6 +121,7 @@ namespace PersonelTakipProgramı
             this.cmbDepartman.Name = "cmbDepartman";
             this.cmbDepartman.Size = new System.Drawing.Size(156, 21);
             this.cmbDepartman.TabIndex = 6;
+            this.cmbDepartman.Tag = "Departman";
             // 
             // cmbDurumu
             // 
@@ -129,6 +133,7 @@ namespace PersonelTakipProgramı
             this.cmbDurumu.Name = "cmbDurumu";
             this.cmbDurumu.Size = new System.Drawing.Size(156, 21);
             this.cmbDurumu.TabIndex = 8;
+            this.cmbDurumu.Tag = "Durumu";
             // 
             // cmbUnvan
             // 
@@ -142,6 +147,7 @@ namespace PersonelTakipProgramı
             this.cmbUnvan.Name = "cmbUnvan";
             this.cmbUnvan.Size = new System.Drawing.Size(156, 21);
             this.cmbUnvan.TabIndex = 7;
+            this.cmbUnvan.Tag = "Unvan";
             // 
             // txtPersonelNo
             // 
@@ -149,6 +155,7 @@ namespace PersonelTakipProgramı
             this.txtPersonelNo.Name = "txtPersonelNo";
             this.txtPersonelNo.Size = new System.Drawing.Size(156, 20);
             this.txtPersonelNo.TabIndex = 3;
+            this.txtPersonelNo.Tag = "PersonelNo";
             // 
             // txtTcNo
             // 
@@ -156,6 +163,7 @@ namespace PersonelTakipProgramı
             this.txtTcNo.Name = "txtTcNo";
             this.txtTcNo.Size = new System.Drawing.Size(156, 20);
             this.txtTcNo.TabIndex = 2;
+            this.txtTcNo.Tag = "TcNo";
             // 
             // txtSoyad
             // 
@@ -163,6 +171,7 @@ namespace PersonelTakipProgramı
             this.txtSoyad.Name = "txtSoyad";
             this.txtSoyad.Size = new System.Drawing.Size(156, 20);
             this.txtSoyad.TabIndex = 1;
+            this.txtSoyad.Tag = "Soyad";
             // 
             // txtAd
             // 
@@ -170,6 +179,7 @@ namespace PersonelTakipProgramı
             this.txtAd.Name = "txtAd";
             this.txtAd.Size = new System.Drawing.Size(156, 20);
             this.txtAd.TabIndex = 0;
+            this.txtAd.Tag = "Ad";
             // 
             // label7
             // 
@@ -272,6 +282,7 @@ namespace PersonelTakipProgramı
             // 
             // pnlButonlar
             // 
+            this.pnlButonlar.Controls.Add(this.cbxTamEslesme);
             this.pnlButonlar.Controls.Add(this.btnBul);
             this.pnlButonlar.Controls.Add(this.btnGetir);
             this.pnlButonlar.Controls.Add(this.btnGuncelle);
@@ -281,7 +292,7 @@ namespace PersonelTakipProgramı
             this.pnlButonlar.Controls.Add(this.btnSil);
             this.pnlButonlar.Location = new System.Drawing.Point(14, 273);
             this.pnlButonlar.Name = "pnlButonlar";
-            this.pnlButonlar.Size = new System.Drawing.Size(266, 93);
+            this.pnlButonlar.Size = new System.Drawing.Size(266, 114);
             this.pnlButonlar.TabIndex = 1;
             // 
             // btnBul
@@ -294,6 +305,7 @@ namespace PersonelTakipProgramı
             this.btnBul.TabIndex = 15;
             this.btnBul.Text = "BUL";
             this.btnBul.UseVisualStyleBackColor = false;
+            this.btnBul.Click += new System.EventHandler(this.btnBul_Click);
             // 
             // btnGetir
             // 
@@ -340,6 +352,7 @@ namespace PersonelTakipProgramı
             this.btnHepsiniSil.TabIndex = 13;
             this.btnHepsiniSil.Text = "HEPSİNİ SİL";
             this.btnHepsiniSil.UseVisualStyleBackColor = false;
+            this.btnHepsiniSil.Click += new System.EventHandler(this.btnHepsiniSil_Click);
             // 
             // btnTemizle
             // 
@@ -385,12 +398,24 @@ namespace PersonelTakipProgramı
             this.dgvCalisanlar.TabIndex = 16;
             this.dgvCalisanlar.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCalisanlar_CellEnter);
             // 
+            // cbxTamEslesme
+            // 
+            this.cbxTamEslesme.AutoSize = true;
+            this.cbxTamEslesme.Checked = true;
+            this.cbxTamEslesme.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbxTamEslesme.Location = new System.Drawing.Point(174, 90);
+            this.cbxTamEslesme.Name = "cbxTamEslesme";
+            this.cbxTamEslesme.Size = new System.Drawing.Size(89, 17);
+            this.cbxTamEslesme.TabIndex = 17;
+            this.cbxTamEslesme.Text = "Tam Eşleşme";
+            this.cbxTamEslesme.UseVisualStyleBackColor = true;
+            // 
             // FormAna
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(747, 382);
+            this.ClientSize = new System.Drawing.Size(747, 411);
             this.Controls.Add(this.dgvCalisanlar);
             this.Controls.Add(this.pnlButonlar);
             this.Controls.Add(this.pnlAraclar);
@@ -401,6 +426,7 @@ namespace PersonelTakipProgramı
             this.pnlAraclar.ResumeLayout(false);
             this.pnlAraclar.PerformLayout();
             this.pnlButonlar.ResumeLayout(false);
+            this.pnlButonlar.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCalisanlar)).EndInit();
             this.ResumeLayout(false);
 
@@ -436,6 +462,7 @@ namespace PersonelTakipProgramı
         private System.Windows.Forms.Button btnTemizle;
         private System.Windows.Forms.Button btnSil;
         private System.Windows.Forms.DataGridView dgvCalisanlar;
+        private System.Windows.Forms.CheckBox cbxTamEslesme;
     }
 }
 
