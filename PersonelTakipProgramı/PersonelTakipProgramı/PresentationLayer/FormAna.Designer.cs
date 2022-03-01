@@ -94,6 +94,7 @@ namespace PersonelTakipProgramı
             this.dtpIseBaslamaTarihi.Name = "dtpIseBaslamaTarihi";
             this.dtpIseBaslamaTarihi.Size = new System.Drawing.Size(156, 20);
             this.dtpIseBaslamaTarihi.TabIndex = 5;
+            this.dtpIseBaslamaTarihi.ValueChanged += new System.EventHandler(this.dtpIseBaslamaTarihi_ValueChanged);
             // 
             // dtpDogumTarihi
             // 
@@ -102,6 +103,7 @@ namespace PersonelTakipProgramı
             this.dtpDogumTarihi.Name = "dtpDogumTarihi";
             this.dtpDogumTarihi.Size = new System.Drawing.Size(156, 20);
             this.dtpDogumTarihi.TabIndex = 4;
+            this.dtpDogumTarihi.ValueChanged += new System.EventHandler(this.dtpDogumTarihi_ValueChanged);
             // 
             // cmbDepartman
             // 
@@ -314,6 +316,7 @@ namespace PersonelTakipProgramı
             this.btnGuncelle.TabIndex = 10;
             this.btnGuncelle.Text = "GÜNCELLE";
             this.btnGuncelle.UseVisualStyleBackColor = false;
+            this.btnGuncelle.Click += new System.EventHandler(this.btnGuncelle_Click);
             // 
             // btnKaydet
             // 
@@ -325,6 +328,7 @@ namespace PersonelTakipProgramı
             this.btnKaydet.TabIndex = 9;
             this.btnKaydet.Text = "KAYDET";
             this.btnKaydet.UseVisualStyleBackColor = false;
+            this.btnKaydet.Click += new System.EventHandler(this.btnKaydet_Click);
             // 
             // btnHepsiniSil
             // 
@@ -359,6 +363,7 @@ namespace PersonelTakipProgramı
             this.btnSil.TabIndex = 11;
             this.btnSil.Text = "SİL";
             this.btnSil.UseVisualStyleBackColor = false;
+            this.btnSil.Click += new System.EventHandler(this.btnSil_Click);
             // 
             // dgvCalisanlar
             // 
@@ -366,7 +371,8 @@ namespace PersonelTakipProgramı
             this.dgvCalisanlar.AllowUserToDeleteRows = false;
             this.dgvCalisanlar.AllowUserToResizeColumns = false;
             this.dgvCalisanlar.AllowUserToResizeRows = false;
-            this.dgvCalisanlar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.dgvCalisanlar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvCalisanlar.BackgroundColor = System.Drawing.Color.LightSkyBlue;
             this.dgvCalisanlar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -374,17 +380,17 @@ namespace PersonelTakipProgramı
             this.dgvCalisanlar.Location = new System.Drawing.Point(286, 28);
             this.dgvCalisanlar.Name = "dgvCalisanlar";
             this.dgvCalisanlar.ReadOnly = true;
-            this.dgvCalisanlar.RowHeadersVisible = false;
             this.dgvCalisanlar.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCalisanlar.Size = new System.Drawing.Size(448, 329);
+            this.dgvCalisanlar.Size = new System.Drawing.Size(449, 329);
             this.dgvCalisanlar.TabIndex = 16;
+            this.dgvCalisanlar.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCalisanlar_CellEnter);
             // 
             // FormAna
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(746, 382);
+            this.ClientSize = new System.Drawing.Size(747, 382);
             this.Controls.Add(this.dgvCalisanlar);
             this.Controls.Add(this.pnlButonlar);
             this.Controls.Add(this.pnlAraclar);
