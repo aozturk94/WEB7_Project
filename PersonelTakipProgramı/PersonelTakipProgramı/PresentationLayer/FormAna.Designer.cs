@@ -57,7 +57,9 @@ namespace PersonelTakipProgramı
             this.btnTemizle = new System.Windows.Forms.Button();
             this.btnSil = new System.Windows.Forms.Button();
             this.dgvCalisanlar = new System.Windows.Forms.DataGridView();
-            this.cbxTamEslesme = new System.Windows.Forms.CheckBox();
+            this.rdbBaslangic = new System.Windows.Forms.RadioButton();
+            this.rdbIceren = new System.Windows.Forms.RadioButton();
+            this.rdbTam = new System.Windows.Forms.RadioButton();
             this.pnlAraclar.SuspendLayout();
             this.pnlButonlar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCalisanlar)).BeginInit();
@@ -282,7 +284,9 @@ namespace PersonelTakipProgramı
             // 
             // pnlButonlar
             // 
-            this.pnlButonlar.Controls.Add(this.cbxTamEslesme);
+            this.pnlButonlar.Controls.Add(this.rdbTam);
+            this.pnlButonlar.Controls.Add(this.rdbIceren);
+            this.pnlButonlar.Controls.Add(this.rdbBaslangic);
             this.pnlButonlar.Controls.Add(this.btnBul);
             this.pnlButonlar.Controls.Add(this.btnGetir);
             this.pnlButonlar.Controls.Add(this.btnGuncelle);
@@ -317,6 +321,7 @@ namespace PersonelTakipProgramı
             this.btnGetir.TabIndex = 14;
             this.btnGetir.Text = "GETİR";
             this.btnGetir.UseVisualStyleBackColor = false;
+            this.btnGetir.Click += new System.EventHandler(this.btnGetir_Click);
             // 
             // btnGuncelle
             // 
@@ -398,17 +403,37 @@ namespace PersonelTakipProgramı
             this.dgvCalisanlar.TabIndex = 16;
             this.dgvCalisanlar.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCalisanlar_CellEnter);
             // 
-            // cbxTamEslesme
+            // rdbBaslangic
             // 
-            this.cbxTamEslesme.AutoSize = true;
-            this.cbxTamEslesme.Checked = true;
-            this.cbxTamEslesme.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbxTamEslesme.Location = new System.Drawing.Point(174, 90);
-            this.cbxTamEslesme.Name = "cbxTamEslesme";
-            this.cbxTamEslesme.Size = new System.Drawing.Size(89, 17);
-            this.cbxTamEslesme.TabIndex = 17;
-            this.cbxTamEslesme.Text = "Tam Eşleşme";
-            this.cbxTamEslesme.UseVisualStyleBackColor = true;
+            this.rdbBaslangic.AutoSize = true;
+            this.rdbBaslangic.Location = new System.Drawing.Point(6, 90);
+            this.rdbBaslangic.Name = "rdbBaslangic";
+            this.rdbBaslangic.Size = new System.Drawing.Size(73, 17);
+            this.rdbBaslangic.TabIndex = 18;
+            this.rdbBaslangic.Text = "Başlangıcı";
+            this.rdbBaslangic.UseVisualStyleBackColor = true;
+            // 
+            // rdbIceren
+            // 
+            this.rdbIceren.AutoSize = true;
+            this.rdbIceren.Location = new System.Drawing.Point(96, 90);
+            this.rdbIceren.Name = "rdbIceren";
+            this.rdbIceren.Size = new System.Drawing.Size(55, 17);
+            this.rdbIceren.TabIndex = 19;
+            this.rdbIceren.Text = "İçeren";
+            this.rdbIceren.UseVisualStyleBackColor = true;
+            // 
+            // rdbTam
+            // 
+            this.rdbTam.AutoSize = true;
+            this.rdbTam.Checked = true;
+            this.rdbTam.Location = new System.Drawing.Point(172, 90);
+            this.rdbTam.Name = "rdbTam";
+            this.rdbTam.Size = new System.Drawing.Size(88, 17);
+            this.rdbTam.TabIndex = 20;
+            this.rdbTam.TabStop = true;
+            this.rdbTam.Text = "Tam Eşleşme";
+            this.rdbTam.UseVisualStyleBackColor = true;
             // 
             // FormAna
             // 
@@ -462,7 +487,9 @@ namespace PersonelTakipProgramı
         private System.Windows.Forms.Button btnTemizle;
         private System.Windows.Forms.Button btnSil;
         private System.Windows.Forms.DataGridView dgvCalisanlar;
-        private System.Windows.Forms.CheckBox cbxTamEslesme;
+        private System.Windows.Forms.RadioButton rdbBaslangic;
+        private System.Windows.Forms.RadioButton rdbIceren;
+        private System.Windows.Forms.RadioButton rdbTam;
     }
 }
 

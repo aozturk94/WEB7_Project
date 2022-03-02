@@ -12,7 +12,7 @@ namespace PersonelTakipProgramı.DataAccessLayer
 {
     class CalisanDAL
     {
-        public List<Calisan> GetAll(string condition="")
+        public List<Calisan> GetAll(string condition = "")
         {
             List<Calisan> calisanlar = new List<Calisan>();
             string query = $"SELECT*FROM tblCalisanlar {condition}";
@@ -24,7 +24,7 @@ namespace PersonelTakipProgramı.DataAccessLayer
                     //Scope'un bittiği yerden itibaren Garbage Collector'u beklemeden bellekten atılmış olacak.
                     SQLConnection.ConOpen();
 
-                    using (SqlDataReader reader=command.ExecuteReader())
+                    using (SqlDataReader reader = command.ExecuteReader())
                     {
                         while (reader.Read())
                         {
@@ -68,7 +68,7 @@ namespace PersonelTakipProgramı.DataAccessLayer
 
             try
             {
-                using (SqlCommand command = new SqlCommand(query,SQLConnection.Connection))
+                using (SqlCommand command = new SqlCommand(query, SQLConnection.Connection))
                 {
                     command.Parameters.AddWithValue("@p1", calisan.Ad);
                     command.Parameters.AddWithValue("@p2", calisan.Soyad);
@@ -98,7 +98,7 @@ namespace PersonelTakipProgramı.DataAccessLayer
         {
             try
             {
-                using (SqlCommand command = new SqlCommand("DELETE FROM tblCalisanlar WHERE ID=@p1",SQLConnection.Connection))
+                using (SqlCommand command = new SqlCommand("DELETE FROM tblCalisanlar WHERE ID=@p1", SQLConnection.Connection))
                 {
                     command.Parameters.AddWithValue("@p1", id);
                     SQLConnection.ConOpen();
@@ -166,6 +166,64 @@ namespace PersonelTakipProgramı.DataAccessLayer
             {
                 MessageBox.Show(ex.Message);
                 return false;
+            }
+            finally
+            {
+                SQLConnection.ConClose();
+            }
+        }
+        public Calisan GetSpecific(string condition)
+        {
+            Calisan calisan = null;
+            try
+            {
+                int adet = 0;
+                using (SqlCommand command=new SqlCommand($"SELECT COUNT (*) FROM tblCalisanlar {condition}",SQLConnection.Connection))
+                {
+                    SQLConnection.ConOpen();
+                    adet = Convert.ToInt32(command.ExecuteScalar()); //Bizim veri tabanındaki sorgumuzun tek satır tek sutun değer üreteceğini bilip ola göre değer tutar.
+                }
+                if (adet==0)
+                {
+                    MessageBox.Show("Aradığınız kayıt bulunamadı!\nLütfen kriterlerinizi kontrol ederek tekrar deneyiniz.");
+                    calisan = null;
+                }
+                else if(adet>1)
+                {
+                    MessageBox.Show("Birden fazla kayıtla karşılaşıldı!\nLütfen kriterlerinizi daraltıp tekrar deneyiniz.");
+                    calisan = null;
+                }
+                else
+                {
+                    using (SqlCommand command = new SqlCommand($"SELECT * FROM tblCalisanlar {condition}", SQLConnection.Connection))
+                    {
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                calisan = new Calisan
+                                {
+                                    ID = Convert.ToInt32(reader["ID"]),
+                                    Ad = reader["Ad"].ToString(),
+                                    Soyad = reader["Soyad"].ToString(),
+                                    TcNo = reader["TcNo"].ToString(),
+                                    PersonelNo = reader["PersonelNo"].ToString(),
+                                    DogumTarihi = Convert.ToDateTime(reader["DogumTarihi"]),
+                                    IseBaslamaTarihi = Convert.ToDateTime(reader["IseBaslamaTarihi"]),
+                                    Departman = reader["Departman"].ToString(),
+                                    Unvan = reader["Unvan"].ToString(),
+                                    Durumu = reader["Durumu"].ToString()
+                                };
+                            }
+                        }
+                    }
+                }
+                return calisan;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return null;
             }
             finally
             {

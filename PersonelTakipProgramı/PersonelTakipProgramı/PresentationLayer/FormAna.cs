@@ -28,6 +28,7 @@ namespace PersonelTakipProgramı
         private void FormAna_Load(object sender, EventArgs e)
         {
             RefreshAll();
+            ClearTools();
             dgvCalisanlar.Columns[0].Visible = false;
         }
 
@@ -218,13 +219,17 @@ namespace PersonelTakipProgramı
                 else
                 {
                     value = control.Text;
-                    if (cbxTamEslesme.Checked)
+                    if (rdbTam.Checked)
                     {
                         conditions.Add($"{columnName} = '{value}'");
                     }
-                    else
+                    else if (rdbIceren.Checked)
                     {
                         conditions.Add($"{columnName} LIKE '%{value}%'");
+                    }
+                    else if(rdbBaslangic.Checked)
+                    {
+                        conditions.Add($"{columnName} LIKE '{value}%'");
                     }
                 }
             }
@@ -234,6 +239,26 @@ namespace PersonelTakipProgramı
         private void btnBul_Click(object sender, EventArgs e)
         {
             dgvCalisanlar.DataSource = calisanDAL.GetAll(CreateQuaryString());
+        }
+
+        private void btnGetir_Click(object sender, EventArgs e)
+        {
+            Calisan calisan = new Calisan();
+            calisan = calisanDAL.GetSpecific(CreateQuaryString());
+            if (calisan!=null)
+            {
+                txtAd.Text = calisan.Ad;
+                txtSoyad.Text = calisan.Soyad;
+                txtTcNo.Text = calisan.TcNo;
+                txtPersonelNo.Text = calisan.PersonelNo;
+                dtpDogumTarihi.Format = DateTimePickerFormat.Long;
+                dtpDogumTarihi.Value = calisan.DogumTarihi;
+                dtpIseBaslamaTarihi.Format = DateTimePickerFormat.Long;
+                dtpIseBaslamaTarihi.Value = calisan.IseBaslamaTarihi;
+                cmbDepartman.Text = calisan.Departman;
+                cmbUnvan.Text = calisan.Unvan;
+                cmbDurumu.Text = calisan.Durumu;  
+            }
         }
     }
 }
