@@ -230,5 +230,27 @@ namespace PersonelTakipProgramı.DataAccessLayer
                 SQLConnection.ConClose();
             }
         }
+        public short Duplicate(string condition)
+        {
+            short adet = 0;
+            try
+            {
+                using (SqlCommand command=new SqlCommand($"SELECT COUNT (*) FROM tblCalisanlar WHERE {condition}",SQLConnection.Connection))
+                {
+                    SQLConnection.ConOpen();
+                    adet = Convert.ToInt16(command.ExecuteScalar());
+                }
+                return adet;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return 0;
+            }
+            finally
+            {
+                SQLConnection.ConClose();
+            }
+        }
     }
 }

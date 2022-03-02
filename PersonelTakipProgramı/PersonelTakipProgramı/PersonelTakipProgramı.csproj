@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusinessLayer\BL.cs" />
     <Compile Include="DataAccessLayer\CalisanDAL.cs" />
     <Compile Include="EntityLayer\Calisan.cs" />
     <Compile Include="PresentationLayer\FormAna.cs">

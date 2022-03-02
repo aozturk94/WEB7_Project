@@ -49,6 +49,9 @@ namespace PersonelTakipProgramı
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pnlButonlar = new System.Windows.Forms.Panel();
+            this.rdbTam = new System.Windows.Forms.RadioButton();
+            this.rdbIceren = new System.Windows.Forms.RadioButton();
+            this.rdbBaslangic = new System.Windows.Forms.RadioButton();
             this.btnBul = new System.Windows.Forms.Button();
             this.btnGetir = new System.Windows.Forms.Button();
             this.btnGuncelle = new System.Windows.Forms.Button();
@@ -57,9 +60,6 @@ namespace PersonelTakipProgramı
             this.btnTemizle = new System.Windows.Forms.Button();
             this.btnSil = new System.Windows.Forms.Button();
             this.dgvCalisanlar = new System.Windows.Forms.DataGridView();
-            this.rdbBaslangic = new System.Windows.Forms.RadioButton();
-            this.rdbIceren = new System.Windows.Forms.RadioButton();
-            this.rdbTam = new System.Windows.Forms.RadioButton();
             this.pnlAraclar.SuspendLayout();
             this.pnlButonlar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCalisanlar)).BeginInit();
@@ -299,6 +299,38 @@ namespace PersonelTakipProgramı
             this.pnlButonlar.Size = new System.Drawing.Size(266, 114);
             this.pnlButonlar.TabIndex = 1;
             // 
+            // rdbTam
+            // 
+            this.rdbTam.AutoSize = true;
+            this.rdbTam.Checked = true;
+            this.rdbTam.Location = new System.Drawing.Point(172, 90);
+            this.rdbTam.Name = "rdbTam";
+            this.rdbTam.Size = new System.Drawing.Size(88, 17);
+            this.rdbTam.TabIndex = 20;
+            this.rdbTam.TabStop = true;
+            this.rdbTam.Text = "Tam Eşleşme";
+            this.rdbTam.UseVisualStyleBackColor = true;
+            // 
+            // rdbIceren
+            // 
+            this.rdbIceren.AutoSize = true;
+            this.rdbIceren.Location = new System.Drawing.Point(96, 90);
+            this.rdbIceren.Name = "rdbIceren";
+            this.rdbIceren.Size = new System.Drawing.Size(55, 17);
+            this.rdbIceren.TabIndex = 19;
+            this.rdbIceren.Text = "İçeren";
+            this.rdbIceren.UseVisualStyleBackColor = true;
+            // 
+            // rdbBaslangic
+            // 
+            this.rdbBaslangic.AutoSize = true;
+            this.rdbBaslangic.Location = new System.Drawing.Point(6, 90);
+            this.rdbBaslangic.Name = "rdbBaslangic";
+            this.rdbBaslangic.Size = new System.Drawing.Size(73, 17);
+            this.rdbBaslangic.TabIndex = 18;
+            this.rdbBaslangic.Text = "Başlangıcı";
+            this.rdbBaslangic.UseVisualStyleBackColor = true;
+            // 
             // btnBul
             // 
             this.btnBul.BackColor = System.Drawing.Color.LightSkyBlue;
@@ -402,38 +434,6 @@ namespace PersonelTakipProgramı
             this.dgvCalisanlar.Size = new System.Drawing.Size(449, 329);
             this.dgvCalisanlar.TabIndex = 16;
             this.dgvCalisanlar.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCalisanlar_CellEnter);
-            // 
-            // rdbBaslangic
-            // 
-            this.rdbBaslangic.AutoSize = true;
-            this.rdbBaslangic.Location = new System.Drawing.Point(6, 90);
-            this.rdbBaslangic.Name = "rdbBaslangic";
-            this.rdbBaslangic.Size = new System.Drawing.Size(73, 17);
-            this.rdbBaslangic.TabIndex = 18;
-            this.rdbBaslangic.Text = "Başlangıcı";
-            this.rdbBaslangic.UseVisualStyleBackColor = true;
-            // 
-            // rdbIceren
-            // 
-            this.rdbIceren.AutoSize = true;
-            this.rdbIceren.Location = new System.Drawing.Point(96, 90);
-            this.rdbIceren.Name = "rdbIceren";
-            this.rdbIceren.Size = new System.Drawing.Size(55, 17);
-            this.rdbIceren.TabIndex = 19;
-            this.rdbIceren.Text = "İçeren";
-            this.rdbIceren.UseVisualStyleBackColor = true;
-            // 
-            // rdbTam
-            // 
-            this.rdbTam.AutoSize = true;
-            this.rdbTam.Checked = true;
-            this.rdbTam.Location = new System.Drawing.Point(172, 90);
-            this.rdbTam.Name = "rdbTam";
-            this.rdbTam.Size = new System.Drawing.Size(88, 17);
-            this.rdbTam.TabIndex = 20;
-            this.rdbTam.TabStop = true;
-            this.rdbTam.Text = "Tam Eşleşme";
-            this.rdbTam.UseVisualStyleBackColor = true;
             // 
             // FormAna
             // 

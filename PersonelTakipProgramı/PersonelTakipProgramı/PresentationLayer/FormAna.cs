@@ -1,5 +1,6 @@
 ﻿using PersonelTakipProgramı.DataAccessLayer;
 using PersonelTakipProgramı.EntityLayer;
+using PersonelTakipProgramı.BusinessLayer;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,6 +15,7 @@ namespace PersonelTakipProgramı
 {
     public partial class FormAna : Form
     {
+        BL bL = new BL();
         CalisanDAL calisanDAL = new CalisanDAL();
         Calisan calisan = null;
         int secilenID = 0;
@@ -36,13 +38,11 @@ namespace PersonelTakipProgramı
         {
             foreach (Control control in pnlAraclar.Controls)
             {
-                /*if (control.GetType()==typeof(DateTimePicker)) //O sırada baktıın control'ün tipi datetimericker ise.
+                if (control.GetType()==typeof(DateTimePicker)) //O sırada baktıın control'ün tipi datetimericker ise.
                 {
-                    dtpDogumTarihi.CustomFormat = "";
-                    dtpIseBaslamaTarihi.CustomFormat = "";
-                }//Eksiklik var*/
 
-                if (control.GetType()!=typeof(Label)) //"O sırada baktığın control'ün tipi label değilse" demek.
+                }
+                else if (control.GetType()!=typeof(Label)) //"O sırada baktığın control'ün tipi label değilse" demek.
                 {
                     control.Text = string.Empty;
                 }
@@ -91,23 +91,41 @@ namespace PersonelTakipProgramı
             }
             else
             {
-                calisan = new Calisan
+                int pNoAdet = calisanDAL.Duplicate($"PersonelNo='{txtPersonelNo.Text}'");
+                int tcNoAdet = calisanDAL.Duplicate($"TcNo='{txtTcNo.Text}'");
+                if (pNoAdet == 0 && tcNoAdet == 0)
                 {
-                    Ad = txtAd.Text,
-                    Soyad = txtSoyad.Text,
-                    TcNo = txtTcNo.Text,
-                    PersonelNo = txtPersonelNo.Text,
-                    DogumTarihi = dtpDogumTarihi.Value,
-                    IseBaslamaTarihi = dtpIseBaslamaTarihi.Value,
-                    Departman = cmbDepartman.SelectedItem.ToString(),
-                    Unvan = cmbUnvan.SelectedItem.ToString(),
-                    Durumu = cmbDurumu.SelectedItem.ToString()
-                };
-                bool result = calisanDAL.Insert(calisan);
-                if (result)
+                    calisan = new Calisan
+                    {
+                        Ad = txtAd.Text,
+                        Soyad = txtSoyad.Text,
+                        TcNo = txtTcNo.Text,
+                        PersonelNo = txtPersonelNo.Text,
+                        DogumTarihi = dtpDogumTarihi.Value,
+                        IseBaslamaTarihi = dtpIseBaslamaTarihi.Value,
+                        Departman = cmbDepartman.SelectedItem.ToString(),
+                        Unvan = cmbUnvan.SelectedItem.ToString(),
+                        Durumu = cmbDurumu.SelectedItem.ToString()
+                    };
+                    bool result = calisanDAL.Insert(calisan);
+                    if (result)
+                    {
+                        RefreshAll();
+                        MessageBox.Show("Kayıt işlemi başarıyla gerçekleşmiştir.");
+                    }
+                }
+                else if (pNoAdet == 1 && tcNoAdet == 1)
                 {
-                    RefreshAll();
-                    MessageBox.Show("Kayıt işlemi başarıyla gerçekleşmiştir.");
+                    MessageBox.Show("Bu personel numarası ve TC kimlik numarası kullanılmaktadır!");
+
+                }
+                else if (pNoAdet==1)
+                {
+                    MessageBox.Show("Bu personel numarası kullanılmaktadır!");
+                }
+                else
+                {
+                    MessageBox.Show("Bu TC Kimlik numarası kullanılmaktadır!");
                 }
             }
         }
@@ -162,9 +180,10 @@ namespace PersonelTakipProgramı
         }
         private void dgvCalisanlar_CellEnter(object sender, DataGridViewCellEventArgs e)
         {
+            //dtpDogumTarihi.Format = DateTimePickerFormat.Long;
+            //dtpIseBaslamaTarihi.Format = DateTimePickerFormat.Long; //Sorunu çözmek için denedim.
             Transfer();
         }
-
         private void btnSil_Click(object sender, EventArgs e)
         {
             if (secilenID==0)
@@ -240,7 +259,6 @@ namespace PersonelTakipProgramı
         {
             dgvCalisanlar.DataSource = calisanDAL.GetAll(CreateQuaryString());
         }
-
         private void btnGetir_Click(object sender, EventArgs e)
         {
             Calisan calisan = new Calisan();
