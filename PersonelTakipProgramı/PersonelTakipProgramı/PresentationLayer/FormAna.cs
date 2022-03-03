@@ -85,7 +85,7 @@ namespace PersonelTakipProgramı
         }
         private void btnKaydet_Click(object sender, EventArgs e)
         {
-            if (CheckBlank())
+            if (CheckBlank()) //Düzenlenecek, hocadan al.
             {
                 MessageBox.Show("Lütfen tüm alanları doldurunuz.");
             }
@@ -117,7 +117,7 @@ namespace PersonelTakipProgramı
                 else if (pNoAdet == 1 && tcNoAdet == 1)
                 {
                     MessageBox.Show("Bu personel numarası ve TC kimlik numarası kullanılmaktadır!");
-
+                    
                 }
                 else if (pNoAdet==1)
                 {
