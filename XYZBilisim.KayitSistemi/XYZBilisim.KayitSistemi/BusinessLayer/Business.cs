@@ -9,13 +9,19 @@ using XYZBilisim.KayitSistemi.EntityLayer;
 
 namespace XYZBilisim.KayitSistemi.BusinessLayer
 {
-    public class Business
+    class Business
     {
-        static KayitlarDAL kayitlarDAL = new KayitlarDAL();
-        static Kayit kayit = null;
-        public void RegularlySave(List<string> liste)
-        {
+        KayitlarDAL kayitlarDAL = new KayitlarDAL();
 
+        private List<Kayit> allkursiyer;
+        public List<Kayit> AllKursiyer
+        {
+            get 
+            {
+                allkursiyer = kayitlarDAL.GetAll();
+                return allkursiyer; 
+            }
+            set { allkursiyer = value; }
         }
     }
 }

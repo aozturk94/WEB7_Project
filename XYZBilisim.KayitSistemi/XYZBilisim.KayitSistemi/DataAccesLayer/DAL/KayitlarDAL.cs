@@ -122,7 +122,7 @@ namespace XYZBilisim.KayitSistemi.DataAccesLayer.DAL
                 SQLConnection.ConnectionClose();
             }
         }
-        public bool Delete(string condition = "")//Overload
+        public bool Delete(string condition = "")
         {
             try
             {
