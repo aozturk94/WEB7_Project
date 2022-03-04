@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31729.503
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlSatProjesi_01", "AlSatProjesi_01\AlSatProjesi_01.csproj", "{E863D35F-4FDB-4BBE-9082-07D39C3C7579}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E863D35F-4FDB-4BBE-9082-07D39C3C7579}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E863D35F-4FDB-4BBE-9082-07D39C3C7579}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E863D35F-4FDB-4BBE-9082-07D39C3C7579}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E863D35F-4FDB-4BBE-9082-07D39C3C7579}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8DB79676-50B1-4555-8AB4-F9B91238465B}
+	EndGlobalSection
+EndGlobal
