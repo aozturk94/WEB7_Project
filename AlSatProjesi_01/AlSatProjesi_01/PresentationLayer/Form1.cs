@@ -38,7 +38,7 @@ namespace AlSatProjesi_01
             if (result)
             {
                 MessageBox.Show("Satış Başarıyla Gerçekleşti.");
-                bl.StockCalculate(Convert.ToInt32(nudMiktar.Value), orders.ProductID);
+                //bl.StockCalculate(Convert.ToInt32(nudMiktar.Value), orders.ProductID); //TRİGGER yaptığımız için artık kontrol etmeye gerek yok.
             }
         }
     }
