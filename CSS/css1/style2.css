@@ -1,0 +1,19 @@
+img{
+    max-width: 100%;
+    display: block;
+    height: auto;
+}
+.myParagraph{
+    font-size:2.5vw;
+}
+.box{
+    width: 200px;
+    height: 200px;
+    padding: 10px;
+    margin: 10px;
+    background-color: blue;
+}
+.box-container{
+    background-color: darkkhaki;
+    display: inline-block;
+}

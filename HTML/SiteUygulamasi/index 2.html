@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .wrapper {
+            margin: auto;
+            padding: 0px;
+            max-width: 900px;
+            min-height: 500px;
+        }
+
+        header {
+            max-width: 900px;
+            height: 70px;
+            background-color: blue;
+            color: white;
+            font-size: 30pt;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            text-align: center;
+        }
+
+        nav {
+            width: 900px;
+            height: 28px;
+            background-color: black;
+        }
+
+        aside {
+            float: left;
+            min-width: 150px;
+            height: 300px;
+            background-color: darkgoldenrod;
+        }
+
+        section {
+            float: left;
+            min-width: 750px;
+            height: 300px;
+            background-color: red;
+        }
+
+        footer {
+            float: left;
+            width: 900px;
+            height: 80px;
+            background-color: darkkhaki;
+        }
+
+        .navul{
+            padding: 0px;
+            margin: 0pt;
+            list-style-type: none;
+            background-color: aqua;
+            overflow: auto;
+        }
+
+        .navul li{
+            float: left;
+            border-bottom: 3px solid black;
+        }
+
+        .navul li a{
+            text-decoration: none;
+            color: black;
+            font-size: 16pt;
+            padding-left: 12px;
+            padding-right: 12px;
+        }
+
+        .navul li :hover{
+            background-color: tomato;
+            border-bottom: 3px solid wheat;
+        }
+
+        .footerul{
+            padding: 0px;
+            margin: 0px;
+            list-style-type: none;
+            overflow: auto;
+        }
+
+        .footerul li{
+            float: left;
+        }
+
+        .footerul li a{
+            text-decoration: none;
+            color: darkslategray;
+            font-family: 'Times New Roman', Times, serif;
+            padding-left: 12px;
+            padding-right: 12px;
+        }
+        .footerul li :hover{
+            font-weight: 600;
+        }
+        .footerul li.menu_right{
+            float: right;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>
+            Wissen Akademie Web Öğlen Grubu
+        </header>
+        <nav>
+            <ul class="navul">
+                <li><a href="">Anasayfa</a></li>
+                <li><a href="">Biz Kimiz?</a></li>
+                <li><a href="">Blog</a></li>
+                <li><a href="">İletişim</a></li>
+            </ul>
+        </nav>
+
+        <aside>ASIDE</aside>
+        <section>
+            Bugüne kadar işlenen konular: <br>
+            <ul class="ul2">
+                <li>1. Konu</li>
+                <li>2. Konu</li>
+                <li>3. Konu</li>
+                <li>4. Konu</li>
+            </ul>
+        </section>
+        <footer>
+            <ul class="footerul">
+                <li><a href="">Sık Sorulan Sorular</a></li>
+                <li><a href="">Aydınlatma Metni</a></li>
+                <li><a href="">Gizlilik Politikası</a></li>
+                <li class="menu_right"><a href="">Instagram</a></Li>
+                <li class="menu_right"><a href="">Facebook</a></li>
+                <li class="menu_right"><a href="">Twitter</a></li>
+            </ul>
+        </footer>
+    </div>
+</body>
+
+</html>

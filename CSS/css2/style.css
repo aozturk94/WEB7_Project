@@ -1,0 +1,47 @@
+.button1{
+    width: 125px;
+    height: 35px;
+    background-color: aquamarine;
+    color: navy;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bolder;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    padding: 0px;
+    padding-left: 5px;
+    text-align: left;
+    transition: width 2s, color 2s, background-color 2s, font-size 2s;
+    transition-timing-function:ease;
+}
+.button1:hover{
+    background-color: goldenrod;
+    font-size: 16px;
+    color: wheat;
+    width: 150px;
+    transition: width 2s, color 2s, background-color 2s, font-size 2s;
+    transition-timing-function:ease;
+}
+.button2{
+    width: 125px;
+    height: 50px;
+    background-color: coral;
+    color: bisque;
+    border:none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bolder;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 0px;
+    padding-bottom: 5px;
+    margin-top: 5px;
+    border-radius: 10px;
+}
+.button2:hover{
+    background-color: cornflowerblue;
+    color: teal;
+    font-variant: small-caps;
+    border-style:dashed;
+    width: 150px;
+    transition: background-color 1s, width 1s, color 2s;
+}

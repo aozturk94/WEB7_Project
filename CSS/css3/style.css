@@ -1,0 +1,20 @@
+.cizgiuzat{
+    width: 100px;
+    height: 100px;
+    /* border:none; */
+    background-color: white;
+    border-bottom: 3px solid black;
+    color: black;
+    cursor: pointer;
+    text-align: center;
+    transition: width 1s, height 1s;
+    transition-timing-function: ease;
+    border-radius: 100%;
+}
+.cizgiuzat:hover{
+
+    width: 150px;
+    height: 150px;
+    transition: width 1s, height 1s;
+    transition-timing-function: ease;
+}
