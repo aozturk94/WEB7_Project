@@ -1,0 +1,5 @@
+10 elemanlı bir not dizisi olsun.
+Bunlar bir liste halinde ekrana bastrılacak
+Bu notların içinde 50 ve üstü olanlar başarılı diğerleri başarısız.
+başarılı olanlara kendi tasarladığınız bir class
+başarısız olanlara da yine kendi tasarladığımız bir class atanacak.
