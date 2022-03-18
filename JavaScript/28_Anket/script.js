@@ -12,7 +12,20 @@ form.addEventListener("submit", (e) => {
     }
     
     result.classList.remove("result-none");
-    result.innerHTML=`%${score} ofise dönmek istiyorsunuz.`
+    // result.innerHTML=`%${score} ofise dönmek istiyorsunuz.`
+
+    let score2=0;
+    
+    const animationScore = setInterval(() => {
+        result.querySelector("span").textContent = `%${score2}`;
+        if(score2 >= score){
+            clearInterval(animationScore);
+            if(score%1!=0) result.querySelector("span").textContent = `%${score}`;
+        }
+        else{
+            score2++;
+        }
+    },10);
 })
 
 form.addEventListener("reset", ()=>{

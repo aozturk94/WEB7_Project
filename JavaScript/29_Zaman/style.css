@@ -1,0 +1,25 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+body{
+    background-color: aquamarine;
+}
+
+.clock{
+    text-align: center;
+    font-size: 60px;
+    color: blueviolet;
+    margin:auto;
+    line-height: 100px;
+    margin-top: 250px;
+    height: 100px;
+}
+
+span{
+    padding: 15px;
+    background-color: peru;
+    border-radius: 20px;
+    height: 100px;
+}

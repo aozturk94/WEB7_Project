@@ -1,0 +1,15 @@
+input{
+    width: 150px;
+}
+input:focus{
+    width: 500px;
+    transition: width 2s;
+}
+input:hover{
+    border: 2px solid;
+}
+
+button{
+    width: 75px;
+    font-weight: bold;
+}
