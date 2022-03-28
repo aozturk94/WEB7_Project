@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+    <button id="text-get">Text()-GET</button>
+    <button id="html-get">Html()-GET</button>
+    <button id="val-get">Val()-GET</button>
+    <button id="text-set">Text()-SET</button>
+    <button id="html-set">Html()-SET</button>
+    <button id="val-set">Val()-SET</button>
+
+    <p>Lorem ipsum, <span style="color: red;">dolor</span> sit amet consectetur adipisicing elit. Saepe, laboriosam.</p>
+    <input type="text" name="" id="" value="tamam">
+    <script>
+        $(document).ready(function(){
+            $("#text-get").click(function(){
+                var yazi = $("p").text();
+                alert(yazi)
+            })
+            $("#html-get").click(function(){
+                var html = $("p").html();
+                alert(html)
+            })
+            $("#val-get").click(function(){
+                var value = $("input").val();
+                alert(value)
+            })
+            $("#text-set").click(function(){
+                $("p").text("Selam, geçen hafta Reactjs eğitimi vardı.")
+            })
+            $("#html-set").click(function(){
+                $("p").html("Selam, geçen hafta <span style='color: orangered'>Reactjs</span> eğitimi vardı.")
+            })
+            $("#val-set").click(function(){
+                $("input").val("Wissen Akademie")
+            })
+        })
+    </script>
+</body>
+</html>

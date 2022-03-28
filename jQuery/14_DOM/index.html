@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        body{
+            margin: 15px;
+            font-size: 16px;
+        }
+        .box{
+            width: 200px;
+            height: 200px;
+            background-color: orangered;
+            margin-bottom: 20px;
+        }
+        button{
+            padding: 10px;
+            margin: 10px;
+            font-size: 16px;
+            background-color: teal;
+            color:aliceblue;
+            cursor: pointer;
+            border: none;
+            /* display: flex; */
+        }
+    </style>
+</head>
+<body>
+    <button id="parent">Tüm span etiketlerinin bir üst ebeveynlerini seç!</button>
+    <button id="parents">Tüm span etiketlerinin tüm ebeveynlerini seç!</button>
+    <button id="parents-p">Span etiketlerinin ebeveynlerinden sadece p olanlarını seç!</button>
+    <button id="parentUntil">Span etiketinin ebeveynlerinden div etiketine kadar olanlarını seç</button>
+    <button id="children">Div etiketlerinin ilk seviye çocuklarını seç</button>
+    <button id="children-p">Div etiketlerinin çocuğu olanlardan sadece p olanı seç</button>
+    <div>
+        Wissen Akademie(div)
+        <p>
+            Burası ilk paragraf.(p)
+            <span style="background-color: palevioletred;">
+                Al sana bu da span!(span)
+            </span>
+        </p>
+    </div>
+    <div>
+        Web Öğlen Grubu(div)
+        <h3>Yoklama Listesi</h3>
+        <p>Günlük İmza Çizelgesi</p>
+        <p>Gelmeyenler</p>
+        <span>İşte bu da son nokta!</span>
+    </div>
+    <script>
+        
+    </script>
+</body>
+</html>

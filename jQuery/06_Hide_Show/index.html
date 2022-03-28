@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+            background-color: orangered;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <button id="boxHide">Hide</button>
+    <button id="boxShow">Show</button>
+    <button id="boxToggle">Toggle</button>
+    <script>
+        $(document).ready(function(){
+            //Bu function içine yazılan kodlar document hazır olduğunda yani yüklendiğinde çalışır.
+
+            // $("#boxHide").click(function(){
+            //     $(".box").hide();
+            // })
+            // $("#boxShow").click(function(){
+            //     $(".box").show();
+            // })
+            // $("#boxToggle").click(function(){
+            //     $(".box").toggle();
+            // })
+
+            $("#boxHide").click(function(){
+                $(".box").hide("3000");
+            })
+            $("#boxShow").click(function(){
+                $(".box").show("slow");
+            })
+            $("#boxToggle").click(function(){
+                $(".box").toggle("normal");
+            })
+        })
+    </script>
+</body>
+</html>

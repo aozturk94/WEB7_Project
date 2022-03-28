@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+
+<body>
+    <button id="append">Append</button>
+    <button id="prepend">Prepend</button>
+    <button id="after">After</button>
+    <button id="before">Before</button>
+
+    <ol id="liste">
+        <li>JavaScripts</li>
+        <li>jQuery</li>
+    </ol>
+    <p id="metin">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, animi!</p>
+    <script>
+        $(document).ready(function(){
+            $("#append").click(function(){
+                $("#liste").append("<li>Angular</li>");
+                $("#metin").append("<br>Bu cümle yeni eklendi.");
+            })
+            $("#prepend").click(function(){
+                $("#liste").prepend("<li>Reactjs</li>");
+                $("#metin").prepend("Bu cümle de yeni eklendi.<br>");
+            })
+            $("#after").click(function(){
+                $("#liste").after("<h1>Bootstrap</h1>");
+                $("#metin").after("<p>Bu cümle de yeni eklendi.</p>");
+            })
+            $("#before").click(function(){
+                $("#liste").before("<h1>Vuejs</h1>");
+                $("#metin").before("<h2>Bu cümle de yeni eklendi.</h2>");
+            })
+        })
+    </script>
+</body>
+
+</html>

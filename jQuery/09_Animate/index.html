@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            width: 200px;
+            height: 200px;
+            background-color: orangered;
+            margin-bottom: 20px;
+            position: relative;
+            left: 0px;
+            top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <button id="animate-1">Animasyon 1</button>
+    <button id="animate-2">Animasyon 2</button>
+    <button id="animate-3">Animasyon 3</button>
+    <div class="box"></div>
+
+    <script>
+        $(document).ready(function(){
+            $("#animate-1").click(function(){
+                $(".box").animate({
+                    left: "100px",
+                    top: "40px",
+                    opacity: "0.5",
+                    height: "100px",
+                    width: "100px",
+                    borderRadius: "100%",
+                },3000)
+            })
+            $("#animate-2").click(function(){
+                $(".box").animate({
+                    left: "200px",
+                    top: "40px",
+                    height: "100px",
+                    width: "100px",
+                    borderRadius: "0",
+                    opacity: "1"
+                },3000)
+            })
+            $("#animate-3").click(function(){
+                $(".box").animate({
+                    width: "toggle"
+
+                },"slow")
+            })
+            $(".box").mouseover(function(){
+                $(".box").animate({
+                    width: "toggle"
+                },"slow")
+            })
+            $(".box").mouseleave(function(){
+                $(".box").animate({
+                    width: "toggle"
+                },"slow")
+            })
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        h1{
+            background-color: aqua;
+        }
+        .spantext{
+            background-color: tomato;
+            color: blueviolet;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <p id="lorem">Lorem, ipsum dolor.</p>
+    <span class="spantext">Bu da ilk selam</span>
+    <h1>İçindekiler</h1>
+    <h1>Önsöz</h1>
+    <span>Selam</span>
+    <button onclick="ChangeHTML()">Change HTML</button>
+    <button onclick="ChangeColor()">Change Color</button>
+    <script>
+        function ChangeHTML() {
+            $("#lorem").html('<h3 style="font-size: 28px">Wissen Akademie</h3>');
+            $("h1").css("background-color","white");
+            $(".spantext").css("color","yellow");
+        }
+        function ChangeColor() {
+            $("#lorem").css("background-color","yellow");
+        }
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+    <form id="submit">
+        <input type="text" placeholder="Ad..."><br><br>
+        <input type="text" placeholder="Soyad..."><br><br>
+        <button type="submit">Gönder</button>
+    </form><br>
+    <form>
+        <select name="" id="sehirListesi">
+            <option value="">İstanbul</option>
+            <option value="">Tokyo</option>
+            <option value="">Stocholm</option>
+            <option value="">Prag</option>
+            <option value="">Roma</option>
+        </select>
+    </form>
+    <script>
+        $(document).ready(function(){
+            $("#submit").submit(function(){
+                alert("Bilgiler gönderildi!");
+            })
+            // $("#sehirListesi").change(function(){
+            //     alert("Şehir seçildi.")
+            // })
+            $("#sehirListesi").change(function(){
+                alert($("#sehirListesi :selected").text() + " seçildi.");
+            })
+        })
+    </script>
+</body>
+</html>
