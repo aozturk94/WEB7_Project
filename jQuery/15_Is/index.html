@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        #box {
+            width: 50%;
+            margin: 10px;
+            display: block;
+            border: 2px solid grey;
+            padding: 10px;
+        }
+
+        .yeni {
+            background-color: orangered;
+            color: wheat;
+            padding: 20px;
+            margin: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <button>Span etiketinin ebeveyni p mi?</button>
+    <div id="box">
+        <p>
+            Burası bir paragraftır.
+            <span style="color: blue;">Burası da span!</span>
+        </p>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $("button").click(function () {
+                var result = $("span").parent().is("p");
+                if(result == true){
+                    $("span").addClass("yeni");
+                }
+            })
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        #errorMessage{
+            color: red
+        }
+    </style>
+</head>
+
+<body>
+    <label for="">Lütfen Giriş Yapınız:</label><br>
+    <input type="text" name="" id="txtGiris"><br>
+    <span id="errorMessage">
+
+    </span>
+    <script>
+        $(document).ready(function () {
+            $("#txtGiris").keypress(function (basilanTus) {
+                if (basilanTus.which<48 || basilanTus.which>57) {
+                    $("#errorMessage").html("Lütfen sadece sayı giriniz!").show().fadeOut(1500);
+                    return false;
+                }
+                // else{
+                //     $("#errorMessage").html("");
+                // }
+            })
+        })
+    </script>
+</body>
+
+</html>

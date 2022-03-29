@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,43 +8,48 @@
     <title>Document</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <style>
-        body{
+        body {
             margin: 15px;
             font-size: 16px;
         }
-        .box{
+
+        .box {
             width: 200px;
             height: 200px;
             background-color: orangered;
             margin-bottom: 20px;
         }
-        button{
+
+        button {
             padding: 10px;
             margin: 10px;
             font-size: 16px;
             background-color: teal;
-            color:aliceblue;
+            color: aliceblue;
             cursor: pointer;
             border: none;
             /* display: flex; */
         }
     </style>
 </head>
+
 <body>
     <button id="parent">Tüm span etiketlerinin bir üst ebeveynlerini seç!</button>
     <button id="parents">Tüm span etiketlerinin tüm ebeveynlerini seç!</button>
     <button id="parents-p">Span etiketlerinin ebeveynlerinden sadece p olanlarını seç!</button>
-    <button id="parentUntil">Span etiketinin ebeveynlerinden div etiketine kadar olanlarını seç</button>
+    <button id="parentsUntil">Span etiketinin ebeveynlerinden div etiketine kadar olanlarını seç</button>
     <button id="children">Div etiketlerinin ilk seviye çocuklarını seç</button>
     <button id="children-p">Div etiketlerinin çocuğu olanlardan sadece p olanı seç</button>
     <div>
         Wissen Akademie(div)
-        <p>
-            Burası ilk paragraf.(p)
-            <span style="background-color: palevioletred;">
-                Al sana bu da span!(span)
-            </span>
-        </p>
+        <h3>
+            <p>
+                Burası ilk paragraf.(p)
+                <span style="background-color: palevioletred;">
+                    Al sana bu da span!(span)
+                </span>
+            </p>
+        </h3>
     </div>
     <div>
         Web Öğlen Grubu(div)
@@ -53,7 +59,58 @@
         <span>İşte bu da son nokta!</span>
     </div>
     <script>
-        
+        $(document).ready(function () {
+
+            function clearBorder() {
+                $("*").css({
+                    "border": "none",
+                    "color": "black"
+                })
+            }
+            $("#parent").click(function () {
+                clearBorder()
+                $("span").parent().css({
+                    "border": "2px solid red",
+                    "color": "gray"
+                })
+            })
+            $("#parents").click(function () {
+                clearBorder()
+                $("span").parents().css({
+                    "border": "2px solid red",
+                    "color": "gray"
+                })
+            })
+            $("#parents-p").click(function () {
+                clearBorder()
+                $("span").parents("p").css({
+                    "border": "2px solid red",
+                    "color": "gray"
+                })
+            })
+            $("#parentsUntil").click(function () {
+                clearBorder()
+                $("span").parentsUntil("div").css({
+                    "border": "2px solid red",
+                    "color": "gray"
+                })
+            })
+            $("#children").click(function () {
+                clearBorder()
+                $("div").children().css({
+                    "border": "2px solid red",
+                    "color": "gray"
+                })
+            })
+            $("#children-p").click(function () {
+                clearBorder()
+                $("div").children("p").css({
+                    "border": "2px solid red",
+                    "color": "gray"
+                })
+            })
+        })
     </script>
 </body>
+
 </html>

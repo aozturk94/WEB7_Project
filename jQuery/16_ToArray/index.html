@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+
+<body>
+    <button id="calistir">Çalıştır</button><br><br>
+    <button class="btn">Button-1</button><br><br>
+    <button class="btn">Button-2</button><br><br>
+    <button class="btn">Button-3</button><br><br>
+    <button class="btn">Button-4</button><br><br>
+    <button class="btn">Button-5</button><br><br>
+    <button class="btn">Button-6</button><br><br>
+    <script>
+        $(document).ready(function () {
+            $("#calistir").click(function () {
+                var butonlar = $(".btn").toArray();
+                // $(".btn").css("background-color","blue");
+                for (var i = 0; i < butonlar.length; i += 2) {
+                    // alert(butonlar[i].innerHTML);
+                    butonlar[i].style.backgroundColor = "red";
+                    butonlar[i+1].style.backgroundColor = "blue";
+                }
+            })
+        })
+    </script>
+</body>
+
+</html>
