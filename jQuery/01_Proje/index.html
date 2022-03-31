@@ -16,16 +16,16 @@
 </head>
 
 <body>
-  <div class="container1">
+  <div class="container1 bg-dark">
     <div class="sticky-top" id="navbar">
       <a href="">
         <h2 style="color: azure;"><i class="fa-solid fa-film"></i> CineWissen</h2>
       </a>
-      <a href="">Salon 1</a>
-      <a href="">Salon 2</a>
-      <a href="">Salon 3</a>
-      <a href="">Salon 4</a>
-      <a href="">Salon 5</a>
+      <a href="javascript:void(0);">Salon 1</a>
+      <a href="javascript:void(0);">Salon 2</a>
+      <a href="javascript:void(0);">Salon 3</a>
+      <a href="javascript:void(0);">Salon 4</a>
+        <a href="javascript:void(0);">Salon 5</a>
       <a href="">İletişim</a>
       <div>
         <input type="text" style="height: 38px; border:none; border-radius: 5px;" placeholder=" Film Ara..."
@@ -39,13 +39,28 @@
           <img height="550" class="card-img-top"
             src="https://yorumguncel.com/wp-content/uploads/2022/02/soluksuz-filmi-konusu-oyunculari-netflix.jpg"
             alt="">
+            <div class="carousel-caption d-none d-md-block">
+              <h3 style="color: yellow;">SOLUKSUZ</h3>
+              <p style="color: yellow;">Bir kazayı örtbas etmek için sınırları zorlayan yozlaşmış bir polisin hayatı, gizemli bir görgü tanığından tehditler almaya başlayınca kontrolden çıkar.
+                Başroldekiler: Franck Gastambide, Simon Abkarian, Michaël Abiteboul</p>
+            </div>
         </div>
         <div class="slide">
+          <div class="carousel-caption d-none d-md-block">
+            <h3 style="color: yellow;">THE PLATFORM</h3>
+            <p style="color: yellow;">Bir hapishanede üzeri yiyecekle kaplı bir platform kat kat aşağı iner. Üst katlardaki mahkûmlar doyasıya yerken alttakiler aç ve çaresiz kalır. İsyan kaçınılmazdır.
+              Başroldekiler: Iván Massagué, Antonia San Juan, Zorion Eguileor</p>
+          </div>
           <img height="550" class="card-img-top"
             src="https://1.bp.blogspot.com/-gthF2YT9ukw/YCeWIheC-HI/AAAAAAAAHLw/FXD0q2z2kCcNInCmkUTJyQwe17L_bfJWwCLcBGAsYHQ/s1280/platform-1.jpg"
             alt="">
         </div>
         <div class="slide">
+          <div class="carousel-caption d-none d-md-block">
+            <h3 style="color: white;">DONT LOOK UP!</h3>
+            <p style="color: white;">Bİki astronom, Dünya'yı yok edecek bir kuyruklu yıldızın yaklaşmakta olduğu konusunda insanlığı uyarmak için bir medya turuna çıkar, ancak hiç kimse onları umursamaz.
+              Başroldekiler: Leonardo DiCaprio, Jennifer Lawrence, Meryl Streep</p>
+          </div>
           <img height="550" class="card-img-top"
             src="https://bayprofesor.com/wp-content/uploads/2022/01/dont-look-up-netflix-teknosafari.jpeg" alt="">
         </div>
@@ -62,7 +77,7 @@
       <div class="main-popup sticky-top">
         <div class="popup">
           <div class="close-popup">X</div>
-          <div class="content-popup">
+          <div class="content-popup"> 
             <p>
               <label for="">Tarih:</label> <input type="date" name="" id="">
             </p>
@@ -128,30 +143,60 @@
               <div class="seat"></div>
               <div class="seat"></div>
               <div class="seat"></div>
-            </div><br>
+            </div><br><div style="display: flex;">
             <div class="secili"></div>Seçili
             <div class="dolu"></div>Dolu
             <div class="bos"></div>Boş
-            <br><br>
-            <a href="#">İşlemi Tamamla</a>
+            <br><br></div>
+            <a id="islem" href="#">İşlemi Tamamla</a>
           </div>
         </div>
       </div>
-      <h4 style="text-align: center; margin-top: 15px; background-color: beige">Vizyondakiler</h4>
-      <div class="album py-5 bg-light">
+      <h4 style="text-align: center; margin: 15px; padding: 15px; background-color: grey; color:antiquewhite;">Vizyondakiler</h4>
+      <div class="album py-5 bg-dark" >
         <div class="container">
 
           <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
             <div class="col">
               <div class="card shadow-sm">
-                <img height="650"
+                
+                <img id="bannerAc" height="650"
                   src="https://m.media-amazon.com/images/M/MV5BN2Y2OWU4MWMtNmIyMy00YzMyLWI0Y2ItMTcyZDc3MTdmZDU4XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_.jpg"
                   alt="">
 
-                <div class="card-body">
-                  <p class="card-text" id="card-text1">12 Monkeys</p>
+                <div class="card-body">                    
+                  
+                  <p class="card-text" id="card-text1" style="cursor: pointer;">12 Monkeys</p>
+                  <table id="banner1" class="table" style="display: none;">
+                    <tr>
+                      <th scope="row">Description:</th>
+                      <td>In a future world devastated by disease, a convict is sent back in time to gather
+                        information about the man-made virus that wiped out most of the human population on the
+                        planet.</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Director:</th>
+                      <td>Terry Gilliam</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Writers:</th>
+                      <td>
+                        <li>Chris Marker (inspired by the film 'La Jetée' written by)</li>
+                        <li>David Webb Peoples (screenplay by)</li>
+                        <li>Janet Peoples (screenplay by)</li>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Stars</th>
+                      <td>
+                        <li>Bruce Willis</li>
+                        <li>Madeleine Stowe</li>
+                        <li>Brad Pitt</li>
+                      </td>
+                    </tr>
+                  </table>
                   <div style="display: none;" id="film-text1">
-                    <table class="table">
+                    <table class="table" style="color:white">
                       <tr>
                         <th scope="row">Description:</th>
                         <td>In a future world devastated by disease, a convict is sent back in time to gather

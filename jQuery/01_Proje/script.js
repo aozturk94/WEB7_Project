@@ -55,4 +55,10 @@ $(document).ready(function(){
     $(".seat").dblclick(function(){
         $(this).css("background-color","#444451")
     })
+    $("#bannerAc").click(function(){
+        $("#banner1").css("display","block");
+    })
+    $("#bannerAc").dblclick(function(){
+        $("#banner1").css("display","none");
+    })
 })
