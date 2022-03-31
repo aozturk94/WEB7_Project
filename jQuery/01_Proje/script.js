@@ -32,3 +32,27 @@ function showSlide(n) {
 
 }
 showSlide(sliderIndex);
+
+$(document).ready(function(){
+    $(".films").hide();
+    $("#incele").click(function(){
+        $(".films").show();
+        $(document).scrollTop($(document).height());
+        var yazi= $("#card-text1").text();
+        $("#filmName").text(yazi);
+        var filmYazi = $("#film-text1").html();
+        $("h5").html(filmYazi);
+    })
+    $("#biletAl").click(function(){
+        $(".main-popup").css("display","block")
+    })
+    $(".close-popup").click(function(){
+        $(".main-popup").css("display","none")
+    })
+    $(".seat").click(function(){
+        $(this).css("background-color","white")
+    })
+    $(".seat").dblclick(function(){
+        $(this).css("background-color","#444451")
+    })
+})
