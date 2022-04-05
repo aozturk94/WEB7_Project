@@ -1,7 +1,5 @@
 ﻿$(document).ready(function () {
-     
-    $("ul li a").click(function (e) {
-        $("ul li a").removeClass("activeEt");
-        $(this).addClass("activeEt");
-    })
+    var pathName = window.location.pathname;
+    $("li a").removeClass("activeEt")
+    $('ul  li  a[href="' + pathName + '"]').toggleClass("activeEt")
 })
