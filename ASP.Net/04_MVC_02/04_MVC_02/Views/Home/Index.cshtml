@@ -1,0 +1,35 @@
+﻿@*
+    Razor Page Nedir?
+    Asp.Net Core mimarisinde .cshtml uzantılı dosyalar içinde html ile c# kodları yazabiliriz.
+    Bu teknolojiye Razor denir, bu sayfalara da razor page denir.
+    @ işareti razor operatörü olarak bilinir.
+*@
+
+@{
+    int yas = 15;
+    string adSoyad = "Engin Niyazi";
+    string mesaj = "Yaş tutmuyor!";
+    string[] linkler = { "ANASAYFA", "HAKKIMDA", "İLETİŞİM" };
+}
+
+<p>@adSoyad</p>
+
+@{ if (yas > 20)
+    {
+        <h1>@adSoyad</h1>
+    }
+    else
+    {
+        <h1>@mesaj</h1>
+    }
+}
+
+<h1>Menü Seçenekleri</h1>
+<ul>
+    @{ 
+        foreach (var link in linkler)
+        {
+            <li>@link</li>
+        }
+    }
+</ul>
