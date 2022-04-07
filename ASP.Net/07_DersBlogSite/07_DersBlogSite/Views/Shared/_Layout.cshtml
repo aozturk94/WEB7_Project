@@ -8,7 +8,7 @@
     <!--STYLES-->
     <link rel="stylesheet" href="~/css/bootstrap.min.css">
     <link rel="stylesheet" href="~/css/style.css">
-    <title>Ders Blog Site</title>
+    <title>@*@ViewData["Title"]*@ @ViewBag.Title - Ders Blog Site</title>
 </head>
 
 <body>
@@ -36,6 +36,10 @@
                                 Dersler
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="lesson">Tüm Dersler</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
                                 <li><a class="dropdown-item" href="#">HTML</a></li>
                                 <li><a class="dropdown-item" href="#">CSS</a></li>
                                 <li><a class="dropdown-item" href="#">Bootstrap</a></li>
@@ -64,7 +68,7 @@
     <!--HEADER BİTİŞİ-->
     <!--MAİN BAŞLANGICI-->
     <main>
-        @RenderBody();
+        @RenderBody()
     </main>
     <!--MAİN BİTİŞİ-->
     <!--FOOTER BAŞLANGICI-->
