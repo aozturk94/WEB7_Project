@@ -1,0 +1,25 @@
+﻿@using MobilyaShowRoom.Models;
+@model List<Product>
+
+<div class="container">
+    <div class="row">
+        @foreach (var product in Model)
+        {
+            <div class="col-4 mt-3">
+                <div class="card text-center">
+                    <div class="card-header">
+                        @product.ID
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">₺@product.Price</h5>
+                        <p class="card-text">@product.ProductName</p>
+                        <a href="@Url.ActionLink("GetProductDetail","Product", new{id = product.ID})" class="btn btn-primary">Detay</a>
+                    </div>
+                    <div class="card-footer text-muted">
+                        Stokta 13 adet kaldı.
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,19 @@
+﻿@using MobilyaShowRoom.Models
+
+@{Product product = ViewBag.resultProduct;}
+
+<div class="container d-flex justify-content-center mt-5">
+    <div class="card text-center w-25">
+        <div class="card-header">
+            ₺@product.Price
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">@product.ProductName</h5>
+            <p class="card-text">@product.ProductDetail</p>
+            <a href="@Url.ActionLink("Index","Product")" class="btn btn-primary">Geri Dön</a>
+        </div>
+        <div class="card-footer text-muted">
+            Stokta 13 adet kaldı.
+        </div>
+    </div>
+</div>
