@@ -41,11 +41,4 @@ a:hover{
 .card{
   cursor: pointer;   
 }
-.card:hover{
-    color: goldenrod !important;
-}
-#gunun11 div a{
-    text-decoration: none;
-    color: black;
-    font-weight: bold;
-}
+
