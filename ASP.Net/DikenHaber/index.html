@@ -17,48 +17,52 @@
 <body>
     <div class="container mt-2" style="border: 1px solid aquamarine;">
         <header>
-            <nav class="navbar navbar-expand-sm navbar-light bg-light d-flex justify-content-between">
-                <a class="navbar-brand" href="#">Navbar</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-                    aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                    <div class="navbar-nav d-flex justify-content-between w-100">
-                        <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-                        <a class="nav-item nav-link" href="#">Features</a>
-                        <a class="nav-item nav-link" href="#">Pricing</a>
-                        <a class="nav-item nav-link disabled" href="#">Disabled</a>
-                        <a class="nav-item nav-link disabled" href="#">Disabled</a>
-                        <a class="nav-item nav-link disabled" href="#">Disabled</a>
-                        <a class="nav-item nav-link disabled" href="#">Disabled</a>
-                        <a class="nav-item nav-link disabled" href="#">Disabled</a>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarNavAltMarkup1" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup1">
+                        <div class="navbar-nav d-flex justify-content-between w-100">
+                            <a class="nav-item nav-link" href="#">Features</a>
+                            <a class="nav-item nav-link" href="#">Pricing</a>
+                            <a class="nav-item nav-link disabled" href="#">Disabled</a>
+                            <a class="nav-item nav-link disabled" href="#">Disabled</a>
+                            <a class="nav-item nav-link disabled" href="#">Disabled</a>
+                            <a class="nav-item nav-link disabled" href="#">Disabled</a>
+                            <a class="nav-item nav-link disabled" href="#">Disabled</a>
+                        </div>
                     </div>
                 </div>
             </nav>
+
             <img class="w-100" src="diken.png" alt="">
-            <nav class="navbar navbar-expand-sm navbar-light bg-light d-flex justify-content-between">
-                <a class="navbar-brand" href="#">Navbar</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-                    aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="slider"></div>
-                <div class="navbar-nav d-flex justify-content-between w-100">
-                    <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-                    <a class="nav-item nav-link" href="#">Features</a>
-                    <a class="nav-item nav-link" href="#">Pricing</a>
-                    <a class="nav-item nav-link disabled" href="#">Disabled</a>
-                    <a class="nav-item nav-link disabled" href="#">Disabled</a>
-                    <a class="nav-item nav-link disabled" href="#">Disabled</a>
-                    <a class="nav-item nav-link disabled" href="#">Disabled</a>
-                    <a class="nav-item nav-link disabled" href="#">Disabled</a>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                        <div class="navbar-nav d-flex justify-content-between w-100">
+                            <a class="nav-item nav-link" href="#">Features</a>
+                            <a class="nav-item nav-link" href="#">Pricing</a>
+                            <a class="nav-item nav-link disabled" href="#">Disabled</a>
+                            <a class="nav-item nav-link disabled" href="#">Disabled</a>
+                            <a class="nav-item nav-link disabled" href="#">Disabled</a>
+                            <a class="nav-item nav-link disabled" href="#">Disabled</a>
+                            <a class="nav-item nav-link disabled" href="#">Disabled</a>
+                        </div>
+                    </div>
                 </div>
             </nav>
         </header>
-        <main style="display: flex; width: 100%;">
-            <div style="width: 65%;" class="mt-2">
-                <div id="carouselExampleIndicators" class="carousel slide p-4" style="background-color: lightgray;"
+        <main style="width: 100%;" class="row">
+            <div class="mt-2 col-md-8">
+                <div id="carouselExampleIndicators" class="carousel slide p-4" style="background-color: #f3f3f3;"
                     data-bs-ride="carousel">
                     <div class="carousel-indicators">
                         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
@@ -91,10 +95,10 @@
                     </button>
                 </div>
 
-                <div style="display: flex; width: 100%; border: 1px solid aquamarine;" class="p-4">
+                <div style="display: flex; width: 100%; border: 1px solid aquamarine;" class="p-4 col-md-8">
 
-                    <div style="width: 50%" class="mx-2">
-                        <div class="card1a" style="width: 100%;">
+                    <div class="me-2 col-md-6">
+                        <div class="card1a">
 
                             <h4 style="width: 100%; background-color: lightgray;">AKTÜEL</h4>
 
@@ -235,8 +239,8 @@
                             </div>
                         </div>
                     </div>
-                    <div style="width: 50%">
-                        <div class="card2" style="width: 100%;">
+                    <div class="col-md-6">
+                        <div class="card2">
                             <h4 style="width: 100%; background-color: lightgray;">DİKEN ÖZEL</h4>
 
                             <div class="card text-center" style="width: 100%;">
@@ -521,7 +525,7 @@
                     </div>
                 </div>
             </div>
-            <div style="width: 35%;" class="mt-4">
+            <div class="mt-4 col-md-4">
                 <div style="width: 80%; margin-left: 25px;">
                     <h4 style="background-color: lightgray;">DİKEN'İ TAKİP EDİN</h4>
                     <div style="font-size: 40px;">
@@ -555,9 +559,6 @@
                             <div class="col-md-8">
                                 <div class="card-body">
                                     <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a wider card with supporting text below as a natural
-                                        lead-in to additional content. This content is a little bit longer.</p>
-                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                                 </div>
                             </div>
                         </div>
@@ -720,7 +721,7 @@
             </div>
         </main>
         <footer style="background-color: black; color:white;">
-            <div style="display: flex;">
+            <div style="display: flex; justify-content: space-around; padding-top: 55px;">
                 <div style="display: flex; flex-direction: column;">
                     <a href="">VİTRİN</a>
                     <a href="">AKTÜEL</a>
@@ -747,11 +748,20 @@
                     <a href="">İLETİŞİM</a>
                 </div>
                 <div>
-
+                    <ul class="row">
+                        <a class=" fs-3 col-md-4" href="#"><i class="fa-regular fa-envelope"></i></a>
+                        <a class=" fs-3 col-md-4" href="#"><i class="fa-brands fa-facebook"></i></a>
+                        <a class=" fs-3 col-md-4" href="#"><i class="fa-brands fa-google-plus-g"></i></a>
+                        <a class=" fs-3 col-md-4" href="#"><i class="fa-brands fa-pinterest"></i></a>
+                        <a class=" fs-3 col-md-4" href="#"><i class="fa-solid fa-square-rss"></i></a>
+                        <a class=" fs-3 col-md-4" href="#"><i class="fa-brands fa-twitter-square"></i></a>
+                        <a class=" fs-3 col-md-4" href="#"><i class="fa-brands fa-vimeo"></i></a>
+                        <a class=" fs-3 col-md-4" href="#"><i class="fa-brands fa-youtube"></i></a>
+                    </ul>
                 </div>
             </div>
             <hr>
-            <div><span>"Genç gazeteci arkadaşlarıma! Bu meslek yorucu bir meslektir. Ama, insan büyük bir zevkle
+            <div><span style="padding-left:15px">"Genç gazeteci arkadaşlarıma! Bu meslek yorucu bir meslektir. Ama, insan büyük bir zevkle
                     çalışır. Kalemine daima efendi kal, uşak olmamaya gayret et. Mecbur kalırsan kır, sakın satma."
                     Sedat Simavi</span></div>
         </footer>
