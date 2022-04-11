@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <title>Document</title>
+</head>
+
+<body style="background-color:rgb(246, 245, 242);">
+  <div class="container p-0 mt-2" style="background-color: white;">
+    <header style="border: 1px solid lightgray;">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul id="deneme" class="navbar-nav d-flex justify-content-between w-100">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">ROTA</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">9 SORUDA</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">DİKEN ÖZEL</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">GÜNÜN 11'İ</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">DİKENLİK</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">AKŞAM POSTASI</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">VPN HABER</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">ENGLİSH</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <div class="container p-0">
+        <img class="img-fluid " src="diken.png" alt="">
+      </div>
+      <div class="container p-0">
+        <nav class="navbar navbar-expand-lg navbar-light">
+          <div class="">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+              aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+              <ul id="deneme" class="navbar-nav d-flex justify-content-between w-100">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#">ROTA</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">9 SORUDA</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">DİKEN ÖZEL</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">GÜNÜN 11'İ</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">DİKENLİK</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">AKŞAM POSTASI</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">VPN HABER</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">ENGLİSH</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <div style="border: 1px solid lightgray;">
+      <div class="row">
+        <div class="col-md-8 pe-0">
+          <div class=" w-100">
+            <div style="width: 100%;" class="mt-2">
+              <div id="carouselExampleIndicators" class="carousel slide p-4" style="background-color: #f3f3f3;"
+                data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                    aria-label="Slide 2"></button>
+                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                    aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img src="https://picsum.photos/id/231/1350/650" class="d-block w-100" alt="...">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="https://picsum.photos/id/235/1350/650" class="d-block w-100" alt="...">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="https://picsum.photos/id/269/1350/650" class="d-block w-100" alt="...">
+                  </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                  data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                  data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+              <div class="row m-2">
+                <div class="col-6">
+                  <div id="cardHeader">
+                    <h4 class="fs-5 d-flex justify-content-center fw-bold"
+                      style="background-color: lightgray; padding: 5px;">AKTÜEL</h4>
+                  </div>
+                  <div class="row row-cols-1 row-cols-md-1 g-4">
+                    <div class="col">
+                      <div class="card">
+                        <img src="cardimage.png" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">Card title</h5>
+                          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
+                            additional content. This content is a little bit longer.</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="card">
+                        <img src="cardimage.png" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">Card title</h5>
+                          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
+                            additional content. This content is a little bit longer.</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="card">
+                        <img src="cardimage.png" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">Card title</h5>
+                          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
+                            additional content.</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="card">
+                        <img src="cardimage.png" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">Card title</h5>
+                          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
+                            additional content. This content is a little bit longer.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div id="cardHeader">
+                    <h4 class="fs-5 d-flex justify-content-center  fw-bold"
+                      style="background-color: lightgray; padding: 5px;">DİKEN ÖZEL</h4>
+                  </div>
+                  <div class="row row-cols-1 row-cols-md-1 g-4">
+                    <div class="col">
+                      <div class="card">
+                        <img src="cardimage.png" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">Card title</h5>
+                          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
+                            additional content. This content is a little bit longer.</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="card">
+                        <img src="cardimage.png" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">Card title</h5>
+                          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
+                            additional content. This content is a little bit longer.</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="card">
+                        <img src="cardimage.png" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">Card title</h5>
+                          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
+                            additional content.</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="card">
+                        <img src="cardimage.png" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">Card title</h5>
+                          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
+                            additional content. This content is a little bit longer.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="m-2">
+                <div class="fs-4 d-flex justify-content-start mb-2 fw-bold" style="background-color: lightgray;">
+                  SÜRDÜRÜLEBİLİRLİK
+                </div>
+                <div class="card mb-3">
+                  <div class="row g-0">
+                    <div class="col-md-5">
+                      <img src="card2.jpg" class="img-fluid rounded-start" alt="...">
+                    </div>
+                    <div class="col-md-7">
+                      <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                          additional content. This content is a little bit longer.</p>
+                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card mb-3">
+                  <div class="row g-0">
+                    <div class="col-md-5">
+                      <img src="card2.jpg" class="img-fluid rounded-start" alt="...">
+                    </div>
+                    <div class="col-md-7">
+                      <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                          additional content. This content is a little bit longer.</p>
+                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card mb-3">
+                  <div class="row g-0">
+                    <div class="col-md-5">
+                      <img src="card2.jpg" class="img-fluid rounded-start" alt="...">
+                    </div>
+                    <div class="col-md-7">
+                      <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                          additional content. This content is a little bit longer.</p>
+                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card mb-3">
+                  <div class="row g-0">
+                    <div class="col-md-5">
+                      <img src="card2.jpg" class="img-fluid rounded-start" alt="...">
+                    </div>
+                    <div class="col-md-7">
+                      <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                          additional content. This content is a little bit longer.</p>
+                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card mb-3">
+                  <div class="row g-0">
+                    <div class="col-md-5">
+                      <img src="card2.jpg" class="img-fluid rounded-start" alt="...">
+                    </div>
+                    <div class="col-md-7">
+                      <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                          additional content. This content is a little bit longer.</p>
+                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card mb-3">
+                  <div class="row g-0">
+                    <div class="col-md-5">
+                      <img src="card2.jpg" class="img-fluid rounded-start" alt="...">
+                    </div>
+                    <div class="col-md-7">
+                      <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                          additional content. This content is a little bit longer.</p>
+                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="m-2">
+                <div class="fs-4 d-flex justify-content-start mb-2 fw-bold" style="background-color: lightgray;">
+                  DİKENE TAKILANLAR
+                </div>
+                <div class="card mb-3">
+                  <div class="row g-0">
+                    <div class="col-md-4">
+                      <img src="cardimage.png" class="img-fluid rounded-start" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                      <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                          additional content. This content is a little bit longer.</p>
+                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card mb-3">
+                  <div class="row g-0">
+                    <div class="col-md-4">
+                      <img src="cardimage.png" class="img-fluid rounded-start" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                      <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                          additional content. This content is a little bit longer.</p>
+                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card mb-3">
+                  <div class="row g-0">
+                    <div class="col-md-4">
+                      <img src="cardimage.png" class="img-fluid rounded-start" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                      <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                          additional content. This content is a little bit longer.</p>
+                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card mb-3">
+                  <div class="row g-0">
+                    <div class="col-md-4">
+                      <img src="cardimage.png" class="img-fluid rounded-start" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                      <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                          additional content. This content is a little bit longer.</p>
+                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card mb-3">
+                  <div class="row g-0">
+                    <div class="col-md-4">
+                      <img src="cardimage.png" class="img-fluid rounded-start" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                      <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                          additional content. This content is a little bit longer.</p>
+                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card mb-3">
+                  <div class="row g-0">
+                    <div class="col-md-4">
+                      <img src="cardimage.png" class="img-fluid rounded-start" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                      <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                          additional content. This content is a little bit longer.</p>
+                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4 ps-0">
+          <div id="" class="ms-3 mt-2">
+            <div class="">
+              <h4 class="fs-5 d-flex justify-content-center  fw-bold"
+                style="background-color: lightgray; padding: 5px;">DİKEN'İ TAKİP EDİN</h4>
+              <div style="font-size: 35px;" class="">
+                <a href=""><i class="fa-brands fa-facebook-square" style="color:blue"></i></a>
+                <a href=""><i class="fa-brands fa-twitter-square" style="color:rgb(109, 109, 218)"></i></a>
+                <a href=""><i class="fa-brands fa-instagram-square" style="color: rgb(221, 84, 84)"></i></a>
+                <a href=""><i class="fa-brands fa-pinterest-square" style="color:red"></i></a>
+                <a href=""><i class="fa-solid fa-square-rss" style="color:olivedrab"></i></a>
+              </div>
+            </div>
+            <div>
+              <div class="card text-center" style="width: 100%;">
+                <img src="https://www.diken.com.tr/wp-content/uploads/2021/02/deprem_reuters2_sb-348x180.jpg"
+                  class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Special title treatment</h5>
+                  <p class="card-text">With supporting text below as a natural lead-in to additional
+                    content.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div>
+              <h4 class="fs-5 d-flex justify-content-center m-2 fw-bold" style="background-color: lightgray;">DİKEN'İ
+                TAKİP EDİN</h4>
+              <div class="card mb-3 mt-2">
+                <div class="row g-0">
+                  <div class="col-md-4">
+                    <img src="https://picsum.photos/id/217/200/200" class="img-fluid rounded-start" alt="...">
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <h5 class="card-title">This is a wider card with supporting text below as a</h5>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card mb-3 mt-2">
+                <div class="row g-0">
+                  <div class="col-md-4">
+                    <img src="https://picsum.photos/id/217/200/200" class="img-fluid rounded-start" alt="...">
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <h5 class="card-title">This is a wider card with supporting text below as a</h5>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card mb-3 mt-2">
+                <div class="row g-0">
+                  <div class="col-md-4">
+                    <img src="https://picsum.photos/id/217/200/200" class="img-fluid rounded-start" alt="...">
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <h5 class="card-title">This is a wider card with supporting text below as a</h5>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card mb-3 mt-2">
+                <div class="row g-0">
+                  <div class="col-md-4">
+                    <img src="https://picsum.photos/id/217/200/200" class="img-fluid rounded-start" alt="...">
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <h5 class="card-title">This is a wider card with supporting text below as a</h5>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card mb-3 mt-2">
+                <div class="row g-0">
+                  <div class="col-md-4">
+                    <img src="https://picsum.photos/id/217/200/200" class="img-fluid rounded-start" alt="...">
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <h5 class="card-title">This is a wider card with supporting text below as a</h5>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card mb-3 mt-2">
+                <div class="row g-0">
+                  <div class="col-md-4">
+                    <img src="https://picsum.photos/id/217/200/200" class="img-fluid rounded-start" alt="...">
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <h5 class="card-title">This is a wider card with supporting text below as a</h5>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card mb-3 mt-2">
+                <div class="row g-0">
+                  <div class="col-md-4">
+                    <img src="https://picsum.photos/id/217/200/200" class="img-fluid rounded-start" alt="...">
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <h5 class="card-title">This is a wider card with supporting text below as a</h5>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="gunun11" class="container">
+            <h4 style="background-color: lightgray;" class="fs-4 d-flex justify-content-center  fw-bold">GÜNÜN 11'İ</h4>
+            <div>
+              <a href="">This is some text within a card body.</a>
+            </div>
+            <hr>
+            <div>
+              <a href="">This is some text within a card body.</a>
+            </div>
+            <hr>
+            <div>
+              <a href="">This is some text within a card body.</a>
+            </div>
+            <hr>
+            <div>
+              <a href="">This is some text within a card body.</a>
+            </div>
+            <hr>
+            <div>
+              <a href="">This is some text within a card body.</a>
+            </div>
+            <hr>
+            <div>
+              <a href="">This is some text within a card body.</a>
+            </div>
+            
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
+  <div class="container">
+    <footer style="background-color: black; color:white;">
+      <div style="display: flex; justify-content: space-around; padding-top: 55px;">
+        <div style="display: flex; flex-direction: column;">
+          <a href="">VİTRİN</a>
+          <a href="">AKTÜEL</a>
+          <a href="">EKONOMİ</a>
+          <a href="">ANALİZ</a>
+          <a href="">DÜNYA</a>
+          <a href="">MEDYA</a>
+          <a href="">KEYİF</a>
+          <a href="">AGORA</a>
+          <a href="">SANAT</a>
+          <a href="">SÜRDÜRÜLEBİLİRLİK</a>
+        </div>
+        <div style="display: flex; flex-direction: column;">
+          <a href="">AGORA</a>
+          <a href="">DİKEN'E TAKILANLAR</a>
+          <a href="">BİRİNCİ SAYFALAR</a>
+          <a href="">ÜNÜN 11'İ</a>
+          <a href="">AKŞAM POSTASI</a>
+        </div>
+        <div style="display: flex; flex-direction: column;">
+          <a href="">BU GAZETE</a>
+          <a href="">DİKEN 5 YAŞINDA</a>
+          <a href="">KÜNYE</a>
+          <a href="">İLETİŞİM</a>
+        </div>
+        <div>
+          <ul class="row">
+            <a class=" fs-3 col-md-4" href="#"><i class="fa-regular fa-envelope"></i></a>
+            <a class=" fs-3 col-md-4" href="#"><i class="fa-brands fa-facebook"></i></a>
+            <a class=" fs-3 col-md-4" href="#"><i class="fa-brands fa-google-plus-g"></i></a>
+            <a class=" fs-3 col-md-4" href="#"><i class="fa-brands fa-pinterest"></i></a>
+            <a class=" fs-3 col-md-4" href="#"><i class="fa-solid fa-square-rss"></i></a>
+            <a class=" fs-3 col-md-4" href="#"><i class="fa-brands fa-twitter-square"></i></a>
+            <a class=" fs-3 col-md-4" href="#"><i class="fa-brands fa-vimeo"></i></a>
+            <a class=" fs-3 col-md-4" href="#"><i class="fa-brands fa-youtube"></i></a>
+          </ul>
+        </div>
+      </div>
+      <hr>
+      <div><span style="padding-left:15px">"Genç gazeteci arkadaşlarıma! Bu meslek yorucu bir meslektir. Ama, insan
+          büyük bir zevkle
+          çalışır. Kalemine daima efendi kal, uşak olmamaya gayret et. Mecbur kalırsan kır, sakın satma."
+          Sedat Simavi</span></div>
+    </footer>
+  </div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

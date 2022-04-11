@@ -1,0 +1,51 @@
+#cardHeader{
+    background-color: lightgray;
+    color: black;
+    font-size: 15px;
+}
+#deneme li{
+    border-right: 1px solid lightgray;
+    padding: 5px 16px;
+    font-size: 16px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 2.3;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+#deneme li a{
+    color: black;
+}
+#deneme li:hover{
+    background-color: black;
+    color: white !important;
+}
+#deneme li:hover a{
+    color: white !important;
+}
+header nav{
+    margin: 0px !important;
+    padding: 0px !important;
+}
+body{
+    border: 1px solid black;
+}
+footer a{
+    text-decoration: none !important;
+    color: white;
+}
+a:hover{
+    color:goldenrod !important;
+}
+.card{
+  cursor: pointer;   
+}
+.card:hover{
+    color: goldenrod !important;
+}
+#gunun11 div a{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
