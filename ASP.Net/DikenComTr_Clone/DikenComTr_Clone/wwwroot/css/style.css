@@ -7,9 +7,14 @@ body{
     background-color: #f6f5f2;
 }
 
+nav {
+    border: 1px solid #e3e3e3;
+}
+
+
 .nav-content ul {
     list-style-type: none;
-    border: 1px solid #e3e3e3;
+    
 }
 .nav-content ul li {
     border-right: 1px solid #e3e3e3;
@@ -18,13 +23,13 @@ body{
 
 .nav-content ul li a{
     text-decoration: none;
-    color: black;
-    font-weight: 700;
-    padding: 18px 15px;
+    color: black !important;
+    font-weight: 700 !important;
+    padding: 18px 15px !important;
 }
 .nav-content ul li a:hover{
-    background-color: black;
-    color: white;
+    background-color: black !important;
+    color: white !important;
 }
 head{
     width: 100%;
@@ -126,7 +131,6 @@ head{
     color: white;
 }
 .footer-widget{
-    margin-top: 30px;
     background-color: #000;
     padding:  40px 40px 16px;
     border-bottom: 1px solid #e3e3e3;
