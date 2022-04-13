@@ -7,43 +7,35 @@ body{
     background-color: #f6f5f2;
 }
 
-nav {
-    border: 1px solid #e3e3e3;
-}
-
-/*.nav-content{
-    position: relative;
-    left:50%;
-}*/
-
-/*button{
-    position: absolute;
-    left: 50%;
-}*/
-
-.nav-content ul {
+.nav-content ul{
     list-style-type: none;
-    
+    border: 1px solid #e3e3e3;
+
 }
-.nav-content ul li {
-    border-right: 1px solid #e3e3e3;
-    display: flex;
+.nav-content ul li{
+   border-right: 1px solid #e3e3e3;
+   display:flex;
 }
 
 .nav-content ul li a{
     text-decoration: none;
-    color: black !important;
-    font-weight: 700 !important;
-    padding: 18px 15px !important;
+    color: black;
+    font-weight: 700;
+    padding: 18px 15px;
 }
 .nav-content ul li a:hover{
-    background-color: black !important;
-    color: white !important;
+    background-color: black;
+    color: white;
 }
 head{
     width: 100%;
     margin: 0;
     padding: 0;
+}
+.slider-button{
+    border-radius: 100%;
+    width: 8px !important;
+    height: 8px !important;
 }
 .header-img{
     width: 100%;
@@ -63,17 +55,11 @@ head{
 }
 .middle-main {
     border: 1px solid #e3e3e3;
-
 }
 .middle-main-left{
     border-right: 1px solid #e3e3e3;
 }
 
-.slider-button{
-    border-radius: 100%;
-    width: 8px !important;
-    height: 8px !important;
-}
 .section-left-2{
     border-bottom: 1px solid #e3e3e3;
 }
@@ -81,34 +67,30 @@ head{
 #right-menu-img{
     width: 20%;
     height: 20%;
-    margin-top: 5px
 }
 .widget-1-menu ul li a{
     color: white;
     font-weight: bold;
 }
-.bottom-main{
-    border: 1px solid #e3e3e3;
-    border-top: none;
+.bottom-main {
+    border-bottom: 1px solid #e3e3e3;
+    border-left: 1px solid #e3e3e3;
+    border-right: 1px solid #e3e3e3;
 }
 .kart{
     margin-bottom: 20px;
     border-bottom: 1px solid #e3e3e3;
 }
-.haber-card {
+.haber-card{
     border-bottom: 1px solid #e3e3e3;
     padding: 5px;
 }
-
-.future-wrap{
-    border-bottom: 1px solid #e3e3e3
+.future-wrap {
+    border-bottom: 1px solid #e3e3e3;
 }
-
-
-.future-post-1{
+.future-post-1 {
     border-bottom: 1px solid #e3e3e3;
     background-color: white;
-
 }
 .future-post-2{
     background-color: white;
@@ -124,9 +106,10 @@ head{
     border-bottom: 1px solid #e3e3e3;
     background-color: white;
 }
-.aside-right{
-    border: 1px solid #e3e3e3;
-    border-left:none;
+.aside-right {
+    border-top: 1px solid #e3e3e3;
+    border-right: 1px solid #e3e3e3;
+    border-bottom: 1px solid #e3e3e3;
 }
 .gun11-car{
     border-bottom: 1px solid #e3e3e3;
@@ -140,6 +123,7 @@ head{
     color: white;
 }
 .footer-widget{
+    margin-top: 30px;
     background-color: #000;
     padding:  40px 40px 16px;
     border-bottom: 1px solid #e3e3e3;
@@ -160,10 +144,10 @@ head{
 .widget-4{
     width: 300px;
 }
-.header-text1 {
+.header-text1{
     background-color: #e3e3e3;
     padding: 6px 9px;
-    font-weight: 700;
+    font-weight:700;
 }
 .footer-text{
     background-color:#000;
@@ -177,25 +161,50 @@ head{
     color: white;
 }
 
-@media (max-width: 1200px){
+#menubtn{
+    display: none;
+}
+
+
+@media (max-width: 1200px) {
     .nav-content ul {
         flex-wrap: wrap !important;
     }
 }
 
-@media (max-width: 768px){
-    .nav-content ul{
+@media (max-width: 768px) {
+    .nav-content ul {
         flex-direction: column !important;
-       
     }
-    .nav-content ul{
+
+    .nav-content ul {
         justify-content: center;
     }
-    .nav-content ul li a{
-        padding: 6px 15px !important;
-        width: 100% !important;
-        text-align: center;
+
+        .nav-content ul li a {
+            padding: 6px 15px !important;
+            width: 100% !important;
+            text-align: center;
+        }
+
+        .nav-content{
+            display: none;
+        }
+
+        #menubtn{
+            display: flex;
+            justify-content: center;
+        }
+        #menu-btn{
+            display: initial;
+        }
+}
+
+@media (min-width: 768px){
+    .nav-content{
+        display: block !important;
     }
 }
+
 
 

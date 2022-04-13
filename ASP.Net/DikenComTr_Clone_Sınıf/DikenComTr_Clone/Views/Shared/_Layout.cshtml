@@ -15,48 +15,24 @@
 </head>
 
 <body>
-    <div class="container d-flex flex-column mt-3">
-        <!--1. Menü-->
-        <nav class="navbar navbar-expand-sm navbar-light bg-light p-0">
-            <div class="nav-content">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbarNavAltMarkup1" aria-controls="navbarNavAltMarkup"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNavAltMarkup1">
-                    <div class="navbar-nav">
-                        <ul class="navbar-nav d-flex">
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">ROTA</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">9 SORUDA</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">DİKEN ÖZEL</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">GÜNÜN 11'İ</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">DİKENLİK</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">AKŞAM POSTASI</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">VPN HABER</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">ENGLİSH</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+    <div class="container d-flex flex-column mt-2">
+        <!--1.Menü-->
+        <nav>
+            <div id="menubtn"><button id="menu-btn">MENU</button></div>
+            <div class="nav-content bg-white">
+                <ul class="d-flex mb-0">
+                    <li><a href="">ROTA</a></li>
+                    <li><a href="">9 SORUDA</a></li>
+                    <li><a href="">DİKEN ÖZEL</a></li>
+                    <li><a href="">GÜNÜN 11'I</a></li>
+                    <li><a href="">DİKENLİK</a></li>
+                    <li><a href="">AKŞAM POSTASI</a></li>
+                    <li><a href="">VPN HABER</a></li>
+                    <li><a href="">ENGLISH</a></li>
+                </ul>
             </div>
         </nav>
-        <!--Diken Banner-->
+        <!--Diken banner-->
         <header>
             <div class="container m-0 p-0">
                 <div class="header-img">
@@ -64,54 +40,24 @@
                 </div>
             </div>
         </header>
-        <!--2. Menü-->
-        <nav class="navbar navbar-expand-sm navbar-light bg-light p-0 mb-2">
-            <div class="nav-content">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbarNavAltMarkup2" aria-controls="navbarNavAltMarkup"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNavAltMarkup2">
-                    <div class="navbar-nav d-flex justify-content-between w-100">
-                        <ul id="" class="navbar-nav d-flex">
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">VİTRİN</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">AKTÜEL</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">EKONOMİ</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">ANALİZ</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">DÜNYA</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">MEDYA</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">KEYİF</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">AGORA</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">SANAT</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">SÜRDÜRÜLEBİLİRLİK</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+        <!--2.Menü-->
+        <nav>
+            <div class="nav-content bg-white">
+                <ul class="d-flex">
+                    <li><a href="">VİTRİN</a></li>
+                    <li><a href="">AKTÜEL</a></li>
+                    <li><a href="">EKONOMİ</a></li>
+                    <li><a href="">ANALİZ</a></li>
+                    <li><a href="">DÜNYA</a></li>
+                    <li><a href="">MEDYA</a></li>
+                    <li><a href="">KEYİF</a></li>
+                    <li><a href="">AGORA</a></li>
+                    <li><a href="">SANAT</a></li>
+                    <li><a href="">SÜRDÜRÜLEBİRLİK</a></li>
+                </ul>
             </div>
         </nav>
-
-        <div class="main-content d-flex bg-white">
+        <div class="main-content d-flex  bg-white">
             @RenderBody()
         </div>
         <div class="footer-widget d-flex">
@@ -146,7 +92,7 @@
                 <div class="widget-3-menu ">
                     <ul class="list-unstyled">
                         <li><a href="">BU GAZETE...</a></li>
-                        <li><a href="">DİKEN 6 YAŞINDA</a></li>
+                        <li><a href="">DİKEN 5 YAŞINDA</a></li>
                         <li><a href="">KÜNYE</a></li>
                         <li><a href="">İLETİŞİM</a></li>
                     </ul>
@@ -209,13 +155,14 @@
 
 
 
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-            crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
             integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
             crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+            crossorigin="anonymous"></script>
+    <script src="~/js/site.js"></script>
 </body>
 
 </html>
