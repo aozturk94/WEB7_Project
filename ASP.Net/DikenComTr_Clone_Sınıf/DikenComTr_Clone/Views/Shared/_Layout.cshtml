@@ -11,15 +11,19 @@
           integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
           crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="~/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Diken - Yaramazlara biraz batar!</title>
 </head>
 
 <body>
+    <div id="foo" class="ball"></div>
+    <div id="pacman" class=""></div>
     <div class="container d-flex flex-column mt-2">
         <!--1.Menü-->
         <nav>
             <div id="menubtn"><button id="menu-btn">MENU</button></div>
-            <div class="nav-content bg-white">
+            <div class="d-flex justify-content-center"><label for="acMenu"><i class="fa-solid fa-bars"></i></label></div><input id="acMenu" type="checkbox" />
+            <div class="nav-content bg-white" id="menu">
                 <ul class="d-flex mb-0">
                     <li><a href="">ROTA</a></li>
                     <li><a href="">9 SORUDA</a></li>
@@ -42,7 +46,9 @@
         </header>
         <!--2.Menü-->
         <nav>
-            <div class="nav-content bg-white">
+            <div class="d-flex justify-content-center"><label for="acMenu2"><i class="fa-solid fa-bars"></i></label></div><input id="acMenu2" type="checkbox" />
+
+            <div class="nav-content bg-white" id="menu2">
                 <ul class="d-flex">
                     <li><a href="">VİTRİN</a></li>
                     <li><a href="">AKTÜEL</a></li>
