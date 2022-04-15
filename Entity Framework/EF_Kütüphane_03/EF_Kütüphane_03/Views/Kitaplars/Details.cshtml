@@ -1,0 +1,55 @@
+﻿@model EF_Kütüphane_03.Models.Kitaplar
+
+@{
+    ViewData["Title"] = "DETAYLAR";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Kitaplar</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Ad)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Ad)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.SayfaSayisi)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.SayfaSayisi)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Stok)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Stok)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Turler)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Turler.TurAd)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.YayinEvleri)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.YayinEvleri.Ad)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Yazarlar)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Yazarlar.AdSoyad)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Isbn">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

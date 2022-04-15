@@ -1,0 +1,75 @@
+﻿@model IEnumerable<EF_Kütüphane_03.Models.Kitaplar>
+
+@{
+    ViewData["Title"] = "KİTAPLAR";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="text-light">KİTAPLAR</h1>
+
+<p>
+    <a asp-action="Create">YENİ KAYIT</a>
+</p>
+<table class="table table-sm table table-bordered border-primary shadow">
+    <thead>
+        <tr>
+            <th>
+                ISBN
+            </th>
+            <th>
+                KİTAP AD
+            </th>
+            <th>
+                SAYFA SAYISI
+            </th>
+            <th>
+                STOK MİKTARI
+            </th>
+            <th>
+                KİTAP TÜRÜ
+            </th>
+            <th>
+                YAYINEVİ
+            </th>
+            <th>
+                YAZAR
+            </th>
+            <th>
+                İŞLEMLER
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Isbn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SayfaSayisi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Stok)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Turler.TurAd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.YayinEvleri.Ad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Yazarlar.AdSoyad)
+            </td>
+            <td>
+                <a class="btn btn-sm btn-success" asp-action="Edit" asp-route-id="@item.Isbn">Düzenle</a> 
+                <a class="btn btn-sm btn-info" asp-action="Details" asp-route-id="@item.Isbn">Detay</a> 
+                <a class="btn btn-sm btn-danger" asp-action="Delete" asp-route-id="@item.Isbn">Sil</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
