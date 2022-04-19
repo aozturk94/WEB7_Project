@@ -1,0 +1,38 @@
+@model EF_Code.Models.Yayinevleri
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1 class="diplay-4">Yayinevi Detayı</h1>
+<div class="row">
+    <div class="col-sm-3">
+        Yayinevi ID:
+    </div>
+    <div class="col-sm-5">
+        @Model.Id
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-3">
+        Yayinevi Adı:
+    </div>
+    <div class="col-sm-5">
+        @Model.Ad
+    </div>
+</div><div class="row">
+    <div class="col-sm-3">
+        Yayinevi Adres:
+    </div>
+    <div class="col-sm-5">
+        @Model.Adres
+    </div>
+</div><div class="row">
+    <div class="col-sm-3">
+        Yayinevi Telefon:
+    </div>
+    <div class="col-sm-5">
+        @Model.Tel
+    </div>
+</div>
+<a class="btn btn-primary" asp-action="Index">Yayınevlerine Dön</a>

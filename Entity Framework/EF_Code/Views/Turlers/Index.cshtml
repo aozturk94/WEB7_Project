@@ -6,6 +6,7 @@
 
 
 <h1 class="display-3">Kitap Türleri</h1>
+<a class="btn btn-sm btn-success" asp-action="Create">Yeni Kitap Türü</a><hr>
 <table class="table table-sm table-dark w-50">
     <thead class="bg-primary">
         <tr>
@@ -26,7 +27,7 @@
                 </td>
                 <td>
                     <a class="btn btn-sm btn-info" asp-action="Details" asp-route-id="@tur.Id">Detaylar</a>
-                    <a class="btn btn-sm btn-success" asp-action="Edit" asp-route-id="@tur.Id">Düzenle</a>
+                    <a class="btn btn-sm btn-warning" asp-action="Edit" asp-route-id="@tur.Id">Düzenle</a>
                     <a class="btn btn-sm btn-danger" asp-action="Delete" asp-route-id="@tur.Id">Sil</a>
                 </td>
             </tr>

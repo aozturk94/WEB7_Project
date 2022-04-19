@@ -1,0 +1,44 @@
+@model EF_Code.Models.Yayinevleri
+
+@{
+    ViewData["Title"] = "Yayinevi Silme";
+}
+
+<h1 class="display-4">Yayinevi Sil</h1>
+<div class="row">
+    <div class="col-sm-3">
+        Yayinevi ID:
+    </div>
+    <div class="col-sm-5">
+        @Model.Id
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-3">
+        Yayinevi Adı:
+    </div>
+    <div class="col-sm-5">
+        @Model.Ad
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-3">
+        Yayinevi Adres:
+    </div>
+    <div class="col-sm-5">
+        @Model.Adres
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-3">
+        Yayinevi Telefon:
+    </div>
+    <div class="col-sm-5">
+        @Model.Tel
+    </div>
+</div>
+<a class="btn btn-primary" asp-action="Index">Yayinevlerine Dön</a>
+<form asp-action="DeleteConfirmed">
+    <input type="hidden" asp-for="Id">
+    <input type="submit" value="Sil" class="btn btn-danger">
+</form>

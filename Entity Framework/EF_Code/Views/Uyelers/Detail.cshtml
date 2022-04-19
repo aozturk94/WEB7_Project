@@ -1,0 +1,104 @@
+@model EF_Code.Models.Uyeler
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1 class="diplay-4">Üye Detayı</h1>
+<div class="row">
+    <div class="col-sm-3">
+        Üye ID:
+    </div>
+    <div class="col-sm-5">
+        @Model.Id
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-3">
+        Üye Adı Soyadı:
+    </div>
+    <div class="col-sm-5">
+        @Model.AdSoyad
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-3">
+        Cinsiyet:
+    </div>
+    <div class="col-sm-5">
+        @Model.Cinsiyet
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-3">
+        Doğum Tarihi:
+    </div>
+    <div class="col-sm-5">
+        @Model.DogumTarihi
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-3">
+        Telefon:
+    </div>
+    <div class="col-sm-5">
+        @Model.Tel
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-3">
+        Mail
+    </div>
+    <div class="col-sm-5">
+        @Model.Mail
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-3">
+        Üyelik Tarihi:
+    </div>
+    <div class="col-sm-5">
+        @Model.UyelikTarihi
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-3">
+        Üyelik Tipi
+    </div>
+    <div class="col-sm-5">
+        @Model.UyelikTipi
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-3">
+        TC Kimlik Nu.:
+    </div>
+    <div class="col-sm-5">
+        @Model.TcNo
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-3">
+        Meslek:
+    </div>
+    <div class="col-sm-5">
+        @Model.Meslek
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-3">
+        Eğitim Durumu:
+    </div>
+    <div class="col-sm-5">
+        @Model.EgitimDurumu
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-3">
+        Ceza Durumu:
+    </div>
+    <div class="col-sm-5">
+        @Model.CezaDurumu
+    </div>
+</div>
+<a class="btn btn-primary" asp-action="Index">Üyelere Dön</a>

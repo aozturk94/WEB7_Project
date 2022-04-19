@@ -1,47 +1,49 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using EF_Code.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace EF_Code.Controllers
 {
-    public class TurlersController : Controller
+    public class YayinevlerisController : Controller
     {
         private readonly KutuphaneAksamContext _context;
 
-        public TurlersController(KutuphaneAksamContext context)
+        public YayinevlerisController(KutuphaneAksamContext context)
         {
             _context = context;
         }
-
+        
         //GET-Listeleme
         public IActionResult Index()
         {
-            return View(_context.Turlers.ToList()); //List tipinde değerler gönderiliyor.
+            return View(_context.Yayinevleris.ToList()); //List tipinde değerler gönderiliyor.
         }
 
         //GET-Detay Gösterme
         public IActionResult Details(int id)
         {
-            Turler tur = _context.Turlers.Find(id);
-            return View(tur);
+            Yayinevleri yayinevi = _context.Yayinevleris.Find(id);
+            return View(yayinevi);
         }
 
         //GET-Düzeltme Sayfası
         public IActionResult Edit(int id)
         {
-            var tur = _context.Turlers.Find(id);
-            return View(tur);
+            var yayinevi = _context.Yayinevleris.Find(id);
+            return View(yayinevi);
         }
 
         //POST-Düzeltme İşlemi
         [HttpPost]
-        public IActionResult Edit(int id, [Bind("Id,TurAd")] Turler tur)
+        public IActionResult Edit(int id, [Bind("Id,Ad,Adres,Tel")] Yayinevleri yayinevi)
         {
 
-            _context.Update(tur); //Bu satır contexti güncelledi.
+            _context.Update(yayinevi); //Bu satır contexti güncelledi.
             _context.SaveChanges(); //Bu satır database'i güncelledi.
             return RedirectToAction("Index");
             //return View(tur);
@@ -49,15 +51,15 @@ namespace EF_Code.Controllers
 
         public IActionResult Delete(int id)
         {
-            var silinecekKitapTuru = _context.Turlers.Find(id);
-            return View(silinecekKitapTuru);
+            var silinecekYayinEvi = _context.Yayinevleris.Find(id);
+            return View(silinecekYayinEvi);
         }
 
         [HttpPost, ActionName("DeleteConfirmed")]
         public IActionResult DeleteConfirmed(int id)
         {
-            var silinecekKitapTuru = _context.Turlers.Find(id);
-            _context.Turlers.Remove(silinecekKitapTuru);
+            var silinecekYayinEvi = _context.Yayinevleris.Find(id);
+            _context.Yayinevleris.Remove(silinecekYayinEvi);
             _context.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -68,11 +70,12 @@ namespace EF_Code.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(Turler tur)
+        public IActionResult Create(Yayinevleri yayinevi)
         {
-            _context.Add(tur);
+            _context.Add(yayinevi);
             _context.SaveChanges();
             return RedirectToAction("Index");
         }
+
     }
 }

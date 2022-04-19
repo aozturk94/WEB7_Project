@@ -1,0 +1,30 @@
+@model EF_Code.Models.Yayinevleri
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1 class="display-3">Düzenle</h1>
+<hr>
+<div class="row">
+    <div class="col-sm-6">
+        <form asp-action="Edit">
+            <div class="form-group">
+                <label asp-for="Ad" class="control-label"></label>
+                <input type="text" asp-for="Ad" class="form-control">
+            </div>
+            <div class="form-group">
+                <label asp-for="Adres" class="control-label"></label>
+                <input type="text" asp-for="Adres" class="form-control">
+            </div>
+            <div class="form-group">
+                <label asp-for="Tel" class="control-label"></label>
+                <input type="text" asp-for="Tel" class="form-control">
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Değişikleri Kaydet" class="btn btn-outline-success">
+            </div>
+        </form>
+    </div>
+
+</div>
