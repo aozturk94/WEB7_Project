@@ -1,0 +1,64 @@
+@model Kitaplar
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1 class="diplay-4">@Model.Ad Detay Bilgileri</h1>
+<div class="row">
+    <div class="col-sm-3">
+        ISBN:
+    </div>
+    <div class="col-sm-5">
+        @Model.Isbn
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-3">
+        Ad:
+    </div>
+    <div class="col-sm-5">
+        @Model.Ad
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-3">
+        Sayfa Sayısı:
+    </div>
+    <div class="col-sm-5">
+        @Model.SayfaSayisi
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-3">
+        Stok Miktarı
+    </div>
+    <div class="col-sm-5">
+        @Model.Stok
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-3">
+        Kitap Türü
+    </div>
+    <div class="col-sm-5">
+        @Model.Turler.TurAd
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-3">
+        Yazar
+    </div>
+    <div class="col-sm-5">
+        @Model.Yazarlar.AdSoyad
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-3">
+        Yayinevi
+    </div>
+    <div class="col-sm-5">
+        @Model.YayinEvleri.Ad
+    </div>
+</div>
+<a class="btn btn-primary" asp-action="Index">Kitaplara Dön</a>

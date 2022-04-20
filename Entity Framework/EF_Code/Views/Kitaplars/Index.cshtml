@@ -1,0 +1,37 @@
+@model List<Kitaplar>
+
+@{
+    ViewData["Title"] = "Kitaplar";
+}
+
+
+<h1 class="display-3">Kitaplar</h1>
+<a class="btn btn-sm btn-success" asp-action="Create">Yeni Kitap Kaydı</a><hr>
+<table class="table table-sm table-dark w-50">
+    <thead class="bg-primary">
+        <tr>
+            <th>#</th>
+            <th>Kitap</th>
+            <th>İşlem</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var kitap in Model)
+        {
+            <tr>
+                <td>
+                    @kitap.Isbn
+                </td>
+                <td>
+                    @kitap.Ad
+                </td>
+                <td>
+                    <a class="btn btn-sm btn-info" asp-action="Details" asp-route-id="@kitap.Isbn">Detaylar</a>
+                    <a class="btn btn-sm btn-warning" asp-action="Edit" asp-route-id="@kitap.Isbn">Düzenle</a>
+                    <a class="btn btn-sm btn-danger" asp-action="Delete" asp-route-id="@kitap.Isbn">Sil</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

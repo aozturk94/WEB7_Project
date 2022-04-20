@@ -1,0 +1,62 @@
+@model EF_Code.Models.Uyeler
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1 class="display-3">Düzenle</h1>
+<hr>
+<div class="row">
+    <div class="col-sm-6">
+        <form asp-action="Edit">
+            <div class="form-group">
+                <label asp-for="AdSoyad" class="control-label"></label>
+                <input type="text" asp-for="AdSoyad" class="form-control">
+            </div>
+            <div class="form-group">
+                <label asp-for="Cinsiyet" class="control-label"></label>
+                <input type="text" asp-for="Cinsiyet" class="form-control">
+            </div>
+            <div class="form-group">
+                <label asp-for="DogumTarihi" class="control-label"></label>
+                <input type="text" asp-for="DogumTarihi" class="form-control">
+            </div>
+            <div class="form-group">
+                <label asp-for="Tel" class="control-label"></label>
+                <input type="text" asp-for="Tel" class="form-control">
+            </div>
+            <div class="form-group">
+                <label asp-for="Mail" class="control-label"></label>
+                <input type="text" asp-for="Mail" class="form-control">
+            </div>
+            <div class="form-group">
+                <label asp-for="UyelikTarihi" class="control-label"></label>
+                <input type="text" asp-for="UyelikTarihi" class="form-control">
+            </div>
+            <div class="form-group">
+                <label asp-for="UyelikTipi" class="control-label"></label>
+                <input type="text" asp-for="UyelikTipi" class="form-control">
+            </div>
+            <div class="form-group">
+                <label asp-for="TcNo" class="control-label"></label>
+                <input type="text" asp-for="TcNo" class="form-control">
+            </div>
+            <div class="form-group">
+                <label asp-for="Meslek" class="control-label"></label>
+                <input type="text" asp-for="Meslek" class="form-control">
+            </div>
+            <div class="form-group">
+                <label asp-for="EgitimDurumu" class="control-label"></label>
+                <input type="text" asp-for="EgitimDurumu" class="form-control">
+            </div>
+            <div class="form-group">
+                <label asp-for="CezaDurumu" class="control-label"></label>
+                <input type="text" asp-for="CezaDurumu" class="form-control">
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Değişikleri Kaydet" class="btn btn-outline-success">
+            </div>
+        </form>
+    </div>
+
+</div>

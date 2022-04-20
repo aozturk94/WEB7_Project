@@ -28,5 +28,49 @@ namespace EF_Code.Controllers
             Uyeler uye = _context.Uyelers.Find(id);
             return View(uye);
         }
+               //GET-Düzeltme Sayfası
+        public IActionResult Edit(int id)
+        {
+            var uye = _context.Uyelers.Find(id);
+            return View(uye);
+        }
+
+        //POST-Düzeltme İşlemi
+        [HttpPost]
+        public IActionResult Edit(int id, [Bind("Id,Ad,Adres,Tel")] Uyeler uye)
+        {
+
+            _context.Update(uye); //Bu satır contexti güncelledi.
+            _context.SaveChanges(); //Bu satır database'i güncelledi.
+            return RedirectToAction("Index");
+            //return View(tur);
+        }
+        public IActionResult Delete(int id)
+        {
+            var silinecekUye = _context.Uyelers.Find(id);
+            return View(silinecekUye);
+        }
+
+        [HttpPost, ActionName("DeleteConfirmed")]
+        public IActionResult DeleteConfirmed(int id)
+        {
+            var silinecekUye = _context.Uyelers.Find(id);
+            _context.Uyelers.Remove(silinecekUye);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(Uyeler uye)
+        {
+            _context.Add(uye);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }
