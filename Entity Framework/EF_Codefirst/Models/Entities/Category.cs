@@ -11,5 +11,7 @@ namespace EF_CodeFirst.Models.Entities
         public string CategoryName { get; set; }
         public string CategoryDescription { get; set; }
         public List<Book> Books { get; set; }
+        public bool IsDeleted { get; set; }
+
     }
 }

@@ -5,20 +5,27 @@
 }
 
 <h1 class="display-3">Categories</h1>
-<a class="btn btn-sm btn-success" asp-action="Create">Add New Category</a><hr>
+<a class="btn btn-sm btn-success" asp-action="Create">Add New Category</a>
+<a class="btn btn-sm btn-outline-danger" asp-action="GetDeletedCategories">Deleted Categories</a><hr>
 <table class="table table-sm table-dark w-50">
-    <thead class="bg-primary">
+    <thead class="bg-primary">  
         <tr>
             <th>#</th>
+            <th>ISBN</th>
             <th>Name</th>
             <th>Description</th>
-            <th>İşlem</th>
+            <th>Process</th>
         </tr>
     </thead>
     <tbody>
+        @{int a = 0;}
         @foreach (var category in Model)
         {
             <tr>
+                <td>
+                    @{a++;}
+                    @a
+                </td>
                 <td>
                     @category.CategoryId
                 </td>
@@ -29,9 +36,9 @@
                     @category.CategoryDescription
                 </td>
                 <td>
-                    <a class="btn btn-sm btn-info" asp-action="Details" asp-route-id="@category.CategoryId">Detaylar</a>
-                    <a class="btn btn-sm btn-warning" asp-action="Edit" asp-route-id="@category.CategoryId">Düzenle</a>
-                    <a class="btn btn-sm btn-danger" asp-action="Delete" asp-route-id="@category.CategoryId">Sil</a>
+                    <a class="btn btn-sm btn-info" asp-action="Details" asp-route-id="@category.CategoryId">Details</a>
+                    <a class="btn btn-sm btn-warning" asp-action="Edit" asp-route-id="@category.CategoryId">Edit</a>
+                    <a class="btn btn-sm btn-danger" asp-action="Delete" asp-route-id="@category.CategoryId">Delete</a>
                 </td>
             </tr>
         }

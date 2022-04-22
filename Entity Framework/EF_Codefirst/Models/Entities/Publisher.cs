@@ -11,5 +11,7 @@ namespace EF_CodeFirst.Models.Entities
         public string PublisherName { get; set; }
         public string PublisherCity { get; set; }
         public string PublisherMail { get; set; }
+        public bool IsDeleted { get; set; }
+
     }
 }

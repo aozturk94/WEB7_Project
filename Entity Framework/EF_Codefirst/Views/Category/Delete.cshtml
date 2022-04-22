@@ -1,0 +1,37 @@
+@model EF_CodeFirst.Models.Entities.Category
+
+@{
+    ViewData["Title"] = "Delete Category";
+}
+
+<h1 class="display-4">Delete Caregory</h1>
+<div class="row">
+    <div class="col-sm-3">
+        #
+    </div>
+    <div class="col-sm-5">
+        @Model.CategoryId
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-3">
+        Name:
+    </div>
+    <div class="col-sm-5">
+        @Model.CategoryName
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-3">
+        Description
+    </div>
+    <div class="col-sm-5">
+        @Model.CategoryDescription
+    </div>
+</div>
+<hr>
+<form asp-action="Delete">
+    <input type="hidden" asp-for="CategoryId">
+    <input type="submit" value="Delete" class="btn btn-danger">
+    <a class="btn btn-primary" asp-action="Index">Back to Categories</a>
+</form>

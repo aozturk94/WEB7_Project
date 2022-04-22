@@ -19,5 +19,7 @@ namespace EF_CodeFirst.Models.Entities
         public Author Author { get; set; }
         public int PublisherId { get; set; }
         public Publisher Publisher { get; set; }
+        public bool IsDeleted { get; set; }
+
     }
 }
