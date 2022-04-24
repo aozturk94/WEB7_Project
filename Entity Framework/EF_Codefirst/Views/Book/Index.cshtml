@@ -1,0 +1,47 @@
+@model List<EF_CodeFirst.Models.Entities.Book>
+
+@{
+    ViewData["Title"] = "Books";
+}
+
+<h1 class="display-3">Books</h1>
+<a class="btn btn-sm btn-success" asp-action="Create">Add New Book</a>
+<a class="btn btn-sm btn-outline-danger" asp-action="GetDeletedBooks">Deleted Books</a>
+<hr>
+@foreach (var book in Model)
+{
+    <div class="bookcontainer">
+        <div class="book">
+            <div class="bookpic"
+            style="background-image: url('https://raw.githubusercontent.com/Poojavpatel/BookStoreApp/master/img/jungle.jpg');">
+            </div>
+            <div class="bookinfo">
+                <div class="title">@book.BookName</div>
+                <div class="author">@book.BookEditionNumber</div>
+                <div class="stars">@book.BookYearOfPublication</div>
+                <ul class="controls">
+                    <li class="control">
+                        <a class="" asp-action="Details" asp-route-id="@book.BookId"><i
+                            class="fa-solid fa-circle-info"></i></a>
+                    </li>
+                    <!-- li control ends-->
+                <li class="control">
+                        <a class="" asp-action="Edit" asp-route-id="@book.BookId">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                        </a>
+                    </li>
+                    <!-- li control ends-->
+                <li class="control deletebutton">
+                        <a class="" asp-action="Delete" asp-route-id="@book.BookId"><i
+                            class="fa-solid fa-trash-can"></i></a>
+                    </li>
+                    <!-- li control ends-->
+            </ul>
+                <!--ul.controls ends-->
+        </div>
+            <!--bookinfo ends-->
+    </div>
+        <!--book end-->
+</div>
+
+}

@@ -1,0 +1,39 @@
+@model Author
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1 class="diplay-4">@Model.AuthorName @Model.AuthorSurname Details</h1>
+<div class="row">
+    <div class="col-sm-3">
+        #
+    </div>
+    <div class="col-sm-5">
+        @Model.AuthorId
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-3">
+        Name:
+    </div>
+    <div class="col-sm-5">
+        @Model.AuthorName
+    </div>
+</div><div class="row">
+    <div class="col-sm-3">
+        Surname:
+    </div>
+    <div class="col-sm-5">
+        @Model.AuthorSurname
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-3">
+        Date of Birth:
+    </div>
+    <div class="col-sm-5">
+        @Model.AuthorDateofBirth
+    </div>
+</div>
+<a class="btn btn-primary" asp-action="Index">Back to Authors Page</a>

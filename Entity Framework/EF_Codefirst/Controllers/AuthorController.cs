@@ -6,62 +6,65 @@ using System.Threading.Tasks;
 using EF_CodeFirst.Models.Context;
 using EF_CodeFirst.Models.Entities;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
 namespace Controllers
 {
-    public class CategoryController : Controller
+    public class AuthorController : Controller
     {
         private readonly LibraryContext _context;
 
-        public CategoryController(LibraryContext context)
+        public AuthorController(LibraryContext context)
         {
             _context = context;
         }
         public IActionResult Index()
         {
-            var categories = _context.Categories.Where(x => x.IsDeleted == false).ToList();
-            return View(categories);
+            var authors = _context.Authors.Where(x => x.IsDeleted == false).ToList();
+            return View(authors);
         }
 
-        public IActionResult GetDeletedCategories()
+        public IActionResult GetDeletedAuthors()
         {
-            var categories = _context.Categories.Where(x => x.IsDeleted == true).ToList();
-            return View("Index",categories);
+            var authors = _context.Authors.Where(x => x.IsDeleted == true).ToList();
+            return View("Index", authors);
         }
 
         public IActionResult Details(int id)
         {
-            Category category = _context.Categories.Find(id);
-            return View(category);
+            Author author = _context.Authors.Find(id);
+            return View(author);
         }
 
         public IActionResult Edit(int id)
         {
-            var category = _context.Categories.Find(id);
-            return View(category);
+            Author author = _context.Authors.Find(id);
+            return View(author);
         }
 
         [HttpPost]
-        public IActionResult Edit(int id, Category category)
+        public IActionResult Edit(int id, Author author)
         {
-            _context.Categories.Update(category);
+            _context.Authors.Update(author);
             _context.SaveChanges();
             return RedirectToAction("Index");
+
         }
 
         public IActionResult Delete(int id)
         {
-            var deletedCategory = _context.Categories.Find(id);
-            return View(deletedCategory);
+            Author deletedAuthor = _context.Authors.Find(id);
+            return View(deletedAuthor);
         }
 
         [HttpPost, ActionName("Delete")]
         public IActionResult DeleteConfirmed(int id)
         {
-            var deletedCategory = _context.Categories.Find(id);
-            deletedCategory.IsDeleted = true;
-            _context.Categories.Update(deletedCategory);
+            var deletedAuthor = _context.Authors.Find(id);
+            deletedAuthor.IsDeleted = true;
+            _context.Authors.Update(deletedAuthor);
             _context.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -72,9 +75,9 @@ namespace Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(Category category)
+        public IActionResult Create(Author author)
         {
-            _context.Add(category);
+            _context.Add(author);
             _context.SaveChanges();
             return RedirectToAction("Index");
         }

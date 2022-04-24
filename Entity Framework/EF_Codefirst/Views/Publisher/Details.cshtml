@@ -1,0 +1,40 @@
+@model Publisher
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1 class="diplay-4">@Model.PublisherName Details</h1>
+<div class="row">
+    <div class="col-sm-3">
+        #
+    </div>
+    <div class="col-sm-5">
+        @Model.PublisherId
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-3">
+        Name:
+    </div>
+    <div class="col-sm-5">
+        @Model.PublisherName
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-3">
+        City:
+    </div>
+    <div class="col-sm-5">
+        @Model.PublisherCity
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-3">
+        Mail:
+    </div>
+    <div class="col-sm-5">
+        @Model.PublisherMail
+    </div>
+</div>
+<a class="btn btn-primary" asp-action="Index">Back to Authors Page</a>

@@ -1,7 +1,4 @@
-﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-for details on configuring this project to bundle and minify static web assets. */
-
-a.navbar-brand {
+﻿a .navbar-brand {
   white-space: normal;
   text-align: center;
   word-break: break-all;
@@ -18,7 +15,8 @@ a {
   border-color: #1861ac;
 }
 
-.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+.nav-pills .nav-link.active,
+.nav-pills .show>.nav-link {
   color: #fff;
   background-color: #1b6ec2;
   border-color: #1861ac;
@@ -29,6 +27,7 @@ a {
 html {
   font-size: 14px;
 }
+
 @media (min-width: 768px) {
   html {
     font-size: 16px;
@@ -38,6 +37,7 @@ html {
 .border-top {
   border-top: 1px solid #e5e5e5;
 }
+
 .border-bottom {
   border-bottom: 1px solid #e5e5e5;
 }
@@ -62,10 +62,279 @@ body {
   /* Margin bottom by footer height */
   margin-bottom: 60px;
 }
+
 .footer {
   position: absolute;
   bottom: 0;
   width: 100%;
   white-space: nowrap;
-  line-height: 60px; /* Vertically center the text there */
+  line-height: 60px;
+  /* Vertically center the text there */
+}
+
+
+/*************************************CSS*****************************************/
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #eee;
+  user-select: none;
+}
+
+[type=radio] {
+  display: none;
+}
+
+#slider {
+  padding-top: 25px;
+  height: 45vw;
+  position: relative;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+#slider label {
+  margin: auto;
+  width: 50%;
+  height: 100%;
+  border-radius: 4px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  cursor: pointer;
+  transition: transform 0.4s ease;
+}
+
+#slider label img{
+  height: 100%;
+  width: 100%;
+
+}
+
+
+#s1:checked~#slide4,
+#s2:checked~#slide5,
+#s3:checked~#slide1,
+#s4:checked~#slide2,
+#s5:checked~#slide3 {
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, .37);
+  transform: translate3d(-60%, 0, -200px);
+}
+
+#s1:checked~#slide5,
+#s2:checked~#slide1,
+#s3:checked~#slide2,
+#s4:checked~#slide3,
+#s5:checked~#slide4 {
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, .3), 0 2px 2px 0 rgba(0, 0, 0, .2);
+  transform: translate3d(-30%, 0, -100px);
+}
+
+#s1:checked~#slide1,
+#s2:checked~#slide2,
+#s3:checked~#slide3,
+#s4:checked~#slide4,
+#s5:checked~#slide5 {
+  box-shadow: 0 13px 25px 0 rgba(0, 0, 0, .3), 0 11px 7px 0 rgba(0, 0, 0, .19);
+  transform: translate3d(0, 0, 0);
+}
+
+#s1:checked~#slide2,
+#s2:checked~#slide3,
+#s3:checked~#slide4,
+#s4:checked~#slide5,
+#s5:checked~#slide1 {
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, .3), 0 2px 2px 0 rgba(0, 0, 0, .2);
+  transform: translate3d(30%, 0, -100px);
+}
+
+#s1:checked~#slide3,
+#s2:checked~#slide4,
+#s3:checked~#slide5,
+#s4:checked~#slide1,
+#s5:checked~#slide2 {
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, .37);
+  transform: translate3d(60%, 0, -200px);
+}
+
+#slide1 {
+  background: #00BCD4
+}
+
+#slide2 {
+  background: #4CAF50
+}
+
+#slide3 {
+  background: #CDDC39
+}
+
+#slide4 {
+  background: #FFC107
+}
+
+#slide5 {
+  background: #FF5722
+}
+
+
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+h1,
+h2 {
+  margin: 0;
+}
+
+.bookcontainer {
+  margin-bottom: 50px;
+}
+
+.book {
+  margin: auto;
+  height: 65vh;
+  width: 82vh;
+  /*flex-basis: 30%;*/
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  /* overflow: hidden; */
+  /* margin-bottom: 5%;*/
+  border-radius: 1%;
+  background: rgb(246, 246, 246);
+}
+
+.bookpic {
+  flex-basis: 50%;
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+.book img {
+  width: 100%;
+}
+
+.bookinfo * {
+  margin: 0;
+  padding: 0;
+}
+
+.bookinfo {
+  flex-basis: 50%;
+  padding: 10% 5%;
+}
+
+.bookinfo .title {
+  font-size: 1.5rem;
+  line-height: 1.2;
+  margin-bottom: 5%;
+  color: #5a5a5a;
+}
+
+.bookinfo .author {
+  font-size: 1.03rem;
+  color: #ececec;
+  color: #8a8a8a;
+  font-style: normal;
+}
+
+.book {
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* controls */
+.bookinfo {
+  position: relative;
+}
+
+ul.controls {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+}
+
+ul.controls li {
+  color: red;
+  text-decoration: none;
+  cursor: pointer;
+  list-style: none;
+  flex-basis: 33%;
+  flex-grow: 1;
+  display: flex;
+}
+
+.controls a {
+  display: block;
+  position: relative;
+  text-decoration: none;
+  margin: auto;
+  padding: 1rem 1rem;
+}
+
+.controls a::after {
+  content: '';
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, .3);
+  transition: opacity 0.3s ease;
+}
+
+
+i {
+  max-width: 100%;
+  font-size: 2rem;
+  color: #24b15e;
+}
+
+.invisible {
+  left: -999px;
+  overflow: hidden;
+  position: absolute;
+  top: -999px;
+}
+
+.deleteme {
+  animation: deleteanimation 1.5s cubic-bezier(0.55, -0.04, 0.91, 0.94) forwards;
+  transform-origin: 100% 0%;
+}
+
+@keyframes deleteanimation {
+  0% {
+    opacity: 1;
+    transform: rotateZ(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(600px) rotateZ(-90deg);
+  }
+}
+
+.hideme {
+  display: none;
 }

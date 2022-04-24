@@ -1,0 +1,81 @@
+@model EF_CodeFirst.Models.Entities.Book
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1 class="diplay-4">@Model.BookName Details</h1>
+<div class="row">
+    <div class="col-sm-3">
+        #
+    </div>
+    <div class="col-sm-5">
+        @Model.BookId
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-3">
+        Name
+    </div>
+    <div class="col-sm-5">
+        @Model.BookName
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-3">
+        Year Of Publication
+    </div>
+    <div class="col-sm-5">
+        @Model.BookYearOfPublication
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-3">
+        Edition Number
+    </div>
+    <div class="col-sm-5">
+        @Model.BookEditionNumber
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-3">
+        Number Of Page
+    </div>
+    <div class="col-sm-5">
+        @Model.BookNumberOfPage
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-3">
+        Book Quantity
+    </div>
+    <div class="col-sm-5">
+        @Model.BookQuantity
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-3">
+        Category Name
+    </div>
+    <div class="col-sm-5">
+        @Model.Category.CategoryName
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-3">
+        Author
+    </div>
+    <div class="col-sm-5">
+        @Model.Author.AuthorName
+        @Model.Author.AuthorSurname
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-3">
+        Publisher Name
+    </div>
+    <div class="col-sm-5">
+        @Model.Publisher.PublisherName
+    </div>
+</div>
+<a class="btn btn-primary" asp-action="Index">Back to Books Page</a>

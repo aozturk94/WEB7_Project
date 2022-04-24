@@ -1,0 +1,55 @@
+@model Book
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1 class="display-3">@Model.BookName Edit</h1>
+<hr>
+<div class="row">
+    <div class="col-sm-6">
+        <form asp-action="Edit">
+            <div class="form-group">
+                <label asp-for="BookId" class="control-label">ISBN</label>
+                <input type="text" asp-for="BookId" class="form-control">
+            </div>
+            <div class="form-group">
+                <label asp-for="BookName" class="control-label">Kitap</label>
+                <input type="text" asp-for="BookName" class="form-control">
+            </div>
+            <div class="form-group">
+                <label asp-for="BookYearOfPublication" class="control-label">Sayfa Sayısı</label>
+                <input type="text" asp-for="BookYearOfPublication" class="form-control">
+            </div>
+            <div class="form-group">
+                <label asp-for="BookEditionNumber" class="control-label">Stok Miktarı</label>
+                <input type="text" asp-for="BookEditionNumber" class="form-control">
+            </div>
+            <div class="form-group">
+                <label asp-for="BookQuantity" class="control-label">Tür</label>
+                <select asp-for="BookQuantity" class="form-select form-control"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="CategoryId" class="control-label">Yayınevi</label>
+                <select asp-for="CategoryId" asp-items="ViewBag.Category" class="form-select form-control"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="AuthorId" class="control-label">Yazar</label>
+                <select asp-for="AuthorId" asp-items="ViewBag.Author" class="form-select form-control"></select>
+            </div>
+                        <div class="form-group">
+                <label asp-for="AuthorId" class="control-label">Yazar</label>
+                <select asp-for="AuthorId" asp-items="ViewBag.Author2" class="form-select form-control"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="PublisherId" class="control-label">Yayınevi</label>
+                <select asp-for="PublisherId" asp-items="ViewBag.Publisher" class="form-select form-control"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Değişikleri Kaydet" class="btn btn-outline-success">
+                <a class="btn btn-primary" asp-action="Index">Kitaplara Dön</a>
+            </div>
+        </form>
+    </div>
+
+</div>

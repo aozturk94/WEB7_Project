@@ -1,0 +1,43 @@
+@model Publisher
+
+@{
+    ViewData["Title"] = "Delete Publisher";
+}
+
+<h1 class="diplay-4">Delete @Model.PublisherName</h1>
+<div class="row">
+    <div class="col-sm-3">
+        #
+    </div>
+    <div class="col-sm-5">
+        @Model.PublisherId
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-3">
+        Name:
+    </div>
+    <div class="col-sm-5">
+        @Model.PublisherName
+    </div>
+</div><div class="row">
+    <div class="col-sm-3">
+        City:
+    </div>
+    <div class="col-sm-5">
+        @Model.PublisherCity
+</div>
+<div class="row">
+    <div class="col-sm-3">
+        Mail:
+    </div>
+    <div class="col-sm-5">
+        @Model.PublisherMail
+    </div>
+</div>
+<hr>
+<form asp-action="Delete">
+    <input type="hidden" asp-for="PublisherId">
+    <input type="submit" value="Delete" class="btn btn-danger">
+    <a class="btn btn-primary" asp-action="Index">Back to Publihers Page</a>
+</form>

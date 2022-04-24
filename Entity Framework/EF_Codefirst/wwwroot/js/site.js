@@ -1,4 +1,9 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿$(document).ready(function(){
 
-// Write your JavaScript code.
+	$('.deletebutton').click(function(){
+        //$(this).parent().parent().parent().addClass("deleteme");
+        $(this).closest('.book').addClass("deleteme");
+        // $(this).delay(50000).addClass("hideme");
+    });
+
+});
