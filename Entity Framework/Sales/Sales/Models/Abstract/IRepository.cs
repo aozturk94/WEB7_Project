@@ -1,17 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace EF_2504.DAL.Abstract
+namespace Sales.Models.Abstract
 {
-    interface IEntityRepository<T> where T:class //GENERİC BİR YAPILANDIRMA ALMASI İÇİN BUNU YAPARIZ.
+    public interface IRepository<T> where T:class
     {
         void Add(T entity);
-        T GetBy();
-        List<T> GetAll();
         void Update(T entity);
         void Delete(T entity);
+        T GetSingle();
+        List<T> GetAll();
     }
 }
