@@ -1,4 +1,30 @@
-﻿
+﻿@model List<UploadImageProject.Models.UploadedImage>
+
+@{ViewData["Title"] = "Resim Yükleme Sayfası";}
+
+<h5 class"display-4">Resim Yükle</h5>
+<hr />
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Resim</th>
+            <th>Resim Adı</th>
+            <th>Boyut</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var image in Model)
+        {
+            <tr>
+                <td>
+                    <img width="100" src="@image.ImageFullName" alt="Alternate Text" />
+                </td>
+                <td>@image.ImageName</td>
+                <td>@image.ImageSize Kb</td>
+            </tr>
+        }
+    </tbody>
+</table>
 <div class="row">
     <div class="col-md-12">
         <form asp-action="UploadImage" enctype="multipart/form-data">
