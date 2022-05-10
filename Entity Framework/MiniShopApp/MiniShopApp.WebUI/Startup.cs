@@ -4,6 +4,9 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using MiniShopApp.Business.Abstract;
+using MiniShopApp.Business.Concrete;
+using MiniShopApp.Data.Abstract;
 using MiniShopApp.Data.Concrete.EfCore;
 using System;
 using System.Collections.Generic;
@@ -25,6 +28,13 @@ namespace MiniShopApp.WebUI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            //Bu uygulamanýn herhangi bir yerinde IProductRepository kullanarak bir nesne oluþturduðumda sen bunu EfCoreProductRepository türünden oluþtur.
+            services.AddScoped<IProductRepository, EfCoreProductRepository>();
+            services.AddScoped<ICategoryRepository, EfCoreCategoryRepository>();
+
+            services.AddScoped<ICategoryService, CategoryManager>();
+            services.AddScoped<IProductService, ProductManager>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
