@@ -1,16 +1,23 @@
-﻿@model List<MiniShopApp.Entity.Product>
+﻿@model List<Product>
 @{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="row">
+    <div class="col-md-3">
+        @await Component.InvokeAsync("Categories")
+    </div>
+    <div class="col-md-9">
+        <div class="row">
+            @foreach (var product in Model)
+            {
+            <div class="col-md-4">
+                @* Partial view çağırmanın 2 yolu var;
+                    1. Yol Html-Helper kullanmak
+                    2. Tag-Helper kullanmak*@
+                @await Html.PartialAsync("_Product", product)
+            </div>
+            }
+        </div>
+    </div>
 </div>
-
-@foreach (var item in Model)
-{
-    <h1>@item.Name</h1>
-    <img src="/images/@item.ImgUrl"/>
-
-}

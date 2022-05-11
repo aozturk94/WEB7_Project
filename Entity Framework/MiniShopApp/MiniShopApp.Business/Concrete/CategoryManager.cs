@@ -1,4 +1,5 @@
 ﻿using MiniShopApp.Business.Abstract;
+using MiniShopApp.Data.Abstract;
 using MiniShopApp.Data.Concrete.EfCore;
 using MiniShopApp.Entity;
 using System;
@@ -11,6 +12,12 @@ namespace MiniShopApp.Business.Concrete
 {
     public class CategoryManager : ICategoryService
     {
+        private ICategoryRepository _categoryRepository;
+
+        public CategoryManager(ICategoryRepository categoryRepository)
+        {
+            _categoryRepository = categoryRepository;
+        }
         public void Create(Category entity)
         {
             throw new NotImplementedException();
@@ -23,7 +30,7 @@ namespace MiniShopApp.Business.Concrete
 
         public List<Category> GetAll()
         {
-            throw new NotImplementedException();
+            return _categoryRepository.GetAll();
         }
 
         public Category GetById(int id)

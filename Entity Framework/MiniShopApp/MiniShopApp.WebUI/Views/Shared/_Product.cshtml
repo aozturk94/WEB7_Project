@@ -1,0 +1,15 @@
+﻿@model Product
+
+<div class="card mb-2">
+    <div class="card-img text-md-center p-3">
+        <img src="/images/@Model.ImgUrl" class="" height="250" />
+    </div>
+    <div class="card-body">
+        <h5 class="card-title text-md-center">@Model.Name</h5>
+        <small class="text-muted"><i class="fa-solid fa-turkish-lira-sign"></i>@Model.Price</small>
+    </div>
+    <div class="card-footer d-flex justify-content-md-around">
+        <a href="#" class="btn btn-sm btn-primary">Detail</a>
+        <a href="#" class="btn btn-sm btn-success">Add to Card</a>
+    </div>
+</div>

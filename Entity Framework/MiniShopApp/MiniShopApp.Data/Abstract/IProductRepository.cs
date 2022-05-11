@@ -9,6 +9,6 @@ namespace MiniShopApp.Data.Abstract
 {
     public interface IProductRepository : IRepository<Product>
     {
-        Product GetByIdWithProducts(int id);
+        List<Product> GetProductsByCategory(string name);
     }
 }
