@@ -21,7 +21,12 @@ namespace MiniShopApp.WebUI.Controllers
 
         public IActionResult List(string category)
         {
-            return View(_productService.GetAll());
+            return View(_productService.GetProductsByCategory(category));
+        }
+
+        public IActionResult Search(string searchString)
+        {
+            return View(_productService.GetSeachResult(searchString));
         }
     }
 }

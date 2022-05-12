@@ -1,9 +1,16 @@
 ﻿@model List<Category>
 
     <div class="list-group">
+        <a asp-controller="MiniShopApp" 
+               asp-action="List"
+               asp-route-category=""
+           class="list-group-item list-group-item-action @(ViewBag.SelectedCategory == "" ? "active" : "")">Tümünü Göster</a>
         @foreach (var category in Model)
         {
-            <a class="list-group-item list-group-item-action" href="#">
+            <a asp-controller="MiniShopApp" 
+               asp-action="List" 
+               asp-route-category="@category.Url" 
+               class="list-group-item list-group-item-action @(ViewBag.SelectedCategory == category.Url ? "active" : "")">
                 @category.Name
             </a>
         }

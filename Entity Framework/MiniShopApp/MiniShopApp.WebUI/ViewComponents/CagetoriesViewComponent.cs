@@ -16,6 +16,14 @@ namespace MiniShopApp.WebUI.ViewComponents
         }
         public IViewComponentResult Invoke()
         {
+            if (RouteData.Values["category"] !=null)
+            {
+                ViewBag.SelectedCategory = RouteData.Values["category"];
+            }
+            if (RouteData.Values["category"] == null)
+            {
+                ViewBag.SelectedCategory = "";
+            }
             return View(_categoryService.GetAll());
         }
     }

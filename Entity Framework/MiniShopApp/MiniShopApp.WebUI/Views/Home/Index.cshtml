@@ -6,6 +6,21 @@
 <div class="row">
     <div class="col-md-3">
         @await Component.InvokeAsync("Categories")
+        <div class="card mt-3">
+            <div class="card-header">
+                <h5 class="">Search</h5>
+            </div>
+            <div class="card-body">
+                <form action="Search">
+                    <div class="form-group">
+                        <input type="text" name="searchString" class="form-control" placeholder="Search..."/>
+                        <div class="mt-2">
+                            <button type="submit" class="btn btn-sm btn-danger w-100">Search</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
     <div class="col-md-9">
         <div class="row">
