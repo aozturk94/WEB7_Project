@@ -5,4 +5,9 @@
     <RootNamespace>Bus_Ticket_Booking.Business</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Bus-Ticket-Booking.Data\Bus-Ticket-Booking.Data.csproj" />
+    <ProjectReference Include="..\Bus-Ticket-Booking.Entity\Bus-Ticket-Booking.Entity.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -8,16 +8,16 @@ namespace Bus_Ticket_Booking.Data.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "BusSeats",
+                name: "Buses",
                 columns: table => new
                 {
-                    BusSeatId = table.Column<int>(type: "INTEGER", nullable: false)
+                    BusId = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    BusSeatCheckhed = table.Column<bool>(type: "INTEGER", nullable: false)
+                    BusSeatCapacity = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_BusSeats", x => x.BusSeatId);
+                    table.PrimaryKey("PK_Buses", x => x.BusId);
                 });
 
             migrationBuilder.CreateTable(
@@ -47,11 +47,18 @@ namespace Bus_Ticket_Booking.Data.Migrations
                     DepartureDate = table.Column<DateTime>(type: "TEXT", nullable: true),
                     ReturnDate = table.Column<DateTime>(type: "TEXT", nullable: true),
                     Time = table.Column<string>(type: "TEXT", nullable: true),
-                    Price = table.Column<double>(type: "REAL", nullable: false)
+                    Price = table.Column<double>(type: "REAL", nullable: false),
+                    CityId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Routes", x => x.RouteId);
+                    table.ForeignKey(
+                        name: "FK_Routes_Cities_CityId",
+                        column: x => x.CityId,
+                        principalTable: "Cities",
+                        principalColumn: "CityId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -67,7 +74,8 @@ namespace Bus_Ticket_Booking.Data.Migrations
                     TravelTo = table.Column<string>(type: "TEXT", nullable: true),
                     DepartureDate = table.Column<DateTime>(type: "TEXT", nullable: true),
                     ReturnDate = table.Column<DateTime>(type: "TEXT", nullable: true),
-                    BusSeatId = table.Column<int>(type: "INTEGER", nullable: false),
+                    BusSeat = table.Column<int>(type: "INTEGER", nullable: false),
+                    BusId = table.Column<int>(type: "INTEGER", nullable: false),
                     TicketPrice = table.Column<double>(type: "REAL", nullable: false),
                     RouteId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
@@ -75,12 +83,28 @@ namespace Bus_Ticket_Booking.Data.Migrations
                 {
                     table.PrimaryKey("PK_Tickets", x => x.TicketId);
                     table.ForeignKey(
+                        name: "FK_Tickets_Buses_BusId",
+                        column: x => x.BusId,
+                        principalTable: "Buses",
+                        principalColumn: "BusId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
                         name: "FK_Tickets_Routes_RouteId",
                         column: x => x.RouteId,
                         principalTable: "Routes",
                         principalColumn: "RouteId",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Routes_CityId",
+                table: "Routes",
+                column: "CityId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Tickets_BusId",
+                table: "Tickets",
+                column: "BusId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Tickets_RouteId",
@@ -91,16 +115,16 @@ namespace Bus_Ticket_Booking.Data.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "BusSeats");
-
-            migrationBuilder.DropTable(
-                name: "Cities");
-
-            migrationBuilder.DropTable(
                 name: "Tickets");
 
             migrationBuilder.DropTable(
+                name: "Buses");
+
+            migrationBuilder.DropTable(
                 name: "Routes");
+
+            migrationBuilder.DropTable(
+                name: "Cities");
         }
     }
 }

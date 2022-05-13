@@ -18,6 +18,8 @@ namespace Bus_Ticket_Booking.Entity
         public DateTime? ReturnDate { get; set; }
         public string Time { get; set; }
         public double Price { get; set; }
+        public City City { get; set; }
+        public int CityId { get; set; }
         public List<Ticket> Tickets { get; set; }
     }
 }

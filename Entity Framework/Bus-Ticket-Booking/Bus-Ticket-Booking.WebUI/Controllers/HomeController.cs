@@ -1,4 +1,4 @@
-﻿using Bus_Ticket_Booking.WebUI.Models;
+﻿using Bus_Ticket_Booking.Business.Abstract;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -11,27 +11,16 @@ namespace Bus_Ticket_Booking.WebUI.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private ICityService _cityService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ICityService cityService)
         {
-            _logger = logger;
+            _cityService = cityService;
         }
-
         public IActionResult Index()
         {
-            return View();
+            return View(_cityService.GetAll());
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
     }
 }

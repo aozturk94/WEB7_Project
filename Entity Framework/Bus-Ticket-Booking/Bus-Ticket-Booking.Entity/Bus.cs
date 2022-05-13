@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Bus_Ticket_Booking.Entity
 {
-    public class BusSeat
+    public class Bus
     {
-        public int BusSeatId { get; set; }
-        public bool BusSeatCheckhed { get; set; }
+        public int BusId { get; set; }
+        public int BusSeatCapacity { get; set; }
     }
 }

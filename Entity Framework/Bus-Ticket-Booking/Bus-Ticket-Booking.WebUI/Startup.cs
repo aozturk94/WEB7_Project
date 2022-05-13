@@ -1,3 +1,6 @@
+using Bus_Ticket_Booking.Business.Abstract;
+using Bus_Ticket_Booking.Business.Concrete;
+using Bus_Ticket_Booking.Data.Abstract;
 using Bus_Ticket_Booking.Data.Concrete.EfCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -24,6 +27,9 @@ namespace Bus_Ticket_Booking.WebUI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<ICityRepository, EfCoreCityRepository>();
+            services.AddScoped<ICityService, CityManager>();
+
             services.AddControllersWithViews();
             
         }

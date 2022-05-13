@@ -13,7 +13,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Bus-Ticket-Booking.Business\Bus-Ticket-Booking.Business.csproj" />
     <ProjectReference Include="..\Bus-Ticket-Booking.Data\Bus-Ticket-Booking.Data.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\" />
   </ItemGroup>
 
 </Project>

@@ -16,7 +16,9 @@ namespace Bus_Ticket_Booking.Entity
         public string TravelTo { get; set; }
         public DateTime? DepartureDate { get; set; }
         public DateTime? ReturnDate { get; set; }
-        public int BusSeatId { get; set; }
+        public int BusSeat { get; set; }
+        public Bus Bus { get; set; }
+        public int BusId { get; set; }
         public double TicketPrice { get; set; }
         public int RouteId { get; set; }
         public Route Route { get; set; }

@@ -30,9 +30,9 @@ namespace Bus_Ticket_Booking.Data.Concrete.EfCore
                     context.Cities.AddRange(Cities);
 
                 }
-                if(context.BusSeats.Count() == 0)
+                if(context.Buses.Count() == 0)
                 {
-                    context.BusSeats.AddRange(BusSeats);
+                    context.Buses.AddRange(BusSeats);
                 }
 
                 context.SaveChanges();
@@ -54,29 +54,21 @@ namespace Bus_Ticket_Booking.Data.Concrete.EfCore
         };
         private static Route[] Routes =
         {
-            new Route(){ StartLocation = "İstanbul", FirstRoute="Kocaeli", SecondRoute="Afyon", ThirdRoute="Kütahya", EndLocation="Isparta", Time="12:00", Price=75.0},
-            new Route(){ StartLocation = "Isparta", FirstRoute="Kütahya", SecondRoute="Afyon", ThirdRoute="Kocaeli", EndLocation="İstanbul", Time="12:00", Price=75.0 }
+            new Route(){ StartLocation = "İstanbul", FirstRoute="Kocaeli", SecondRoute="Afyon", ThirdRoute="Kütahya", EndLocation="Isparta", Time="12:00", Price=75.0, CityId=1},
+            new Route(){ StartLocation = "Isparta", FirstRoute="Kütahya", SecondRoute="Afyon", ThirdRoute="Kocaeli", EndLocation="İstanbul", Time="12:00", Price=75.0, CityId=5 }
         };
 
         private static Ticket[] Tickets =
         {
-            new Ticket(){ PassengerFirstName="Abdullah", PassengerLastName="SEİSOĞLU", PassengerMail="aseisoglu@gmail.com", TravelFrom="Istanbul", TravelTo="Isparta", BusSeatId=1, RouteId=1 },
+            new Ticket(){ PassengerFirstName="Abdullah", PassengerLastName="SEİSOĞLU", PassengerMail="aseisoglu@gmail.com", TravelFrom="Istanbul", TravelTo="Isparta", BusSeat=1, RouteId=1, BusId=1 },
 
-            new Ticket(){ PassengerFirstName="Ahmet", PassengerLastName="ÖZTÜRK", PassengerMail="aozturk94@outlook.oom", TravelFrom="Isparta", TravelTo="Istanbul", BusSeatId=2, RouteId=2 }
+            new Ticket(){ PassengerFirstName="Ahmet", PassengerLastName="ÖZTÜRK", PassengerMail="aozturk94@outlook.oom", TravelFrom="Isparta", TravelTo="Istanbul", BusSeat=2, RouteId=2, BusId=2 }
         };
 
-        private static BusSeat[] BusSeats =
+        private static Bus[] BusSeats =
         {
-            new BusSeat(){ BusSeatId=1, BusSeatCheckhed=true},
-            new BusSeat(){ BusSeatId=2, BusSeatCheckhed=true},
-            new BusSeat(){ BusSeatId=3, BusSeatCheckhed=false},
-            new BusSeat(){ BusSeatId=4, BusSeatCheckhed=false},
-            new BusSeat(){ BusSeatId=5, BusSeatCheckhed=false},
-            new BusSeat(){ BusSeatId=6, BusSeatCheckhed=false},
-            new BusSeat(){ BusSeatId=7, BusSeatCheckhed=false},
-            new BusSeat(){ BusSeatId=8, BusSeatCheckhed=false},
-            new BusSeat(){ BusSeatId=9, BusSeatCheckhed=false},
-            new BusSeat(){ BusSeatId=10, BusSeatCheckhed=false}
-        };
+            new Bus(){ BusSeatCapacity=30 },
+            new Bus(){ BusSeatCapacity=30 },
+        };              
     }
 }

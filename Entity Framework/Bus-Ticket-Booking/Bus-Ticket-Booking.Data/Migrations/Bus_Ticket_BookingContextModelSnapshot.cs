@@ -16,18 +16,18 @@ namespace Bus_Ticket_Booking.Data.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "5.0.16");
 
-            modelBuilder.Entity("Bus_Ticket_Booking.Entity.BusSeat", b =>
+            modelBuilder.Entity("Bus_Ticket_Booking.Entity.Bus", b =>
                 {
-                    b.Property<int>("BusSeatId")
+                    b.Property<int>("BusId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<bool>("BusSeatCheckhed")
+                    b.Property<int>("BusSeatCapacity")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("BusSeatId");
+                    b.HasKey("BusId");
 
-                    b.ToTable("BusSeats");
+                    b.ToTable("Buses");
                 });
 
             modelBuilder.Entity("Bus_Ticket_Booking.Entity.City", b =>
@@ -48,6 +48,9 @@ namespace Bus_Ticket_Booking.Data.Migrations
                 {
                     b.Property<int>("RouteId")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("CityId")
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTime?>("DepartureDate")
@@ -79,6 +82,8 @@ namespace Bus_Ticket_Booking.Data.Migrations
 
                     b.HasKey("RouteId");
 
+                    b.HasIndex("CityId");
+
                     b.ToTable("Routes");
                 });
 
@@ -88,7 +93,10 @@ namespace Bus_Ticket_Booking.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("BusSeatId")
+                    b.Property<int>("BusId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("BusSeat")
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTime?>("DepartureDate")
@@ -120,18 +128,39 @@ namespace Bus_Ticket_Booking.Data.Migrations
 
                     b.HasKey("TicketId");
 
+                    b.HasIndex("BusId");
+
                     b.HasIndex("RouteId");
 
                     b.ToTable("Tickets");
                 });
 
+            modelBuilder.Entity("Bus_Ticket_Booking.Entity.Route", b =>
+                {
+                    b.HasOne("Bus_Ticket_Booking.Entity.City", "City")
+                        .WithMany()
+                        .HasForeignKey("CityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("City");
+                });
+
             modelBuilder.Entity("Bus_Ticket_Booking.Entity.Ticket", b =>
                 {
+                    b.HasOne("Bus_Ticket_Booking.Entity.Bus", "Bus")
+                        .WithMany()
+                        .HasForeignKey("BusId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("Bus_Ticket_Booking.Entity.Route", "Route")
                         .WithMany("Tickets")
                         .HasForeignKey("RouteId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Bus");
 
                     b.Navigation("Route");
                 });
