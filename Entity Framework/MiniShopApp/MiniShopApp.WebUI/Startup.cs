@@ -60,6 +60,12 @@ namespace MiniShopApp.WebUI
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllerRoute(
+                    name: "search",
+                    pattern: "search",
+                    defaults: new { controller = "MiniShopApp", action = "Search" }
+                    );
+
                 endpoints.MapControllerRoute( 
                     name: "products",
                     pattern: "products/{category?}",

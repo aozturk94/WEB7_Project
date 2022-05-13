@@ -37,9 +37,9 @@ namespace MiniShopApp.Business.Concrete
             throw new NotImplementedException();
         }
 
-        public List<Product> GetProductsByCategory(string name)
+        public List<Product> GetProductsByCategory(string name, int page, int pageSize)
         {
-            return _productRepository.GetProductsByCategory(name);
+            return _productRepository.GetProductsByCategory(name, page, pageSize);
         }
 
         public List<Product> GetHomePageProducts()
@@ -54,6 +54,11 @@ namespace MiniShopApp.Business.Concrete
         public List<Product> GetSeachResult(string searchString)
         {
             return _productRepository.GetSearchResult(searchString);
+        }
+
+        public int GetCountByCategory(string name)
+        {
+            return _productRepository.GetCountByCategory(name);
         }
     }
 }

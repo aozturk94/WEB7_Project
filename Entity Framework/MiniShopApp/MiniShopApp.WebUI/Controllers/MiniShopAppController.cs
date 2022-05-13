@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MiniShopApp.Business.Abstract;
+using MiniShopApp.WebUI.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,9 +20,24 @@ namespace MiniShopApp.WebUI.Controllers
             return View();
         }
 
-        public IActionResult List(string category)
+        public IActionResult List(string category, int page=1)
         {
-            return View(_productService.GetProductsByCategory(category));
+            const int pageSize = 3;
+            int totalItems = _productService.GetCountByCategory(category);
+
+            var productListViewModel = new ProductListViewModel()
+            {
+                PageInfo = new PageInfo
+                {
+                    TotalItems = totalItems,
+                    CurrentPage = page,
+                    ItemsPerPage = pageSize,
+                    CurrentCategory = category
+                },
+                Products = _productService.GetProductsByCategory(category, page, pageSize)
+            };
+
+            return View(productListViewModel);
         }
 
         public IActionResult Search(string searchString)

@@ -14,8 +14,9 @@ namespace MiniShopApp.Business.Abstract
         void Create(Product entity);
         void Update(Product entity);
         void Delete(Product entity);
-        List<Product> GetProductsByCategory(string name);
+        List<Product> GetProductsByCategory(string name, int page, int pageSize);
         List<Product> GetHomePageProducts();
         List<Product> GetSeachResult(string searchString);
+        int GetCountByCategory(string name);
     }
 }

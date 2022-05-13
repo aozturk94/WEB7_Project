@@ -16,6 +16,26 @@ namespace MiniShopApp.Data.Concrete.EfCore
             throw new NotImplementedException();
         }
 
+        public int GetCountByCategory(string name)
+        {
+            using (var context = new MiniShopContext())
+            {
+                var products = context
+                    .Products
+                    .Where(i => i.IsApproved)
+                    .AsQueryable();
+
+                if (!string.IsNullOrEmpty(name))
+                {
+                    products = products
+                        .Include(i => i.ProductCategories)
+                        .ThenInclude(i => i.Category)
+                        .Where(i => i.ProductCategories.Any(a => a.Category.Url == name));
+                }
+                return products.Count();
+            }
+        }
+
         public List<Product> GetHomePageProducts()
         {
             using (var context = new MiniShopContext())
@@ -27,7 +47,7 @@ namespace MiniShopApp.Data.Concrete.EfCore
             }
         }
 
-        public List<Product> GetProductsByCategory(string name)
+        public List<Product> GetProductsByCategory(string name, int page, int pageSize)
         {
             using (var context = new MiniShopContext())
             {
@@ -44,7 +64,7 @@ namespace MiniShopApp.Data.Concrete.EfCore
                         .Where(i => i.ProductCategories.Any(a => a.Category.Url == name));
                 }
 
-                return products.ToList();
+                return products.Skip((page-1)*pageSize).Take(pageSize).ToList(); ;
             }
         }
 
