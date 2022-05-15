@@ -17,8 +17,4 @@
     <ProjectReference Include="..\Bus-Ticket-Booking.Data\Bus-Ticket-Booking.Data.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
-
 </Project>

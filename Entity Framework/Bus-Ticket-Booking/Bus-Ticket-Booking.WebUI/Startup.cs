@@ -30,6 +30,9 @@ namespace Bus_Ticket_Booking.WebUI
             services.AddScoped<ICityRepository, EfCoreCityRepository>();
             services.AddScoped<ICityService, CityManager>();
 
+            services.AddScoped<IRouteRepository, EfCoreRouteRepository>();
+            services.AddScoped<IRouteService, RouteManager>();
+
             services.AddControllersWithViews();
             
         }
