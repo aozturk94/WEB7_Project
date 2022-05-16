@@ -1,0 +1,27 @@
+﻿@model ProductDetailModel
+@using System.Globalization
+
+<div class="row">
+    <div class="col-md-2">
+        <img src="/images/@Model.Product.ImgUrl"  class="img-fluid" alt="Alternate Text" />
+    </div>
+    <div class="col-md-10">
+        <h1 class="mb-3">
+            @Model.Product.Name
+        </h1>
+        <hr />
+            
+            @{ 
+                double price = (double)Model.Product.Price;
+            }
+        <div class="mb-3">
+            <h1 class="text-primary mb-3">
+                @price.ToString("C2", CultureInfo.CreateSpecificCulture("tr-TR"))
+            </h1>
+            <button type="submit" class="btn btn-lg btn-primary">
+                Add to Card
+            </button>
+        </div>
+
+    </div>
+</div>

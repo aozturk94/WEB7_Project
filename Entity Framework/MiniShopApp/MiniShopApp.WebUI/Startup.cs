@@ -61,6 +61,18 @@ namespace MiniShopApp.WebUI
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
+                    name: "adminprodutcscreate",
+                    pattern: "admin/products/create",
+                    defaults: new { controller = "Admin", action = "ProductCreate" }
+                    );
+
+                endpoints.MapControllerRoute(
+                    name: "adminprodutcs",
+                    pattern: "admin/products",
+                    defaults: new { controller = "Admin", action = "ProductList" }
+                    );
+
+                endpoints.MapControllerRoute(
                     name: "search",
                     pattern: "search",
                     defaults: new { controller = "MiniShopApp", action = "Search" }
@@ -71,6 +83,12 @@ namespace MiniShopApp.WebUI
                     pattern: "products/{category?}",
                     defaults: new {controller="MiniShopApp", action="List"}
                     );
+
+                endpoints.MapControllerRoute(
+                  name: "productdetails",
+                  pattern: "{url}",
+                  defaults: new { controller = "MiniShopApp", action = "Details" }
+                  );
 
                 endpoints.MapControllerRoute(
                     name: "default",

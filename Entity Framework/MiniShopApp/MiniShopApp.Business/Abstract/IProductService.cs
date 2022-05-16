@@ -18,5 +18,8 @@ namespace MiniShopApp.Business.Abstract
         List<Product> GetHomePageProducts();
         List<Product> GetSeachResult(string searchString);
         int GetCountByCategory(string name);
+        Product GetProductDetails(string url);
+        public void Create(Product entity, int[] categoryIds);
+  
     }
 }

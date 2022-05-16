@@ -11,6 +11,22 @@ namespace MiniShopApp.Data.Concrete.EfCore
 {
     public class EfCoreProductRepository : EfCoreGenericRepository<Product, MiniShopContext>, IProductRepository
     {
+        public void Create(Product entity, int[] categoryIds)
+        {
+            using (var context = new MiniShopContext())
+            {
+                context.Products.Add(entity);
+                context.SaveChanges();
+                entity.ProductCategories = categoryIds
+                    .Select(catId => new ProductCategory
+                    {
+                        ProductId = entity.ProductId,
+                        CategoryId = catId
+                    }).ToList();
+                context.SaveChanges();
+            }
+        }
+
         public Product GetByIdWithProducts(int id)
         {
             throw new NotImplementedException();
@@ -44,6 +60,18 @@ namespace MiniShopApp.Data.Concrete.EfCore
                     .Products
                     .Where(i => i.IsApproved && i.IsHome)
                     .ToList();
+            }
+        }
+
+        public Product GetProductDetails(string url)
+        {
+            using (var context = new MiniShopContext())
+            {
+                return context.Products
+                    .Where(i => i.Url == url)
+                    .Include(i => i.ProductCategories)
+                    .ThenInclude(i => i.Category)
+                    .FirstOrDefault();
             }
         }
 

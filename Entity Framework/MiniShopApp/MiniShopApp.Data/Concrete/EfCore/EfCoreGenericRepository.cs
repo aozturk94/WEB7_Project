@@ -29,7 +29,7 @@ namespace MiniShopApp.Data.Concrete.EfCore
                 return context.Set<TEntity>().ToList();
             }
         }
-
+            
         public TEntity GetById(int i)
         {
             throw new NotImplementedException();

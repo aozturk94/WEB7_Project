@@ -60,5 +60,15 @@ namespace MiniShopApp.Business.Concrete
         {
             return _productRepository.GetCountByCategory(name);
         }
+
+        public Product GetProductDetails(string url)
+        {
+            return _productRepository.GetProductDetails(url);
+        }
+
+        public void Create(Product entity, int[] categoryIds)
+        {
+            _productRepository.Create(entity, categoryIds);
+        }
     }
 }
