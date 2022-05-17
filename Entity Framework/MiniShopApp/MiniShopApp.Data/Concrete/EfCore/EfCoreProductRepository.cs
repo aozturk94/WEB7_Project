@@ -27,19 +27,51 @@ namespace MiniShopApp.Data.Concrete.EfCore
             }
         }
 
-        public Product GetByIdWithProducts(int id)
+        public void Update(Product entity, int[] categoryIds)
         {
-            throw new NotImplementedException();
+            using (var context = new MiniShopContext())
+            {
+                var product = context
+                    .Products
+                    .Include(i => i.ProductCategories)
+                    .FirstOrDefault(i => i.ProductId == entity.ProductId);
+
+                product.Name = entity.Name;
+                product.Price = entity.Price;
+                product.Description = entity.Description;
+                product.Url = entity.Url;
+                product.ImgUrl = entity.ImgUrl;
+                product.IsApproved = entity.IsApproved;
+                product.IsHome = entity.IsHome;
+                product.ProductCategories = categoryIds.Select(catId => new ProductCategory()
+                {
+                    ProductId = entity.ProductId,
+                    CategoryId = catId
+                }).ToList();
+
+                context.SaveChanges();
+            }
+        }
+
+        public Product GetByIdWithCategories(int id)
+        {
+            using (var context = new MiniShopContext())
+            {
+                return context.Products
+                              .Where(i => i.ProductId == id)
+                              .Include(i => i.ProductCategories)
+                              .ThenInclude(i => i.Category)
+                              .FirstOrDefault();
+            }
         }
 
         public int GetCountByCategory(string name)
         {
             using (var context = new MiniShopContext())
             {
-                var products = context
-                    .Products
-                    .Where(i => i.IsApproved)
-                    .AsQueryable();
+                var products = context.Products
+                                      .Where(i => i.IsApproved)
+                                      .AsQueryable();
 
                 if (!string.IsNullOrEmpty(name))
                 {
@@ -108,5 +140,6 @@ namespace MiniShopApp.Data.Concrete.EfCore
                 return products;
             }
         }
+
     }
 }

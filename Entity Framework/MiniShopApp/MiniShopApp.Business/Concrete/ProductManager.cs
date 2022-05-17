@@ -34,7 +34,7 @@ namespace MiniShopApp.Business.Concrete
 
         public Product GetById(int id)
         {
-            throw new NotImplementedException();
+            return _productRepository.GetById(id);
         }
 
         public List<Product> GetProductsByCategory(string name, int page, int pageSize)
@@ -69,6 +69,16 @@ namespace MiniShopApp.Business.Concrete
         public void Create(Product entity, int[] categoryIds)
         {
             _productRepository.Create(entity, categoryIds);
+        }
+
+        public Product GetByIdWithCategories(int id)
+        {
+            return _productRepository.GetByIdWithCategories(id);
+        }
+
+        public void Update(Product entity, int[] categoryIds)
+        {
+            _productRepository.Update(entity, categoryIds);
         }
     }
 }
