@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MiniShopApp.Business.Abstract
 {
-    public interface IProductService
+    public interface IProductService : IValidator<Product>
     {
         Product GetById(int id);
         List<Product> GetAll();
@@ -20,7 +20,7 @@ namespace MiniShopApp.Business.Abstract
         int GetCountByCategory(string name);
         Product GetProductDetails(string url);
         Product GetByIdWithCategories(int id);
-        public void Create(Product entity, int[] categoryIds);
+        public bool Create(Product entity, int[] categoryIds);
         public void Update(Product entity, int[] categoryIds);
 
     }

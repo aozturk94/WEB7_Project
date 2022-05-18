@@ -13,6 +13,34 @@ namespace MiniShopApp.Business.Concrete
     {
         private IProductRepository _productRepository;
 
+        public string ErrorMessage { get; set; }
+
+        public bool Validation(Product entity)
+        {
+            var isValid = true;
+
+            if (string.IsNullOrEmpty(entity.Name))
+            {
+                ErrorMessage += $"Ürün adı boş bırakılamaz!\n";
+                isValid = false;
+            }
+            if (entity.Name.Length<10 || entity.Name.Length>50)
+            {
+                ErrorMessage += $"Ürün adı 10-50 karakter uzunluğunda olmalıdır.\n";
+                isValid = false;
+            }
+            if (entity.Price == null)
+            {
+                ErrorMessage += $"Ürün fiyat boş bırakılamaz!\n";
+                isValid = false;
+            }
+            if (entity.Price<0 || entity.Price>100000)
+            {
+                ErrorMessage += $"Ürün fiyatı 1-100000 arasında olmalıdır!\n";
+                isValid = false;
+            }
+            return isValid;
+        }
         public ProductManager(IProductRepository productRepository)
         {
             _productRepository = productRepository;
@@ -24,7 +52,7 @@ namespace MiniShopApp.Business.Concrete
 
         public void Delete(Product entity)
         {
-            throw new NotImplementedException();
+            _productRepository.Delete(entity);
         }
 
         public List<Product> GetAll()
@@ -66,9 +94,14 @@ namespace MiniShopApp.Business.Concrete
             return _productRepository.GetProductDetails(url);
         }
 
-        public void Create(Product entity, int[] categoryIds)
+        public bool Create(Product entity, int[] categoryIds)
         {
-            _productRepository.Create(entity, categoryIds);
+            if (Validation(entity))
+            {
+                _productRepository.Create(entity, categoryIds);
+                return true;
+            }
+            return false;
         }
 
         public Product GetByIdWithCategories(int id)
