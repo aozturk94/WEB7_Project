@@ -6,12 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Bus_Ticket_Booking.Data.Concrete
+namespace Bus_Ticket_Booking.Data.Concrete.EfCore
 {
-
-    public class EfCoreGenericRepository<TEntity, TContext> : IRepository<TEntity>
-    where TEntity : class
-    where TContext : DbContext, new()
+    public class EfCoreGenericRepository<TEntity, TContext> : IRepository<TEntity> 
+        where TEntity : class
+        where TContext : DbContext, new()
     {
         public void Create(TEntity entity)
         {
@@ -49,12 +48,7 @@ namespace Bus_Ticket_Booking.Data.Concrete
 
         public void Update(TEntity entity)
         {
-            using (var context = new TContext())
-            {
-                context.Entry(entity).State = EntityState.Modified;
-                context.SaveChanges();
-            }
+            throw new NotImplementedException();
         }
     }
-
 }

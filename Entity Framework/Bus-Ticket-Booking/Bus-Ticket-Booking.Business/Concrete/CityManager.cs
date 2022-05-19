@@ -18,12 +18,12 @@ namespace Bus_Ticket_Booking.Business.Concrete
         }
         public void Create(City entity)
         {
-            throw new NotImplementedException();
+            _cityRepository.Create(entity);
         }
 
         public void Delete(City entity)
         {
-            throw new NotImplementedException();
+            _cityRepository.Create(entity);
         }
 
         public List<City> GetAll()
@@ -33,12 +33,12 @@ namespace Bus_Ticket_Booking.Business.Concrete
 
         public City GetById(int id)
         {
-            throw new NotImplementedException();
+            return _cityRepository.GetById(id);
         }
 
         public void Update(City entity)
         {
-            throw new NotImplementedException();
+            _cityRepository.Update(entity);
         }
     }
 }

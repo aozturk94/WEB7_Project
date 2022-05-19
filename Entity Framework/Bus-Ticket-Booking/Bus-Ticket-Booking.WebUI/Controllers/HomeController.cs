@@ -21,11 +21,12 @@ namespace Bus_Ticket_Booking.WebUI.Controllers
             _cityService = cityService;
             _routeService = routeService;
         }
+
         public IActionResult Index(string startLocation, string endLocation)
         {
             if (startLocation == null || endLocation == null || startLocation == endLocation)
             {
-                var cityModel = new TicketRoute()
+                var cityModel = new RouteTicket()
                 {
                     Cities = _cityService.GetAll(),
                     Routes = null
@@ -36,13 +37,14 @@ namespace Bus_Ticket_Booking.WebUI.Controllers
             }
             else
             {
-                var cityModel = new TicketRoute()
+                var cityModel = new RouteTicket()
                 {
                     Cities = _cityService.GetAll(),
-                    Routes = _routeService.GetDestination(startLocation, endLocation)
+                    Routes = _routeService.GetRoute(startLocation, endLocation)
                 };
-                TempData["TravelFrom"] = _routeService.GetStartLocation(startLocation);
-                TempData["TravelTo"] = _routeService.GetEndLocation(endLocation);
+
+                TempData["startLocation"] = _routeService.GetStartLocation(startLocation);
+                TempData["endLocation"] = _routeService.GetEndLocation(endLocation);
                 ViewBag.Cities = new SelectList(cityModel.Cities, "CityId", "CityName");
                 return View(cityModel);
             }

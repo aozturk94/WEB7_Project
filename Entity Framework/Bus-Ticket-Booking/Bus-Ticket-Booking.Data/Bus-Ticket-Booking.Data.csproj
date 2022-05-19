@@ -18,4 +18,8 @@
     <ProjectReference Include="..\Bus-Ticket-Booking.Entity\Bus-Ticket-Booking.Entity.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+
 </Project>

@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Bus_Ticket_Booking.Data.Migrations
 {
@@ -40,25 +39,17 @@ namespace Bus_Ticket_Booking.Data.Migrations
                     RouteId = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     StartLocation = table.Column<string>(type: "TEXT", nullable: true),
-                    FirstRoute = table.Column<string>(type: "TEXT", nullable: true),
-                    SecondRoute = table.Column<string>(type: "TEXT", nullable: true),
-                    ThirdRoute = table.Column<string>(type: "TEXT", nullable: true),
+                    FirstStation = table.Column<string>(type: "TEXT", nullable: true),
+                    SecondStation = table.Column<string>(type: "TEXT", nullable: true),
+                    ThirdStation = table.Column<string>(type: "TEXT", nullable: true),
                     EndLocation = table.Column<string>(type: "TEXT", nullable: true),
-                    DepartureDate = table.Column<DateTime>(type: "TEXT", nullable: true),
-                    ReturnDate = table.Column<DateTime>(type: "TEXT", nullable: true),
+                    Date = table.Column<string>(type: "TEXT", nullable: true),
                     Time = table.Column<string>(type: "TEXT", nullable: true),
-                    Price = table.Column<double>(type: "REAL", nullable: false),
-                    CityId = table.Column<int>(type: "INTEGER", nullable: false)
+                    Price = table.Column<double>(type: "REAL", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Routes", x => x.RouteId);
-                    table.ForeignKey(
-                        name: "FK_Routes_Cities_CityId",
-                        column: x => x.CityId,
-                        principalTable: "Cities",
-                        principalColumn: "CityId",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -67,27 +58,18 @@ namespace Bus_Ticket_Booking.Data.Migrations
                 {
                     TicketId = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    PassengerFirstName = table.Column<string>(type: "TEXT", nullable: true),
-                    PassengerLastName = table.Column<string>(type: "TEXT", nullable: true),
-                    PassengerMail = table.Column<string>(type: "TEXT", nullable: true),
+                    CostumerName = table.Column<string>(type: "TEXT", nullable: true),
+                    CosturmerSurname = table.Column<string>(type: "TEXT", nullable: true),
+                    PhoneNumber = table.Column<string>(type: "TEXT", nullable: true),
                     TravelFrom = table.Column<string>(type: "TEXT", nullable: true),
                     TravelTo = table.Column<string>(type: "TEXT", nullable: true),
-                    DepartureDate = table.Column<DateTime>(type: "TEXT", nullable: true),
-                    ReturnDate = table.Column<DateTime>(type: "TEXT", nullable: true),
-                    BusSeat = table.Column<int>(type: "INTEGER", nullable: false),
-                    BusId = table.Column<int>(type: "INTEGER", nullable: false),
-                    TicketPrice = table.Column<double>(type: "REAL", nullable: false),
+                    SeatNumber = table.Column<int>(type: "INTEGER", nullable: false),
+                    Price = table.Column<double>(type: "REAL", nullable: false),
                     RouteId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Tickets", x => x.TicketId);
-                    table.ForeignKey(
-                        name: "FK_Tickets_Buses_BusId",
-                        column: x => x.BusId,
-                        principalTable: "Buses",
-                        principalColumn: "BusId",
-                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Tickets_Routes_RouteId",
                         column: x => x.RouteId,
@@ -95,16 +77,6 @@ namespace Bus_Ticket_Booking.Data.Migrations
                         principalColumn: "RouteId",
                         onDelete: ReferentialAction.Cascade);
                 });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Routes_CityId",
-                table: "Routes",
-                column: "CityId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Tickets_BusId",
-                table: "Tickets",
-                column: "BusId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Tickets_RouteId",
@@ -115,16 +87,16 @@ namespace Bus_Ticket_Booking.Data.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Tickets");
-
-            migrationBuilder.DropTable(
                 name: "Buses");
 
             migrationBuilder.DropTable(
-                name: "Routes");
+                name: "Cities");
 
             migrationBuilder.DropTable(
-                name: "Cities");
+                name: "Tickets");
+
+            migrationBuilder.DropTable(
+                name: "Routes");
         }
     }
 }

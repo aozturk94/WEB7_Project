@@ -9,17 +9,13 @@ namespace Bus_Ticket_Booking.Entity
     public class Ticket
     {
         public int TicketId { get; set; }
-        public string PassengerFirstName { get; set; }
-        public string PassengerLastName { get; set; }
-        public string PassengerMail { get; set; }
+        public string CostumerName { get; set; }
+        public string CosturmerSurname { get; set; }
+        public string PhoneNumber { get; set; }
         public string TravelFrom { get; set; }
         public string TravelTo { get; set; }
-        public DateTime? DepartureDate { get; set; }
-        public DateTime? ReturnDate { get; set; }
-        public int BusSeat { get; set; }
-        public Bus Bus { get; set; }
-        public int BusId { get; set; }
-        public double TicketPrice { get; set; }
+        public int SeatNumber { get; set; }
+        public double Price { get; set; }
         public int RouteId { get; set; }
         public Route Route { get; set; }
     }

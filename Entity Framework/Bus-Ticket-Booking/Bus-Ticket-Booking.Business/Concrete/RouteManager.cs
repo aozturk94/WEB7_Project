@@ -18,27 +18,22 @@ namespace Bus_Ticket_Booking.Business.Concrete
         }
         public void Create(Route entity)
         {
-            throw new NotImplementedException();
+            _routeRepository.Create(entity);
         }
 
         public void Delete(Route entity)
         {
-            throw new NotImplementedException();
+            _routeRepository.Delete(entity);
         }
 
         public List<Route> GetAll()
         {
-            throw new NotImplementedException();
+            return _routeRepository.GetAll();
         }
 
         public Route GetById(int id)
         {
-            throw new NotImplementedException();
-        }
-
-        public List<Route> GetDestination(string startLocation, string endLocation)
-        {
-            return _routeRepository.GetDestination(startLocation, endLocation);
+            return _routeRepository.GetById(id);
         }
 
         public string GetEndLocation(string endLocation)
@@ -46,14 +41,14 @@ namespace Bus_Ticket_Booking.Business.Concrete
             return _routeRepository.GetEndLocation(endLocation);
         }
 
-        public int GetRouteByStartToEnd(string startLocation, string firstRoute, string secondRoute, string thirdRoute, string endLocation)
+        public List<Route> GetRoute(string startLocation, string endLocation)
         {
-            return _routeRepository.GetRouteByStartToEnd(startLocation, firstRoute, secondRoute, thirdRoute, endLocation);
+            return _routeRepository.GetRoute(startLocation, endLocation);
         }
 
         public Route GetRouteDetails(int id)
         {
-            throw new NotImplementedException();
+            return _routeRepository.GetRouteDetails(id);
         }
 
         public string GetStartLocation(string startLocation)
@@ -63,7 +58,7 @@ namespace Bus_Ticket_Booking.Business.Concrete
 
         public void Update(Route entity)
         {
-            throw new NotImplementedException();
+            _routeRepository.Update(entity);
         }
     }
 }

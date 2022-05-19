@@ -12,6 +12,8 @@ namespace Bus_Ticket_Booking.WebUI.Models
         public List<Route> Routes { get; set; }
         public List<City> Cities { get; set; }
         public Route NewRoute { get; set; }
+        public string Time { get; set; }
+        public string Date { get; set; }
         public Ticket Ticket { get; set; }
     }
 }

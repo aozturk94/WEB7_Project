@@ -27,14 +27,13 @@ namespace Bus_Ticket_Booking.WebUI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<ICityRepository, EfCoreCityRepository>();
-            services.AddScoped<ICityService, CityManager>();
-
-            services.AddScoped<IRouteRepository, EfCoreRouteRepository>();
-            services.AddScoped<IRouteService, RouteManager>();
-
             services.AddControllersWithViews();
-            
+
+            services.AddScoped<ICityRepository, EfCoreCityRepository>();
+            services.AddScoped<IRouteRepository, EfCoreRouteRepository>();
+
+            services.AddScoped<ICityService, CityManager>();
+            services.AddScoped<IRouteService, RouteManager>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -42,8 +41,8 @@ namespace Bus_Ticket_Booking.WebUI
         {
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
                 SeedDatabase.Seed();
+                app.UseDeveloperExceptionPage();
             }
             else
             {

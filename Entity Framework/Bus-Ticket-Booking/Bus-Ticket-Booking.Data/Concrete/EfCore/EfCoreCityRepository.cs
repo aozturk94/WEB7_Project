@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Bus_Ticket_Booking.Data.Concrete.EfCore
 {
-    public class EfCoreCityRepository : EfCoreGenericRepository<City, Bus_Ticket_BookingContext>, ICityRepository
+    public class EfCoreCityRepository : EfCoreGenericRepository<City, BookingContext>, ICityRepository
     {
     }
 }

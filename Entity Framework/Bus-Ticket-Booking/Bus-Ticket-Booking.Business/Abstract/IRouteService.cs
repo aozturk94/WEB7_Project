@@ -14,12 +14,11 @@ namespace Bus_Ticket_Booking.Business.Abstract
         void Update(Route entity);
         void Delete(Route entity);
 
-
         List<Route> GetAll();
-        string GetStartLocation(string startLocation);
+
+        List<Route> GetRoute(string startLocation, string endLocation);
         string GetEndLocation(string endLocation);
-        List<Route> GetDestination(string startLocation, string endLocation);
-        int GetRouteByStartToEnd(string startLocation, string firstRoute, string secondRoute, string thirdRoute, string endLocation);
+        string GetStartLocation(string startLocation);
         Route GetRouteDetails(int id);
     }
 }

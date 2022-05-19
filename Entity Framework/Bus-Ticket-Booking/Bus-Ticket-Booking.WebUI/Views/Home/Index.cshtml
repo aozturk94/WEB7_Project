@@ -1,17 +1,32 @@
-﻿@model TicketRoute
+﻿@model RouteTicket
+
+
+<br />
+<br />
 
 <div class="container shadow" style="margin-bottom: 100px; padding: 10px 14px;">
     <div class="form-group" style="display: inline;">
         <form action="/home/index" class="form-inline">
-            <select name="TravelFrom" class="form-select form-select-lg mb-3" asp-items="@ViewBag.Cities" style="width: 505px; height:53px;">
-                <option selected disabled>Nereden</option>
+            <select name="startLocation" class="form-select form-select-lg mb-3" asp-items="@ViewBag.Cities" style="width: 505px; height:53px;">
+                <option selected disabled>Travel From</option>
             </select>
             <i class="fas fa-long-arrow-alt-right" style="padding: 0px 20px; font-size: 22px;"></i>
-            <select name="TravelTo" class="form-select form-select-lg mb-3" asp-items="@ViewBag.Cities" style="width: 505px; height:53px;">
-                <option selected disabled>Nereye</option>
+            <select name="endLocation" class="form-select form-select-lg mb-3" asp-items="@ViewBag.Cities" style="width: 505px; height:53px;">
+                <option selected disabled>Travel To</option>
             </select>
             <button type="submit" class="btn btn-danger btn-lg btn-block">Yolculuk Bul</button>
         </form>
     </div>
 </div>
 
+@if (Model.Routes != null)
+{
+<div class="row">
+    @foreach (var item in @Model.Routes)
+    {
+
+<div class="col-md-6">
+    @await Html.PartialAsync("_Route", item)
+
+</div>}
+</div>}

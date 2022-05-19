@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Bus_Ticket_Booking.Data.Concrete.EfCore
+namespace Bus_Ticket_Booking.Data.Concrete
 {
-    public class Bus_Ticket_BookingContext : DbContext
+    public class BookingContext : DbContext
     {
         public DbSet<Ticket> Tickets { get; set; }
         public DbSet<Route> Routes { get; set; }
@@ -17,7 +17,7 @@ namespace Bus_Ticket_Booking.Data.Concrete.EfCore
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite("DataSource = TicketBookingDb");
+            optionsBuilder.UseSqlite("Data Source = BookingDb");
         }
     }
 }
