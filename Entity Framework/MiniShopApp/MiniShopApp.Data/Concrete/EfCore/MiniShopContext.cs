@@ -16,7 +16,7 @@ namespace MiniShopApp.Data.Concrete.EfCore
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite("Data Source = MiniShopDb");
+            optionsBuilder.UseSqlite("Data Source=MiniShopAppDb");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

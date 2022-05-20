@@ -27,14 +27,13 @@ namespace MiniShopApp.WebUI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
-
-            //Bu uygulamanýn herhangi bir yerinde IProductRepository kullanarak bir nesne oluþturduðumda sen bunu EfCoreProductRepository türünden oluþtur.
             services.AddScoped<IProductRepository, EfCoreProductRepository>();
             services.AddScoped<ICategoryRepository, EfCoreCategoryRepository>();
-
-            services.AddScoped<ICategoryService, CategoryManager>();
             services.AddScoped<IProductService, ProductManager>();
+            //Proje boyunca ICategoryService çaðrýldýðýnda, CategoryManager'i kullan.
+            services.AddScoped<ICategoryService, CategoryManager>();
+            //Projemizin MVC yapýsýnda olmasýný saðlar.
+            services.AddControllersWithViews();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -61,42 +60,36 @@ namespace MiniShopApp.WebUI
             app.UseEndpoints(endpoints =>
             {
 
-
                 endpoints.MapControllerRoute(
-                    name: "adminprodutcscreate",
+                    name: "adminproductcreate",
                     pattern: "admin/products/create",
                     defaults: new { controller = "Admin", action = "ProductCreate" }
                     );
-
                 endpoints.MapControllerRoute(
-                    name: "adminprodutcs",
+                    name: "adminproducts",
                     pattern: "admin/products",
                     defaults: new { controller = "Admin", action = "ProductList" }
                     );
-
-                endpoints.MapControllerRoute(
-                    name: "adminproductedit",
-                    pattern: "/admin/product/{id?}",
-                    defaults: new {controller = "Admin", action = "ProductEdit"}
-                    );
-
                 endpoints.MapControllerRoute(
                     name: "search",
                     pattern: "search",
-                    defaults: new { controller = "MiniShopApp", action = "Search" }
+                    defaults: new { controller = "MiniShop", action = "Search" }
                     );
-
-                endpoints.MapControllerRoute( 
-                    name: "products",
-                    pattern: "products/{category?}",
-                    defaults: new {controller="MiniShopApp", action="List"}
-                    );
-
                 endpoints.MapControllerRoute(
-                  name: "productdetails",
-                  pattern: "{url}",
-                  defaults: new { controller = "MiniShopApp", action = "Details" }
-                  );
+                   name: "products",
+                   pattern: "products/{category?}",
+                   defaults: new { controller = "MiniShop", action = "List" }
+                   );
+                endpoints.MapControllerRoute(
+                    name: "adminproductedit",
+                    pattern: "admin/products/{id?}",
+                    defaults: new { controller = "Admin", action = "ProductEdit" }
+                    );
+                endpoints.MapControllerRoute(
+                    name: "productdetails",
+                    pattern: "{url}",
+                    defaults: new { controller = "MiniShop", action = "Details" }
+                    );
 
                 endpoints.MapControllerRoute(
                     name: "default",

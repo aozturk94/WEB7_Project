@@ -13,7 +13,6 @@ namespace MiniShopApp.Business.Abstract
         List<Category> GetAll();
         void Create(Category entity);
         void Update(Category entity);
-        void Delete(Product entity);
-
+        void Delete(Category entity);
     }
 }
