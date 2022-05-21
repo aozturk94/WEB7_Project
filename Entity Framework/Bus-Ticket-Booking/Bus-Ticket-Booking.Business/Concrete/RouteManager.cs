@@ -41,9 +41,9 @@ namespace Bus_Ticket_Booking.Business.Concrete
             return _routeRepository.GetEndLocation(endLocation);
         }
 
-        public List<Route> GetRoute(string startLocation, string endLocation)
+        public List<Route> GetRoute(string startLocation, string endLocation, DateTime Date)
         {
-            return _routeRepository.GetRoute(startLocation, endLocation);
+            return _routeRepository.GetRoute(startLocation, endLocation, Date);
         }
 
         public Route GetRouteDetails(int id)

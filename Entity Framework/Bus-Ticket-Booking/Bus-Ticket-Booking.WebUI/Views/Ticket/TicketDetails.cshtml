@@ -1,0 +1,44 @@
+﻿@model RouteTicket
+
+<div class="container shadow" style="text-align:center;">
+    <br />
+    <i class="fas fa-check-circle" style="font-size:36px; color:green;"></i><br />
+    <br /><p> Mr./Mrs. @Model.Ticket.CostumerName @Model.Ticket.CosturmerSurname, your ticket request from @Model.Ticket.TravelFrom to @Model.Ticket.TravelTo has been successfully defined.</p> <br />
+    <br /><hr /><br />
+    <h3>Bilet Bilgileriniz</h3><br />
+
+    <table class="table table table-bordered shadow-sm">
+        <thead>
+            <tr>
+                <th style="width:40px;">Ticket No</th>
+                <th style="width:200px;">Name</th>
+                <th style="">Phone Number</th>
+                <th style="width:105px;">Travel From</th>
+                <th style="width:105px;">Travel To</th>
+                <th style="width:60px;">Seat Number</th>
+                <th style="width:80px;">Price</th>
+                <th style="width:200px;">Date - Time</th>
+
+                <th style="width:75px;">Sefer No</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Model.Ticket.TicketId</td>
+                <td>@Model.Ticket.CostumerName @Model.Ticket.CosturmerSurname</td>
+
+                <td>@Model.Ticket.PhoneNumber</td>
+                <td>@Model.Ticket.TravelFrom</td>
+                <td>@Model.Ticket.TravelTo</td>
+                <td>@Model.Ticket.SeatNumber</td>
+                <td>@Model.Ticket.Price ₺</td>
+                <td>@Model.Date - @Model.Time</td>
+
+                <td>@Model.Ticket.RouteId</td>
+
+            </tr>
+        </tbody>
+    </table>
+    <br />
+</div>

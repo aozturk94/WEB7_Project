@@ -1,0 +1,174 @@
+﻿@model Route
+
+@*@{ var Price = Model.Price; }
+@if (ViewBag.setNumber < 5)
+{
+    Price = Price;
+}
+@if (ViewBag.setNumber > 5 && ViewBag.setNumber <= 10)
+{
+    Price = Price + Price * 0.10;
+}
+@if (ViewBag.setNumber > 10 && ViewBag.setNumber <= 15)
+{
+    Price = Price + Price * 0.20;
+}
+@if (ViewBag.setNumber > 15 && ViewBag.setNumber <= 20)
+{
+    Price = Price + Price * 0.30;
+}
+@if (ViewBag.setNumber > 20)
+{
+    Price = Price + Price * 0.40;
+}
+
+
+
+
+
+@{  var fiyat1 = @Price * 0.8;
+    var fiyat2 = @Price * 0.7;
+    var fiyat3 = @Price * 0.6;
+    var fiyat4 = @Price * 0.5;
+    var fiyat5 = @Price * 0.45; }*@
+
+<div class="card mb-3 shadow">
+
+    <div class="card-title pl-3 pt-3">
+        <h1>@TempData["startLocation"] - @TempData["endLocation"]</h1>
+    </div>
+    <div class="card-body">
+        <form action="details" method="POST" style="display:inline;">
+            <div class="row no-gutters"
+
+                <div class="col-md-8">
+                    <h4>@Model.StartLocation > @Model.EndLocation Aracı</h4>
+                    <hr />  
+                    <p><b>Route: </b> @Model.StartLocation > @Model.FirstStation > @Model.SecondStation > @Model.ThirdStation > @Model.EndLocation</p><hr />
+                    <p>@Model.Date  -  @Model.Time</p>
+                    <br />
+                    <p>Dolu koltuk sayısı: @ViewBag.SeatNumber</p>
+
+
+
+                    <input type="hidden" name="RouteId" value="@Model.RouteId" />
+
+
+
+                    @if ((@TempData["startLocation"].ToString() == @Model.StartLocation) && (@TempData["endLocation"].ToString() == @Model.EndLocation))
+                    {
+        <p style="text-align: right; font-size:26px;">@Model.Price ₺</p>
+                        <input type="hidden" name="Price" value="@Model.Price" />}
+                    @*@if ((@TempData["startLocation"].ToString() == @Model.StartLocation) && (@TempData["endLocation"].ToString() == @Model.EndLocation))
+                    {
+        <p style="text-align: right; font-size:26px;">@fiyat1 ₺</p>
+                        <input type="hidden" name="fiyat" value="@fiyat1" />}*@
+                    @*@if ((@TempData["nereden"].ToString() == @Model.StartLocation) && (@TempData["nereye"].ToString() == @Model.FirstStation))
+                    {
+        <p style="text-align: right; font-size:26px;">@fiyat2 ₺</p>
+                        <input type="hidden" name="fiyat" value="@fiyat2" />}
+                    @if ((@TempData["nereden"].ToString() == @Model.StartLocation) && (@TempData["nereye"].ToString() == @Model.SecondStation))
+                    {
+        <p style="text-align: right; font-size:26px;">@fiyat3 ₺</p>
+                        <input type="hidden" name="fiyat" value="@fiyat3" />}
+                    @if ((@TempData["nereden"].ToString() == @Model.FirstStation) && (@TempData["nereye"].ToString() == @Model.EndLocation))
+                    {
+        <p style="text-align: right; font-size:26px;">@fiyat1 ₺</p>
+                        <input type="hidden" name="fiyat" value="@fiyat1" />}
+                    @if ((@TempData["nereden"].ToString() == @Model.FirstStation) && (@TempData["nereye"].ToString() == @Model.ThirdStation))
+                    {
+        <p style="text-align: right; font-size:26px;">@fiyat2 ₺</p>
+                        <input type="hidden" name="fiyat" value="@fiyat2" />}
+                    @if ((@TempData["nereden"].ToString() == @Model.FirstStation) && (@TempData["nereye"].ToString() == @Model.SecondStation))
+                    {
+        <p style="text-align: right; font-size:26px;">@fiyat3 ₺</p>
+                        <input type="hidden" name="fiyat" value="@fiyat3" />}
+                    @if ((@TempData["nereden"].ToString() == @Model.FirstStation) && (@TempData["nereye"].ToString() == @Model.StartLocation))
+                    {
+        <p style="text-align: right; font-size:26px;">@fiyat5 ₺</p>
+                        <input type="hidden" name="fiyat" value="@fiyat5" />}
+                    @if ((@TempData["nereden"].ToString() == @Model.SecondStation) && (@TempData["nereye"].ToString() == @Model.EndLocation))
+                    {
+        <p style="text-align: right; font-size:26px;">@fiyat3 ₺</p>
+                        <input type="hidden" name="fiyat" value="@fiyat3" />}
+                    @if ((@TempData["nereden"].ToString() == @Model.SecondStation) && (@TempData["nereye"].ToString() == @Model.ThirdStation))
+                    {
+        <p style="text-align: right; font-size:26px;">@fiyat5 ₺</p>
+                        <input type="hidden" name="fiyat" value="@fiyat5" />}
+                    @if ((@TempData["nereden"].ToString() == @Model.SecondStation) && (@TempData["nereye"].ToString() == @Model.StartLocation))
+                    {
+        <p style="text-align: right; font-size:26px;">@fiyat4 ₺</p>
+                        <input type="hidden" name="fiyat" value="@fiyat4" />}
+                    @if ((@TempData["nereden"].ToString() == @Model.gz2) && (@TempData["nereye"].ToString() == @Model.gz1))
+                    {
+        <p style="text-align: right; font-size:26px;">@fiyat5 ₺</p>
+                        <input type="hidden" name="fiyat" value="@fiyat5" />}
+                    @if ((@TempData["nereden"].ToString() == @Model.gz3) && (@TempData["nereye"].ToString() == @Model.Bitis))
+                    {
+        <p style="text-align: right; font-size:26px;">@fiyat5 ₺</p>
+                        <input type="hidden" name="fiyat" value="@fiyat5" />}
+                    @if ((@TempData["nereden"].ToString() == @Model.gz3) && (@TempData["nereye"].ToString() == @Model.gz2))
+                    {
+        <p style="text-align: right; font-size:26px;">@fiyat5 ₺</p>
+                        <input type="hidden" name="fiyat" value="@fiyat5" />}
+                    @if ((@TempData["nereden"].ToString() == @Model.gz3) && (@TempData["nereye"].ToString() == @Model.Baslangic))
+                    {
+        <p style="text-align: right; font-size:26px;">@fiyat3 ₺</p>
+                        <input type="hidden" name="fiyat" value="@fiyat3" />}
+                    @if ((@TempData["nereden"].ToString() == @Model.gz3) && (@TempData["nereye"].ToString() == @Model.gz1))
+                    {
+        <p style="text-align: right; font-size:26px;">@fiyat4 ₺</p>
+                        <input type="hidden" name="fiyat" value="@fiyat4" />}
+                    @if ((@TempData["nereden"].ToString() == @Model.Bitis) && (@TempData["nereye"].ToString() == @Model.gz2))
+                    {
+        <p style="text-align: right; font-size:26px;">@fiyat3 ₺</p>
+                        <input type="hidden" name="fiyat" value="@fiyat3" />}
+                    @if ((@TempData["nereden"].ToString() == @Model.Bitis) && (@TempData["nereye"].ToString() == @Model.gz3))
+                    {
+        <p style="text-align: right; font-size:26px;">@fiyat5 ₺</p>
+                        <input type="hidden" name="fiyat" value="@fiyat4" />}
+                    @if ((@TempData["nereden"].ToString() == @Model.Bitis) && (@TempData["nereye"].ToString() == @Model.Baslangic))
+                    {
+        <p style="text-align: right; font-size:26px;">@Fiyat</p>
+                        <input type="hidden" name="fiyat" value="@Fiyat" />}
+                    @if ((@TempData["nereden"].ToString() == @Model.Bitis) && (@TempData["nereye"].ToString() == @Model.gz1))
+                    {
+        <p style="text-align: right; font-size:26px;">@fiyat2 ₺</p>
+                        <input type="hidden" name="fiyat" value="@fiyat2" />}*@
+
+
+                    <input type="hidden" name="startLocation" value="@TempData["startLocation"].ToString()" />
+                    <input type="hidden" name="endLocation" value="@TempData["endLocation"].ToString()" />
+
+
+
+                </div>
+
+                <div class="row no-gutters">
+
+                    <div class="col-md-12">
+                        <br /><br /><hr /><br />
+                        <div class="form-group">
+                            <input type="tel" name="PhoneNumber" class="form-control" id="" aria-describedby="" placeholder="Phone" required="required" style="width: 1000px; margin-left: 30px;">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="firstName" class="form-control" id="" aria-describedby="" placeholder="Name" required="required" style="width: 1000px; margin-left: 30px;">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="lastName" class="form-control" id="" aria-describedby="" placeholder="Surname" required="required" style="width: 1000px;margin-left: 30px;">
+                        </div>
+                        <div class="form-group">
+                            <select name="SeatNumber" class="form-select form-select-lg mb-3" asp-items="@ViewBag.SeatNumbers" required="required" style="width: 1000px; height:30px; margin-left: 30px;">
+                                <option selected disabled>Koltuk Seçiniz</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-danger btn-lg" style="color: white;margin-left: 38px;">Bilet Al</button>
+                    <br />
+                </div><br />
+            </div>
+        </form>
+    </div><br />
+
+</div>
+<br />

@@ -16,7 +16,7 @@ namespace Bus_Ticket_Booking.Business.Abstract
 
         List<Route> GetAll();
 
-        List<Route> GetRoute(string startLocation, string endLocation);
+        List<Route> GetRoute(string startLocation, string endLocation, DateTime dateTime);
         string GetEndLocation(string endLocation);
         string GetStartLocation(string startLocation);
         Route GetRouteDetails(int id);

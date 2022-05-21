@@ -22,8 +22,9 @@ namespace Bus_Ticket_Booking.WebUI.Controllers
             _routeService = routeService;
         }
 
-        public IActionResult Index(string startLocation, string endLocation)
+        public IActionResult Index(string startLocation, string endLocation, DateTime Date)
         {
+
             if (startLocation == null || endLocation == null || startLocation == endLocation)
             {
                 var cityModel = new RouteTicket()
@@ -40,7 +41,7 @@ namespace Bus_Ticket_Booking.WebUI.Controllers
                 var cityModel = new RouteTicket()
                 {
                     Cities = _cityService.GetAll(),
-                    Routes = _routeService.GetRoute(startLocation, endLocation)
+                    Routes = _routeService.GetRoute(startLocation, endLocation, Date)
                 };
 
                 TempData["startLocation"] = _routeService.GetStartLocation(startLocation);

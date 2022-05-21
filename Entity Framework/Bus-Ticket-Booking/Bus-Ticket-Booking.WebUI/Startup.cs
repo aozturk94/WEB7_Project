@@ -31,9 +31,13 @@ namespace Bus_Ticket_Booking.WebUI
 
             services.AddScoped<ICityRepository, EfCoreCityRepository>();
             services.AddScoped<IRouteRepository, EfCoreRouteRepository>();
+            services.AddScoped<ITicketRepository, EfCoreTicketRepository>();
+            services.AddScoped<IBusRepository, EfCoreBusRepository>();
 
             services.AddScoped<ICityService, CityManager>();
             services.AddScoped<IRouteService, RouteManager>();
+            services.AddScoped<ITicketService, TicketManager>();
+            services.AddScoped<IBusService, BusManager>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

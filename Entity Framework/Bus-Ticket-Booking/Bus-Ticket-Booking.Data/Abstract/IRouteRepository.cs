@@ -11,7 +11,7 @@ namespace Bus_Ticket_Booking.Data.Abstract
     {
         string GetStartLocation(string startLocation);
         string GetEndLocation(string endLocation);
-        List<Route> GetRoute(string startLocation, string endLocation);
+        List<Route> GetRoute(string startLocation, string endLocation, DateTime Date);
         Route GetRouteDetails(int id);
     }
 }
