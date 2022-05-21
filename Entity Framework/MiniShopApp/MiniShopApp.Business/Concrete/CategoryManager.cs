@@ -1,6 +1,5 @@
 ﻿using MiniShopApp.Business.Abstract;
 using MiniShopApp.Data.Abstract;
-using MiniShopApp.Data.Concrete.EfCore;
 using MiniShopApp.Entity;
 using System;
 using System.Collections.Generic;
@@ -13,7 +12,6 @@ namespace MiniShopApp.Business.Concrete
     public class CategoryManager : ICategoryService
     {
         private ICategoryRepository _categoryRepository;
-
         public CategoryManager(ICategoryRepository categoryRepository)
         {
             _categoryRepository = categoryRepository;
@@ -23,7 +21,7 @@ namespace MiniShopApp.Business.Concrete
             throw new NotImplementedException();
         }
 
-        public void Delete(Product entity)
+        public void Delete(Category entity)
         {
             throw new NotImplementedException();
         }

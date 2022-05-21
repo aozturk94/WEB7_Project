@@ -30,7 +30,7 @@ namespace MiniShopApp.Data.Migrations
                     Name = table.Column<string>(type: "TEXT", nullable: true),
                     Price = table.Column<decimal>(type: "TEXT", nullable: true),
                     Description = table.Column<string>(type: "TEXT", nullable: true),
-                    ImgUrl = table.Column<string>(type: "TEXT", nullable: true),
+                    ImageUrl = table.Column<string>(type: "TEXT", nullable: true),
                     Url = table.Column<string>(type: "TEXT", nullable: true),
                     IsApproved = table.Column<bool>(type: "INTEGER", nullable: false),
                     IsHome = table.Column<bool>(type: "INTEGER", nullable: false)

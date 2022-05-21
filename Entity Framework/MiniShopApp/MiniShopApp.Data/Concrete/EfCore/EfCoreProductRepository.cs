@@ -11,79 +11,45 @@ namespace MiniShopApp.Data.Concrete.EfCore
 {
     public class EfCoreProductRepository : EfCoreGenericRepository<Product, MiniShopContext>, IProductRepository
     {
-        public void Create(Product entity, int[] categoryIds)
+        private string ConvertLower(string text)
         {
-            using (var context = new MiniShopContext())
-            {
-                context.Products.Add(entity);
-                context.SaveChanges();
-                entity.ProductCategories = categoryIds
-                    .Select(catId => new ProductCategory
-                    {
-                        ProductId = entity.ProductId,
-                        CategoryId = catId
-                    }).ToList();
-                context.SaveChanges();
-            }
+            //İstanbul Irak Üzgün Şelaler Satırarası
+            text = text.Replace("I", "i");//İstanbul irak Üzgün Şelaleler Satırarası
+            text = text.Replace("İ", "i");//istanbul irak Üzgün Şelaleler Satırarası
+            text = text.Replace("ı", "i");//istanbul irak Üzgün Şelaleler Satirarasi
+
+            text = text.ToLower();//istanbul irak üzgün şelaleler satirarasi
+            text = text.Replace("ç", "c");
+            text = text.Replace("ö", "o");
+            text = text.Replace("ü", "u");
+            text = text.Replace("ş", "s");
+            text = text.Replace("ğ", "g");
+            return text;
         }
 
-        public void Update(Product entity, int[] categoryIds)
+        public List<Product> GetSearchResult(string searchString)
         {
+
+            searchString = ConvertLower(searchString);
+            // Burada metodun döndürdüğü değer string, ama biz linq sorgularıyla çalışırken
+            // işimize yaramıyor!DÜZELTİLECEK
             using (var context = new MiniShopContext())
             {
-                var product = context
+                var products = context
                     .Products
-                    .Include(i => i.ProductCategories)
-                    .FirstOrDefault(i => i.ProductId == entity.ProductId);
-
-                product.Name = entity.Name;
-                product.Price = entity.Price;
-                product.Description = entity.Description;
-                product.Url = entity.Url;
-                product.ImgUrl = entity.ImgUrl;
-                product.IsApproved = entity.IsApproved;
-                product.IsHome = entity.IsHome;
-                product.ProductCategories = categoryIds.Select(catId => new ProductCategory()
+                    .Where(i => i.IsApproved).ToList();
+                foreach (var item in products)
                 {
-                    ProductId = entity.ProductId,
-                    CategoryId = catId
-                }).ToList();
-
-                context.SaveChanges();
-            }
-        }
-
-        public Product GetByIdWithCategories(int id)
-        {
-            using (var context = new MiniShopContext())
-            {
-                return context.Products
-                              .Where(i => i.ProductId == id)
-                              .Include(i => i.ProductCategories)
-                              .ThenInclude(i => i.Category)
-                              .FirstOrDefault();
-            }
-        }
-
-        public int GetCountByCategory(string name)
-        {
-            using (var context = new MiniShopContext())
-            {
-                var products = context.Products
-                                      .Where(i => i.IsApproved)
-                                      .AsQueryable();
-
-                if (!string.IsNullOrEmpty(name))
-                {
-                    products = products
-                        .Include(i => i.ProductCategories)
-                        .ThenInclude(i => i.Category)
-                        .Where(i => i.ProductCategories.Any(a => a.Category.Url == name));
+                    item.Name = ConvertLower(item.Name);
+                    item.Description = ConvertLower(item.Description);
                 }
-                return products.Count();
+                var products2 = products
+                    .Where(i => i.Name == searchString || i.Description == searchString)
+                    .ToList();
+                
+                return products2;
             }
         }
-
         public List<Product> GetHomePageProducts()
         {
             using (var context = new MiniShopContext())
@@ -99,7 +65,8 @@ namespace MiniShopApp.Data.Concrete.EfCore
         {
             using (var context = new MiniShopContext())
             {
-                return context.Products
+                return context
+                    .Products
                     .Where(i => i.Url == url)
                     .Include(i => i.ProductCategories)
                     .ThenInclude(i => i.Category)
@@ -107,15 +74,16 @@ namespace MiniShopApp.Data.Concrete.EfCore
             }
         }
 
+        //Burada görünmeseler de EfCoreGenericRepository classımızdaki tüm metotlar var.
+        //Temel CRUD işlemlerini yapan 5 metot.
         public List<Product> GetProductsByCategory(string name, int page, int pageSize)
         {
-            using (var context = new MiniShopContext())
+            using (var context= new MiniShopContext())
             {
                 var products = context
                     .Products
                     .Where(i => i.IsApproved)
                     .AsQueryable();
-
                 if (!string.IsNullOrEmpty(name))
                 {
                     products = products
@@ -123,23 +91,83 @@ namespace MiniShopApp.Data.Concrete.EfCore
                         .ThenInclude(i => i.Category)
                         .Where(i => i.ProductCategories.Any(a => a.Category.Url == name));
                 }
-
-                return products.Skip((page-1)*pageSize).Take(pageSize).ToList(); ;
+                return products.Skip((page - 1) * pageSize).Take(pageSize).ToList();
             }
+
         }
 
-        public List<Product> GetSearchResult(string searchString)
+        public int GetCountByCategory(string category)
         {
-            searchString = searchString.ToLower();
             using (var context = new MiniShopContext())
             {
                 var products = context
                     .Products
-                    .Where(i => i.IsApproved && (i.Name.ToLower().Contains(searchString) || i.Description.ToLower().Contains(searchString)))
-                    .ToList();
-                return products;
+                    .Where(i => i.IsApproved)
+                    .AsQueryable();
+                if (!string.IsNullOrEmpty(category))
+                {
+                    products = products
+                        .Include(i => i.ProductCategories)
+                        .ThenInclude(i => i.Category)
+                        .Where(i => i.ProductCategories.Any(a => a.Category.Url == category));
+                }
+                return products.Count();
             }
         }
 
+        public void Create(Product entity, int[] categoryIds)
+        {
+            using (var context = new MiniShopContext())
+            {
+                context.Products.Add(entity);
+                context.SaveChanges();
+                entity.ProductCategories = categoryIds
+                    .Select(catId => new ProductCategory
+                    {
+                        ProductId = entity.ProductId,
+                        CategoryId = catId
+                    }).ToList();
+                context.SaveChanges();
+            }
+
+        }
+
+        public void Update(Product entity, int[] categoryIds)
+        {
+            using (var context = new MiniShopContext())
+            {
+                var product = context
+                    .Products
+                    .Include(i => i.ProductCategories)
+                    .FirstOrDefault(i=>i.ProductId==entity.ProductId);
+                product.Name = entity.Name;
+                product.Price = entity.Price;
+                product.Description = entity.Description;
+                product.Url = entity.Url;
+                product.ImageUrl = entity.ImageUrl;
+                product.IsApproved = entity.IsApproved;
+                product.IsHome = entity.IsHome;
+                product.ProductCategories = categoryIds
+                    .Select(catId => new ProductCategory()
+                    {
+                        ProductId = entity.ProductId,
+                        CategoryId = catId
+                    }).ToList();
+                context.SaveChanges();
+            }
+        }
+
+        public Product GetByIdWithCategories(int id)
+        {
+            using (var context = new MiniShopContext())
+            {
+                return context
+                    .Products
+                    .Where(i => i.ProductId == id)
+                    .Include(i => i.ProductCategories)
+                    .ThenInclude(i => i.Category)
+                    .FirstOrDefault();
+            }
+        }
     }
 }

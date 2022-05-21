@@ -45,7 +45,7 @@ namespace MiniShopApp.Data.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("ImgUrl")
+                    b.Property<string>("ImageUrl")
                         .HasColumnType("TEXT");
 
                     b.Property<bool>("IsApproved")

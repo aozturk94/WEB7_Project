@@ -10,7 +10,9 @@ namespace MiniShopApp.Data.Concrete.EfCore
 {
     public class EfCoreCategoryRepository : EfCoreGenericRepository<Category, MiniShopContext>, ICategoryRepository
     {
-        public Category GetByIdWithProducts(int id)
+        //Burada görünmeseler de EfCoreGenericRepository classımızdaki tüm metotlar var.
+        //Temel CRUD işlemlerini yapan 5 metot.
+        public Category GetByIdWithCategories(int categoryId)
         {
             throw new NotImplementedException();
         }

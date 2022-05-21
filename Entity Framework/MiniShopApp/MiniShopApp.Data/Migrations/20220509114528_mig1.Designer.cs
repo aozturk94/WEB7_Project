@@ -9,7 +9,7 @@ using MiniShopApp.Data.Concrete.EfCore;
 namespace MiniShopApp.Data.Migrations
 {
     [DbContext(typeof(MiniShopContext))]
-    [Migration("20220509174452_mig1")]
+    [Migration("20220509114528_mig1")]
     partial class mig1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -47,7 +47,7 @@ namespace MiniShopApp.Data.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("ImgUrl")
+                    b.Property<string>("ImageUrl")
                         .HasColumnType("TEXT");
 
                     b.Property<bool>("IsApproved")

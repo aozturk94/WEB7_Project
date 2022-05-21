@@ -5,15 +5,16 @@
 
 <div class="row">
     <div class="col-md-3">
+        @* Buraya kategoriler gelecek *@
         @await Component.InvokeAsync("Categories")
         <div class="card mt-3">
             <div class="card-header">
-                <h5 class="">Search</h5>
+                <h5>Search</h5>
             </div>
             <div class="card-body">
                 <form action="Search">
                     <div class="form-group">
-                        <input type="text" name="searchString" class="form-control" placeholder="Search..."/>
+                        <input type="text" name="q" class="form-control" placeholder="Search" />
                         <div class="mt-2">
                             <button type="submit" class="btn btn-sm btn-danger w-100">Search</button>
                         </div>
@@ -22,16 +23,15 @@
             </div>
         </div>
     </div>
+
     <div class="col-md-9">
         <div class="row">
             @foreach (var product in Model)
             {
-            <div class="col-md-4">
-                @* Partial view çağırmanın 2 yolu var;
-                    1. Yol Html-Helper kullanmak
-                    2. Tag-Helper kullanmak*@
-                @await Html.PartialAsync("_Product", product)
-            </div>
+                <div class="col-md-4">
+                   @await Html.PartialAsync("_Product", product)
+                    @*<partial name="_Product" model="product" />*@
+                </div>
             }
         </div>
     </div>
