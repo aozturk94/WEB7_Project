@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace MiniShopApp.Business.Concrete
 {
-    public class JobManager
+    public static class JobManager
     {   
         //Burada genel olarak tanımlamak istediğimiz her yerde ihtiyaç duyma ihtimalimiz olan metotlar yazılacak.
-        public string MakeUrl(string url)
+        public static string MakeUrl(string url)
         {
             //Kendisie gelen string değerin içindeki Türkçe karakterler yerine Latin alfabesindeki karşılıklarını koyacak, boşlukların yerine "-" işareti koyacak, Nokta (.)ları kaldıracak. 
             url = url.Replace("I", "i");
@@ -32,7 +32,7 @@ namespace MiniShopApp.Business.Concrete
             return url;
         }
 
-        public string UploadImage(IFormFile file, string url)
+        public static string UploadImage(IFormFile file, string url)
         {
             var extension = Path.GetExtension(file.FileName);
             var randomName = $"{url}-{Guid.NewGuid()}{extension}";

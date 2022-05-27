@@ -41,10 +41,10 @@ namespace MiniShopApp.WebUI.Controllers
         {
             if (ModelState.IsValid && categoryIds.Length>0 && file!=null)
             {
-                JobManager jobManager = new JobManager();
-                var url = jobManager.MakeUrl(model.Name);
 
-                model.ImageUrl = jobManager.UploadImage(file, url);
+                var url = JobManager.MakeUrl(model.Name);
+
+                model.ImageUrl = JobManager.UploadImage(file, url);
 
                 var product = new Product()
                 {
@@ -109,8 +109,7 @@ namespace MiniShopApp.WebUI.Controllers
             //Aslında üçüncü bir parametremiz de olacak. (Create'te de olacak)
             //IFormFile tipinde resim.
 
-            JobManager jobManager = new JobManager();
-            var url = jobManager.MakeUrl(model.Name);
+            var url = JobManager.MakeUrl(model.Name);
 
             if (ModelState.IsValid && categoryIds.Length > 0 && file!=null)
             {
@@ -122,7 +121,7 @@ namespace MiniShopApp.WebUI.Controllers
                 entity.Description = model.Description;
                 entity.IsApproved = model.IsApproved;
                 entity.IsHome = model.IsHome;
-                entity.ImageUrl = jobManager.UploadImage(file, url);
+                entity.ImageUrl = JobManager.UploadImage(file, url);
                 _productService.Update(entity, categoryIds);
                 CreateMessage("Ürün güncellenmiştir.", "success");
                 return RedirectToAction("ProductList");
@@ -153,6 +152,29 @@ namespace MiniShopApp.WebUI.Controllers
             var entity = _productService.GetById(productId);
             _productService.Delete(entity);
             return RedirectToAction("ProductList");
+        }
+
+        public IActionResult CategoryList()
+        {
+            return View(_categoryService.GetAll());
+        }
+        public IActionResult CategoryCreate()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult CategoryCreate(Category category)
+        {
+            _categoryService.Create(category);
+            return RedirectToAction("CategoryList");
+        }
+
+        public IActionResult CategoryDelete(int categoryId)
+        {
+            var entity = _categoryService.GetById(categoryId);
+            _categoryService.Delete(entity);
+            return RedirectToAction("CategoryList");
         }
 
         private void CreateMessage(string message, string alertType)

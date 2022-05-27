@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -8,6 +10,7 @@ using MiniShopApp.Business.Abstract;
 using MiniShopApp.Business.Concrete;
 using MiniShopApp.Data.Abstract;
 using MiniShopApp.Data.Concrete.EfCore;
+using MiniShopApp.WebUI.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,6 +30,30 @@ namespace MiniShopApp.WebUI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<ApplicationContext>(options => options.UseSqlite("Data Source = MiniShopAppDb"));
+
+            services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<ApplicationContext>().AddDefaultTokenProviders();
+
+            services.Configure<IdentityOptions>(options => 
+            {
+                //Password
+                options.Password.RequireDigit = true;
+                options.Password.RequireLowercase = true;
+                options.Password.RequireUppercase = true;
+                options.Password.RequireNonAlphanumeric = true;
+                options.Password.RequiredLength = 6;
+
+                //Lockout
+                options.Lockout.MaxFailedAccessAttempts = 3;
+                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
+
+                //User
+                options.User.RequireUniqueEmail = true;
+
+                //SignIn
+                options.SignIn.RequireConfirmedEmail = true;
+            });
+
             services.AddScoped<IProductRepository, EfCoreProductRepository>();
             services.AddScoped<ICategoryRepository, EfCoreCategoryRepository>();
             services.AddScoped<IProductService, ProductManager>();
@@ -89,6 +116,17 @@ namespace MiniShopApp.WebUI
                     name: "productdetails",
                     pattern: "{url}",
                     defaults: new { controller = "MiniShop", action = "Details" }
+                    );
+
+               endpoints.MapControllerRoute(
+                    name: "admincategories",
+                    pattern: "admin/categories",
+                    defaults: new { controller = "Admin", action = "CategoryList" }
+                    );
+              endpoints.MapControllerRoute(
+                    name: "admincategorycreate",
+                    pattern: "admin/categories/create",
+                    defaults: new { controller = "Admin", action = "CategoryCreate" }
                     );
 
                 endpoints.MapControllerRoute(
