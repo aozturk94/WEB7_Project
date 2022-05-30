@@ -14,11 +14,7 @@ namespace MiniShopApp.Data.Concrete.EfCore
     {
         public void Create(TEntity entity)
         {
-            using (var context = new TContext())
-            {
-                context.Set<TEntity>().Add(entity);
-                context.SaveChanges();
-            }
+            throw new NotImplementedException();
         }
 
         public void Delete(TEntity entity)

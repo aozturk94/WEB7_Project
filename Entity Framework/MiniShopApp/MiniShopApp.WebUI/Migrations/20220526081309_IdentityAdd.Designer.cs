@@ -9,14 +9,14 @@ using MiniShopApp.WebUI.Identity;
 namespace MiniShopApp.WebUI.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20220526081918_IdentityAdd")]
+    [Migration("20220526081309_IdentityAdd")]
     partial class IdentityAdd
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "5.0.17");
+                .HasAnnotation("ProductVersion", "5.0.16");
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {

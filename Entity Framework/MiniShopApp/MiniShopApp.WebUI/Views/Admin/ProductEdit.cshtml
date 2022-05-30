@@ -4,6 +4,7 @@
 <form asp-controller="Admin" asp-action="ProductEdit" method="post" enctype="multipart/form-data">
     <div class="row">
         <div class="col-md-8">
+
             <div class="form-group row mb-2">
                 <label class="col-form-label col-sm-3">Name:</label>
                 <div class="col-sm-9">
@@ -13,33 +14,19 @@
             </div>
 
             <div class="form-group row mb-2">
-                <label class="col-form-label col-sm-3">URL:</label>
-                <div class="col-sm-9">
-                    <input type="text" asp-for="Url" class="form-control"/>
-                </div>
-            </div>
-
-            <div class="form-group row mb-2">
                 <label class="col-form-label col-sm-3">Description:</label>
                 <div class="col-sm-9">
-                    <input type="text" asp-for="Description" class="form-control"/>
+                    <input type="text" asp-for="Description" class="form-control" />
+                    <span asp-validation-for="Description" class="text-danger"></span>
                 </div>
             </div>
 
             <div class="form-group row mb-2">
-                <label class="col-form-label col-sm-3">ImageUrl:</label>
+                <label class="col-form-label col-sm-3">Image:</label>
                 <div class="col-sm-9">
-                    <div class="d-flex align-items-center">
-                        <div class="col-md-3">
-                            <img src="/img/@Model.ImageUrl" class="img-fluid" width="100" alt="Alternate Text" />
-                            <input type="hidden" name="ImgUrl" value="@Model.ImageUrl" />
-                        </div>
-                        <div class="col-md-9">
-                            <input type="file" name="file" class="form-control" />
-                            <span class="text-danger">@ViewBag.ImageMessage</span>
-                        </div>
-                    </div>
-
+                    <img src="~/img/@Model.ImageUrl" width="80" alt="Alternate Text" />
+                    <input type="file" name="file" class="form-control" />
+                    <span class="text-danger">@ViewBag.ImageMessage</span>
                 </div>
             </div>
 
@@ -48,6 +35,7 @@
                 <div class="col-sm-9">
                     <input type="text" asp-for="Price" class="form-control" />
                     <span asp-validation-for="Price" class="text-danger"></span>
+
                 </div>
             </div>
 

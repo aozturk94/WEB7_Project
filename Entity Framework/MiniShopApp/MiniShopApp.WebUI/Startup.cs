@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +11,7 @@ using MiniShopApp.Business.Abstract;
 using MiniShopApp.Business.Concrete;
 using MiniShopApp.Data.Abstract;
 using MiniShopApp.Data.Concrete.EfCore;
+using MiniShopApp.WebUI.EmailServices;
 using MiniShopApp.WebUI.Identity;
 using System;
 using System.Collections.Generic;
@@ -30,11 +32,11 @@ namespace MiniShopApp.WebUI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ApplicationContext>(options => options.UseSqlite("Data Source = MiniShopAppDb"));
+            services.AddDbContext<ApplicationContext>(options => options.UseSqlite("Data Source=MiniShopAppDb"));
 
             services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<ApplicationContext>().AddDefaultTokenProviders();
 
-            services.Configure<IdentityOptions>(options => 
+            services.Configure<IdentityOptions>(options =>
             {
                 //Password
                 options.Password.RequireDigit = true;
@@ -52,15 +54,47 @@ namespace MiniShopApp.WebUI
 
                 //SignIn
                 options.SignIn.RequireConfirmedEmail = true;
+                
+
             });
+
+            services.ConfigureApplicationCookie(options => {
+                options.LoginPath = "/account/login";
+                options.LogoutPath = "/account/logout";
+                options.AccessDeniedPath = "/account/accessdenied";
+
+                options.SlidingExpiration = true;
+                options.ExpireTimeSpan = TimeSpan.FromMinutes(20);
+
+                options.Cookie = new CookieBuilder()
+                {
+                    HttpOnly = true,
+                    Name = "MiniShopApp.Security.Cookie",
+                    SameSite = SameSiteMode.Strict
+                };
+
+                });
 
             services.AddScoped<IProductRepository, EfCoreProductRepository>();
             services.AddScoped<ICategoryRepository, EfCoreCategoryRepository>();
             services.AddScoped<IProductService, ProductManager>();
             //Proje boyunca ICategoryService çaðrýldýðýnda, CategoryManager'i kullan.
             services.AddScoped<ICategoryService, CategoryManager>();
+            services.AddScoped<IEmailSender, SmtpEmailSender>(i=>new SmtpEmailSender(
+                Configuration["EmailSender:Host"],
+                Configuration.GetValue<int>("EmailSender:Port"),
+                Configuration.GetValue<bool>("EmailSender:EnableSSL"),
+                Configuration["EmailSender:UserName"],
+                Configuration["EmailSender:Password"]
+                ));
+
+
+
             //Projemizin MVC yapýsýnda olmasýný saðlar.
             services.AddControllersWithViews();
+            services.AddRazorPages().AddViewOptions(options =>
+                options.HtmlHelperOptions.ClientValidationEnabled = false
+            );
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -80,6 +114,7 @@ namespace MiniShopApp.WebUI
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
+            app.UseAuthentication();
             app.UseRouting();
 
             app.UseAuthorization();
@@ -116,17 +151,6 @@ namespace MiniShopApp.WebUI
                     name: "productdetails",
                     pattern: "{url}",
                     defaults: new { controller = "MiniShop", action = "Details" }
-                    );
-
-               endpoints.MapControllerRoute(
-                    name: "admincategories",
-                    pattern: "admin/categories",
-                    defaults: new { controller = "Admin", action = "CategoryList" }
-                    );
-              endpoints.MapControllerRoute(
-                    name: "admincategorycreate",
-                    pattern: "admin/categories/create",
-                    defaults: new { controller = "Admin", action = "CategoryCreate" }
                     );
 
                 endpoints.MapControllerRoute(

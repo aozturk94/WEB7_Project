@@ -41,11 +41,8 @@ namespace MiniShopApp.WebUI.Controllers
         {
             if (ModelState.IsValid && categoryIds.Length>0 && file!=null)
             {
-
                 var url = JobManager.MakeUrl(model.Name);
-
                 model.ImageUrl = JobManager.UploadImage(file, url);
-
                 var product = new Product()
                 {
                     Name = model.Name,
@@ -56,12 +53,12 @@ namespace MiniShopApp.WebUI.Controllers
                     IsApproved = model.IsApproved,
                     IsHome = model.IsHome
                 };
-
                 _productService.Create(product, categoryIds);
 
-                CreateMessage("Ürün eklenmiştir.", "success");
+                CreateMessage("Ürün eklenmiştir", "success");
                 return RedirectToAction("ProductList");
             }
+            //İşler yolunda gitmediyse
 
             if (categoryIds.Length>0)
             {
@@ -74,6 +71,7 @@ namespace MiniShopApp.WebUI.Controllers
             {
                 ViewBag.CategoryMessage = "Lütfen en az bir kategori seçiniz!";
             }
+
             if (file==null)
             {
                 ViewBag.ImageMessage = "Lütfen bir resim seçiniz!";
@@ -84,46 +82,51 @@ namespace MiniShopApp.WebUI.Controllers
         }
         public IActionResult ProductEdit(int? id)
         {
-            var entity = _productService.GetByIdWithCategories((int)id);
-            var model = new ProductModel()
-            {
-                ProductId = entity.ProductId,
-                Name = entity.Name,
-                Url = entity.Url,
-                Price = entity.Price,
-                Description = entity.Description,
-                ImageUrl = entity.ImageUrl,
-                IsApproved = entity.IsApproved,
-                IsHome = entity.IsHome,
-                SelectedCategories = entity
-                    .ProductCategories
-                    .Select(i => i.Category)
-                    .ToList()
-            };
-            ViewBag.Categories = _categoryService.GetAll();
-            return View(model);
+
+                var entity = _productService.GetByIdWithCategories((int)id);
+                var model = new ProductModel()
+                {
+                    ProductId = entity.ProductId,
+                    Name = entity.Name,
+                    Url = entity.Url,
+                    Price = entity.Price,
+                    Description = entity.Description,
+                    ImageUrl = entity.ImageUrl,
+                    IsApproved = entity.IsApproved,
+                    IsHome = entity.IsHome,
+                    SelectedCategories = entity
+                        .ProductCategories
+                        .Select(i => i.Category)
+                        .ToList()
+                };
+                ViewBag.Categories = _categoryService.GetAll();
+                return View(model);
+            
         }
         [HttpPost]
         public IActionResult ProductEdit(ProductModel model, int[] categoryIds, IFormFile file)
         {
             //Aslında üçüncü bir parametremiz de olacak. (Create'te de olacak)
             //IFormFile tipinde resim.
-
-            var url = JobManager.MakeUrl(model.Name);
-
-            if (ModelState.IsValid && categoryIds.Length > 0 && file!=null)
+            if (ModelState.IsValid && categoryIds.Length > 0 && file != null)
             {
-
+                var url = JobManager.MakeUrl(model.Name);
+                model.ImageUrl = JobManager.UploadImage(file, url);
                 var entity = _productService.GetById(model.ProductId);
+                if (entity==null)
+                {
+                    return NotFound();
+                }
+
                 entity.Name = model.Name;
-                entity.Price = model.Price;
+                entity.Price = (decimal)model.Price;
                 entity.Url = model.Url;
                 entity.Description = model.Description;
                 entity.IsApproved = model.IsApproved;
                 entity.IsHome = model.IsHome;
-                entity.ImageUrl = JobManager.UploadImage(file, url);
+                entity.ImageUrl = model.ImageUrl;
                 _productService.Update(entity, categoryIds);
-                CreateMessage("Ürün güncellenmiştir.", "success");
+                CreateMessage("Ürün başarıyla güncellenmiştir.", "success");
                 return RedirectToAction("ProductList");
             }
             if (categoryIds.Length > 0)
@@ -137,14 +140,13 @@ namespace MiniShopApp.WebUI.Controllers
             {
                 ViewBag.CategoryMessage = "Lütfen en az bir kategori seçiniz!";
             }
-            if (file==null)
+
+            if (file == null)
             {
                 ViewBag.ImageMessage = "Lütfen bir resim seçiniz!";
             }
-            
             ViewBag.Categories = _categoryService.GetAll();
             return View(model);
-
         }
 
         public IActionResult ProductDelete(int productId)
@@ -152,29 +154,6 @@ namespace MiniShopApp.WebUI.Controllers
             var entity = _productService.GetById(productId);
             _productService.Delete(entity);
             return RedirectToAction("ProductList");
-        }
-
-        public IActionResult CategoryList()
-        {
-            return View(_categoryService.GetAll());
-        }
-        public IActionResult CategoryCreate()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public IActionResult CategoryCreate(Category category)
-        {
-            _categoryService.Create(category);
-            return RedirectToAction("CategoryList");
-        }
-
-        public IActionResult CategoryDelete(int categoryId)
-        {
-            var entity = _categoryService.GetById(categoryId);
-            _categoryService.Delete(entity);
-            return RedirectToAction("CategoryList");
         }
 
         private void CreateMessage(string message, string alertType)
