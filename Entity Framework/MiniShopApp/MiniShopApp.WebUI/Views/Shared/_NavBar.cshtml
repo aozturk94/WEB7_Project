@@ -9,20 +9,15 @@
             <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                 <div>
                     <ul class="navbar-nav flex-grow-1">
-                        @if (!User.Identity.IsAuthenticated)
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="MiniShop" asp-action="List" asp-route-category="">Products</a>
-                            </li>
-                        }
-                        else
-                        {
-                            
                         <li class="nav-item">
-                            <a href="/admin/products" class="nav-link text-dark">Admin Products</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="MiniShop" asp-action="List" asp-route-category="">Products</a>
                         </li>
-                        }
-
+                        @if (User.Identity.IsAuthenticated)
+                        {
+            <li class="nav-item">
+                <a href="/admin/products" class="nav-link text-dark">Admin Products</a>
+            </li>
+}
                     </ul>
                 </div>
                 <div>
@@ -30,16 +25,22 @@
                         @if (!User.Identity.IsAuthenticated)
                         {
                             <li class="nav-item">
-                            <a href="/account/login" class="nav-link text-dark">Login</a>
+                                <a href="/account/login" class="nav-link text-dark">Login</a>
                             </li>
                             <li class="nav-item">
-                            <a href="/account/register" class="nav-link text-dark">Register</a>
+                                <a href="/account/register" class="nav-link text-dark">Register</a>
                             </li>
                         }
+                        else
+                        {
 
                         <li class="nav-item">
-                            <a href="/account/login" class="nav-link text-dark">Logout</a>
+                            <a href="/account/login" class="nav-link text-dark">Manage</a>
                         </li>
+                        <li class="nav-item">
+                            <a href="/account/login" class="nav-link text-dark">Login</a>
+                        </li>
+                        }
                     </ul>
                 </div>
             </div>
