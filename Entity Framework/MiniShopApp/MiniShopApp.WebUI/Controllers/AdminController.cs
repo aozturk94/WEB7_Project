@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MiniShopApp.Business.Abstract;
 using MiniShopApp.Business.Concrete;
@@ -27,6 +28,8 @@ namespace MiniShopApp.WebUI.Controllers
         {
             return View();
         }
+
+        [Authorize]
         public IActionResult ProductList()
         {
             return View(_productService.GetAll());
