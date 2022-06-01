@@ -27,10 +27,12 @@ namespace MiniShopApp.WebUI.Controllers
         {
             return View();
         }
-        public IActionResult Login()
+        public IActionResult Login(string returnUrl)
         {
-            LoginModel loginModel = new LoginModel();
-            return View(loginModel);
+            return View(new LoginModel() 
+            {
+                ReturnUrl = returnUrl
+            });
         }
         [HttpPost]
         public async Task<IActionResult> Login(LoginModel model)
@@ -56,7 +58,11 @@ namespace MiniShopApp.WebUI.Controllers
 
             if (result.Succeeded)
             {
-                return RedirectToAction("Index","Home");
+                if (!String.IsNullOrEmpty(model.ReturnUrl))
+                {
+                    return Redirect(model.ReturnUrl);
+                }
+                else { return RedirectToAction("Index","Home"); }
             }
 
             CreateMessage("Şifreniz hatalı", "danger");
