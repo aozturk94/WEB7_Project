@@ -23,6 +23,11 @@ namespace MiniShopApp.WebUI.Controllers
             _signInManager = signInManager;
             _emailSender = emailSender;
         }
+
+        public IActionResult AccessDenied()
+        {
+            return View();
+        }
         public IActionResult Index()
         {
             return View();
@@ -50,7 +55,7 @@ namespace MiniShopApp.WebUI.Controllers
             }
             if (!await _userManager.IsEmailConfirmedAsync(user))
             {
-                ModelState.AddModelError("", "Hesabınız onaylanmamıştır! Lütfen mailiniz kontrol ediniz.");
+                ModelState.AddModelError("", "Hesabınız onaylanmamıştır! Lütfen mailinizi kontrol ediniz.");
                 return View(model);
             }
 

@@ -2,9 +2,11 @@
 
 <h5 class="display-4">Edit Role</h5>
 <hr />
-<form asp-controller="Admin" asp-action="RoletEdit" method="post">
+<form asp-controller="Admin" asp-action="RoleEdit" method="post">
+    <input type="hidden" name="RoleId" value="@Model.Role.Id" />
+    <input type="hidden" name="RoleName" value="@Model.Role.Name" />
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-6">
 
             <h6 class="bg-info text-white p-1">
                 Add to @Model.Role.Name
@@ -22,12 +24,36 @@
                     {
                         <tr>
                             <td>@user.UserName</td>
-                            <td><input type="checkbox" name="IdsToAdd" value="@user.Id"/></td>
+                            <td><input type="checkbox" name="IdsToAdd" value="@user.Id" /></td>
                         </tr>
                     }
                 }
             </table>
-                    <button type="submit" class="btn btn-primary">Save Changes</button>
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+        </div>
+        <div class="col-md-6">
+
+            <h6 class="bg-info text-white p-1">
+                Remove from @Model.Role.Name
+            </h6>
+            <table class="table table-sm table-bordered">
+                @if (Model.Members.Count() == 0)
+                {
+                    <tr>
+                        <td colspan="2">Bu role ait hiç kullanıcı yok!</td>
+                    </tr>
+                }
+                else
+                {
+                    @foreach (var user in Model.Members)
+                    {
+                        <tr>
+                            <td>@user.UserName</td>
+                            <td><input type="checkbox" name="IdsToDelete" value="@user.Id" /></td>
+                        </tr>
+                    }
+                }
+            </table>
         </div>
     </div>
 </form>
