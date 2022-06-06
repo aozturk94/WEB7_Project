@@ -77,9 +77,14 @@ namespace MiniShopApp.WebUI
 
             services.AddScoped<IProductRepository, EfCoreProductRepository>();
             services.AddScoped<ICategoryRepository, EfCoreCategoryRepository>();
-            services.AddScoped<IProductService, ProductManager>();
+            services.AddScoped<ICardRepository, EfCoreCardRepository>();
+
             //Proje boyunca ICategoryService çaðrýldýðýnda, CategoryManager'i kullan.
+            services.AddScoped<IProductService, ProductManager>();
             services.AddScoped<ICategoryService, CategoryManager>();
+            services.AddScoped<ICardService, CardManager>();
+
+
             services.AddScoped<IEmailSender, SmtpEmailSender>(i=>new SmtpEmailSender(
                 Configuration["EmailSender:Host"],
                 Configuration.GetValue<int>("EmailSender:Port"),
@@ -121,6 +126,11 @@ namespace MiniShopApp.WebUI
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllerRoute(
+                    name: "card",
+                    pattern: "card",
+                    defaults: new { controller = "card", action = "index" }
+                    );
 
                 endpoints.MapControllerRoute(
                     name: "adminroles",

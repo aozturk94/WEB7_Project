@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using MiniShopApp.Business.Abstract;
 using MiniShopApp.WebUI.EmailServices;
 using MiniShopApp.WebUI.Identity;
 using MiniShopApp.WebUI.Models;
@@ -16,12 +17,14 @@ namespace MiniShopApp.WebUI.Controllers
         private UserManager<User> _userManager;
         private SignInManager<User> _signInManager;
         private IEmailSender _emailSender;
-        
-        public AccountController(UserManager<User> userManager, SignInManager<User> signInManager, IEmailSender emailSender)
+        private ICardService _cardService;
+
+        public AccountController(UserManager<User> userManager, SignInManager<User> signInManager, IEmailSender emailSender, ICardService cardService)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _emailSender = emailSender;
+            _cardService = cardService;
         }
 
         public IActionResult AccessDenied()
@@ -116,7 +119,7 @@ namespace MiniShopApp.WebUI.Controllers
         {
             if (userId == null || token==null)
             {
-                CreateMessage("Bir sorun oluştur", "warning");
+                CreateMessage("Bir sorun oluştu", "warning");
                 return View();
             }
 
@@ -126,12 +129,15 @@ namespace MiniShopApp.WebUI.Controllers
                 var result = await _userManager.ConfirmEmailAsync(user, token);
                 if (result.Succeeded)
                 {
+                    //Card oluşturulacak
+                    _cardService.InitializeCard(userId);
+
                     CreateMessage("Hesabınız onaylanmıştır!", "success");
                 }
                 return View();
             }
 
-            CreateMessage("Hesabınız onaylanamamıştır! Lütfen daha sonra yeniden deneyiniz","danger");
+            CreateMessage("Hesabınız onaylanamamıştır! Lütfen daha sonra yeniden deneyiniz.","danger");
             return View();
         }
 
