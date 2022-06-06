@@ -37,11 +37,115 @@ namespace MiniShopApp.WebUI.Controllers
         {
             return View(_userManager.Users);
         }
+
+        public IActionResult UserCreate()
+        {
+            var roles = _roleManager.Roles.Select(i => i.Name);
+            ViewBag.roles = roles;
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UserCreate(UserDetailsModel model, string[] selectedRoles)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = new User()
+                {
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    UserName = model.UserName,
+                    Email = model.Email,
+                    EmailConfirmed = model.EmailConfirmed
+                };
+
+                var result = await _userManager.CreateAsync(user, "Qwe123.");
+
+                if (result.Succeeded)
+                {
+                    selectedRoles = selectedRoles ?? new string[] { };
+                    await _userManager.AddToRolesAsync(user, selectedRoles);
+                    return Redirect("~/admin/user/list");
+                }
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                }
+
+                var roles = _roleManager.Roles.Select(İ => İ.Name);
+                ViewBag.Roles = roles;
+                return View(model);
+            }
+            var roles2 = _roleManager.Roles.Select(İ => İ.Name);
+            ViewBag.Roles = roles2;
+            return View(model);
+
+        }
+        public async Task<IActionResult> UserEdit(string id)
+        {
+            var user = await _userManager.FindByIdAsync(id);
+            if (user != null)
+            {
+                var selectedRoles = await _userManager.GetRolesAsync(user);
+                var roles = _roleManager.Roles.Select(i => i.Name);
+                ViewBag.Roles = roles;
+                return View(new UserDetailsModel()
+                {
+                    UserId = user.Id,
+                    UserName = user.UserName,
+                    FirstName = user.FirstName,
+                    LastName = user.LastName,
+                    Email = user.Email,
+                    EmailConfirmed = user.EmailConfirmed,
+                    SelectedRoles = selectedRoles
+                });
+            }
+            return Redirect("~/admin/user/list");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UserEdit(UserDetailsModel model, string[] selectedRoles)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await _userManager.FindByIdAsync(model.UserId);
+                if (user != null)
+                {
+                    user.FirstName = model.FirstName;
+                    user.LastName = model.LastName;
+                    user.UserName = model.UserName;
+                    user.Email = model.Email;
+                    user.EmailConfirmed = model.EmailConfirmed;
+                }
+
+                var result = await _userManager.UpdateAsync(user);
+
+                if (result.Succeeded)
+                {
+                    var userRoles = await _userManager.GetRolesAsync(user);
+                    selectedRoles = selectedRoles ?? new string[] { };
+                    await _userManager.AddToRolesAsync(user, selectedRoles.Except(userRoles).ToArray<string>());
+                    await _userManager.RemoveFromRolesAsync(user, userRoles.Except(selectedRoles).ToArray<string>());
+                    return Redirect("~/admin/user/list");
+                }
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                }
+                var roles = _roleManager.Roles.Select(i => i.Name);
+                ViewBag.Roles = roles;
+                return View(model);
+            }
+            ModelState.AddModelError("", "Lütfen ilgili alanları kontrol ediniz!");
+            var roles2 = _roleManager.Roles.Select(İ => İ.Name);
+            ViewBag.Roles = roles2;
+            return View(model);
+        }
+
         public IActionResult RoleList()
         {
             return View(_roleManager.Roles);
         }
-
         public IActionResult RoleCreate() 
         {
             return View();
