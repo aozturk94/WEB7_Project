@@ -57,5 +57,10 @@ namespace MiniShopApp.WebUI.Controllers
             _cardService.DeleteFromCart(userId, productId);
             return RedirectToAction("Index","Card");
         }
+
+        public IActionResult CheckOut()
+        {
+            return View();
+        }
     }
 }

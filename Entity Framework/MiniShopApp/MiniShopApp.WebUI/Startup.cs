@@ -64,7 +64,7 @@ namespace MiniShopApp.WebUI
                 options.AccessDeniedPath = "/account/accessdenied";
 
                 options.SlidingExpiration = true;
-                options.ExpireTimeSpan = TimeSpan.FromMinutes(20);
+                options.ExpireTimeSpan = TimeSpan.FromMinutes(10);
 
                 options.Cookie = new CookieBuilder()
                 {
@@ -126,6 +126,12 @@ namespace MiniShopApp.WebUI
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllerRoute(
+                    name: "checkout",
+                    pattern: "checkout",
+                    defaults: new { controller = "Card", action = "Checkout" }
+                    );
+
                 endpoints.MapControllerRoute(
                     name: "card",
                     pattern: "card",

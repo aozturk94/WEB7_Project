@@ -1,0 +1,61 @@
+﻿<h6 class="display-4">Check Out</h6>
+<hr />
+<div class="row">
+    <div class="col-md-8">
+        <h6>Order Details</h6>
+        <form asp-controller="Card" asp-action="CheckOut" method="post">
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label>First Name:</label>
+                    <input type="text" name="firstName" value="" class="form-control" />
+                </div>
+                <div class="col-md-6">
+                    <label>Last Name:</label>
+                    <input type="text" name="lastName" value="" class="form-control" />
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-12">
+                    <label>Adress:</label>
+                    <textarea type="text" name="adress" value="" class="form-control"></textarea>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-4">
+                    <label>City:</label>
+                    <input type="text" name="city" value="" class="form-control"/>
+                </div>
+                <div class="col-md-4">
+                    <label>Phone:</label>
+                    <input type="tel" name="tel" value="" class="form-control"/>
+                </div>
+                <div class="col-md-4">
+                    <label>E-mail:</label>
+                    <input type="email" name="email" value="" class="form-control"/>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-4">
+        <h6>Order Summary</h6>
+        <span>Summary Info</span>
+        <ul class="list-group mb-3">
+            <li class="list-group-item d-flex justify-content-between">
+                <div>
+                    <h6>Product1</h6>
+                </div>
+                <span class="text-muted">2</span>
+                <span class="text-muted">4000</span>
+                <span class="text-muted">8000</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between">
+                <div>
+                    <h6>Product2</h6>
+                </div>
+                <span class="text-muted">4</span>
+                <span class="text-muted">300</span>
+                <span class="text-muted">1200</span>
+            </li>
+        </ul>
+    </div>
+</div>
