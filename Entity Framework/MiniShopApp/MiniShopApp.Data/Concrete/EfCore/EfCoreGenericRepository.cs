@@ -46,9 +46,13 @@ namespace MiniShopApp.Data.Concrete.EfCore
             }
         }
 
-        public void Update(TEntity entity)
+        public virtual void Update(TEntity entity) //Override yapabilmek için 'virtual'
         {
-            throw new NotImplementedException();
+            using (var context = new TContext())
+            {
+                context.Entry(entity).State = EntityState.Modified;
+                context.SaveChanges();
+            }
         }
     }
 }

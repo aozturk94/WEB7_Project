@@ -9,6 +9,10 @@ namespace MiniShopApp.WebUI.Models
     {
         public int CardId { get; set; }
         public List<CardItemModel> CardItems { get; set; }
+        public double TotalPrice()
+        {
+            return CardItems.Sum(i => i.Price * i.Quantity);
+        }
     }
 
     public class CardItemModel

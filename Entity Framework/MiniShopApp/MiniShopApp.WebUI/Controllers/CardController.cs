@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using MiniShopApp.Business.Abstract;
 using MiniShopApp.WebUI.Identity;
@@ -10,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace MiniShopApp.WebUI.Controllers
 {
+    [Authorize]
     public class CardController : Controller
     {
         private ICardService _cardService;
@@ -38,6 +40,22 @@ namespace MiniShopApp.WebUI.Controllers
                     Quantity = i.Quantity
                 }).ToList()
             });
+        }
+
+        [HttpPost]
+        public IActionResult AddToCart(int productId, int quantity)
+        {
+            var userId = _userManager.GetUserId(User);
+            _cardService.AddToCard(userId, productId, quantity);
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public IActionResult DeleteFromCart(int productId)
+        {
+            var userId = _userManager.GetUserId(User);
+            _cardService.DeleteFromCart(userId, productId);
+            return RedirectToAction("Index","Card");
         }
     }
 }

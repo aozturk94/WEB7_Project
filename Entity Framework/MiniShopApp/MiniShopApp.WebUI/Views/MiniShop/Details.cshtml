@@ -15,12 +15,24 @@
                    asp-route-category="@item.Url"
                    class="btn btn-link p-0 mb-3">@item.Name </a>  
             }
+        <div class="mb-3">
+            <h4 class="text-primary">@Model.Product.Price <i class="fa-solid fa-turkish-lira-sign"></i></h4>
             <div class="mb-3">
-                <h4 class="text-primary">@Model.Product.Price <i class="fa-solid fa-turkish-lira-sign"></i></h4>
-                <div class="mb-3">
-                    <p>@Model.Product.Description</p>
-                </div>
-                <button type="submit" class="btn btn-primary btn-lg">Add to Card</button>
+                <p>@Model.Product.Description</p>
             </div>
+
+            <form asp-controller="Card" asp-action="AddToCart" method="post" class="form-inline">
+
+                <input type="hidden" name="productId" value="@Model.Product.ProductId" />
+                <div class="input-group">
+                    <input class="form-control-sm" type="number" name="quantity" value="1" min="1" max="99" step="1" />&nbsp;
+                    <div>
+                        <button type="submit" class="btn btn btn-primary">
+                            <i class="fa-solid fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
         </div>
     </div>
