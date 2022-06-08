@@ -1,4 +1,6 @@
-﻿<h6 class="display-4">Check Out</h6>
+﻿@model OrderModel
+
+<h6 class="display-4">Check Out</h6>
 <hr />
 <div class="row">
     <div class="col-md-8">
@@ -7,31 +9,31 @@
             <div class="row mb-3">
                 <div class="col-md-6">
                     <label>First Name:</label>
-                    <input type="text" name="firstName" value="" class="form-control" />
+                    <input type="text" asp-for="@Model.FirstName" class="form-control" />
                 </div>
                 <div class="col-md-6">
                     <label>Last Name:</label>
-                    <input type="text" name="lastName" value="" class="form-control" />
+                    <input type="text" asp-for="@Model.LastName" class="form-control" />
                 </div>
             </div>
             <div class="row mb-3">
                 <div class="col-md-12">
                     <label>Adress:</label>
-                    <textarea type="text" name="adress" value="" class="form-control"></textarea>
+                    <textarea type="text" asp-for="@Model.Address" class="form-control"></textarea>
                 </div>
             </div>
             <div class="row mb-3">
                 <div class="col-md-4">
                     <label>City:</label>
-                    <input type="text" name="city" value="" class="form-control"/>
+                    <input type="text" asp-for="@Model.City" class="form-control"/>
                 </div>
                 <div class="col-md-4">
                     <label>Phone:</label>
-                    <input type="tel" name="tel" value="" class="form-control"/>
+                    <input type="tel" asp-for="@Model.Phone" class="form-control"/>
                 </div>
                 <div class="col-md-4">
                     <label>E-mail:</label>
-                    <input type="email" name="email" value="" class="form-control"/>
+                    <input type="email" asp-for="@Model.Email" class="form-control"/>
                 </div>
             </div>
         </form>
@@ -40,21 +42,21 @@
         <h6>Order Summary</h6>
         <span>Summary Info</span>
         <ul class="list-group mb-3">
+            @foreach (var item in Model.CardModel.CardItems)
+            {
+                <li class="list-group-item d-flex justify-content-between">
+                    <div>
+                        <h6>@item.Name</h6>
+                    </div>
+                    <span class="text-muted">@item.Quantity</span>
+                    <span class="text-muted">@item.Price</span>
+                    <span class="text-muted">@((item.Quantity*item.Price).ToString("c"))</span>
+                </li>
+            }
+
             <li class="list-group-item d-flex justify-content-between">
-                <div>
-                    <h6>Product1</h6>
-                </div>
-                <span class="text-muted">2</span>
-                <span class="text-muted">4000</span>
-                <span class="text-muted">8000</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between">
-                <div>
-                    <h6>Product2</h6>
-                </div>
-                <span class="text-muted">4</span>
-                <span class="text-muted">300</span>
-                <span class="text-muted">1200</span>
+                <span>Total(TL)</span>
+                <strong>@Model.CardModel.TotalPrice().ToString("c")</strong>
             </li>
         </ul>
     </div>
