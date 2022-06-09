@@ -64,5 +64,10 @@ namespace MiniShopApp.Business.Concrete
                 UserId = userId
             });
         }
+
+        public void DeleteCartLog(int cartId)
+        {
+            _cardRepository.DeleteCartLog(cartId);
+        }
     }
 }

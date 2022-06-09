@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using MiniShopApp.Business.Abstract;
 using MiniShopApp.Core;
+using MiniShopApp.Entity;
 using MiniShopApp.WebUI.Identity;
 using MiniShopApp.WebUI.Models;
 using Newtonsoft.Json;
@@ -21,11 +22,13 @@ namespace MiniShopApp.WebUI.Controllers
     {
         private ICardService _cardService;
         private UserManager<User> _userManager;
+        private IOrderService _orderService;
 
-        public CardController(ICardService cardService, UserManager<User> userManager)
+        public CardController(ICardService cardService, UserManager<User> userManager, IOrderService orderService)
         {
             _cardService = cardService;
             _userManager = userManager;
+            _orderService = orderService;
         }
 
         public IActionResult Index()
@@ -109,7 +112,8 @@ namespace MiniShopApp.WebUI.Controllers
                 var payment = PaymentProcess(orderModel);
                 if (payment.Status == "success")
                 {
-                    //SaveOrder();
+                    SaveOrder(orderModel, payment, userId);
+                    _cardService.DeleteCartLog(orderModel.CardModel.CardId);
                     //ClearCard();
                     TempData["Message"] = JobManager.CreateMessage("BAŞARILI!", "Ödemeniz başarıyla alınmıştır.", "success");
                     return View("Success");
@@ -120,6 +124,40 @@ namespace MiniShopApp.WebUI.Controllers
                 }
             }
             return View(orderModel);
+        }
+
+        private void SaveOrder(OrderModel orderModel, Payment payment, string userId)
+        {
+            var order = new Order();
+            order.OrderNumber = new Random().Next(111111111,999999999).ToString();
+            order.OrderState = EnumOrderState.completed;
+            order.PaymentType = EnumPaymentType.CreditCard;
+            order.PaymentId = payment.PaymentId;
+            order.ConversationId = payment.ConversationId;
+            order.OrderDate = new DateTime();
+            order.FirstName = orderModel.FirstName;
+            order.LastName = orderModel.LastName;
+            order.UserId = userId;
+            order.Address = orderModel.Address;
+            order.City = orderModel.City;
+            order.Phone = orderModel.Phone;
+            order.Email = orderModel.Email;
+
+            order.OrderItems = new List<OrderItems>();
+            foreach (var item in orderModel.CardModel.CardItems)
+            {
+                var orderItem = new OrderItems()
+                {
+                    Price = item.Price,
+                    Quantity = item.Quantity,
+                    ProductId = item.ProductId
+                };
+
+                order.OrderItems.Add(orderItem);
+            }
+            _orderService.Create(order);
+
+            //Artık bu bilgileri kullanarak order kaydı yaratabiliriz.
         }
 
         private Payment PaymentProcess(OrderModel orderModel)

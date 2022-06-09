@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace MiniShopApp.Data.Abstract
 {
-    public interface ICardRepository : IRepository<Card>
+    public interface IOrderRepository : IRepository<Order>
     {
-        Card GetByUserId(string userId);
-        void DeleteFromCart(int cartId, int productId);
-        void DeleteCartLog(int cartId);
+
     }
 }
