@@ -5,8 +5,10 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using MiniShopApp.Business.Abstract;
+using MiniShopApp.Core;
 using MiniShopApp.WebUI.Identity;
 using MiniShopApp.WebUI.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -83,7 +85,7 @@ namespace MiniShopApp.WebUI.Controllers
         }
 
         [HttpPost]
-        public IActionResult CheckOut(OrderModel orderModel, CardModel cardModel, double totalPrice)
+        public IActionResult CheckOut(OrderModel orderModel)
         {
             if (ModelState.IsValid)
             {
@@ -109,9 +111,15 @@ namespace MiniShopApp.WebUI.Controllers
                 {
                     //SaveOrder();
                     //ClearCard();
+                    TempData["Message"] = JobManager.CreateMessage("BAŞARILI!", "Ödemeniz başarıyla alınmıştır.", "success");
                     return View("Success");
                 }
+                else
+                {
+                    TempData["Message"] = JobManager.CreateMessage("DİKKAT!", payment.ErrorMessage, "danger");
+                }
             }
+            return View(orderModel);
         }
 
         private Payment PaymentProcess(OrderModel orderModel)
@@ -188,7 +196,7 @@ namespace MiniShopApp.WebUI.Controllers
                 basketItem.Name = item.Name;
                 basketItem.Category1 = "General";
                 basketItem.ItemType = BasketItemType.PHYSICAL.ToString();
-                basketItem.Price = item.Price.ToString();
+                basketItem.Price = (item.Quantity*item.Price).ToString();
                 basketItems.Add(basketItem);
             }
 
@@ -196,5 +204,6 @@ namespace MiniShopApp.WebUI.Controllers
 
             return Payment.Create(request, options);
         }
+
     }
 }

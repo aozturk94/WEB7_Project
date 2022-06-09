@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using MiniShopApp.Business.Abstract;
+using MiniShopApp.Core;
 using MiniShopApp.WebUI.EmailServices;
 using MiniShopApp.WebUI.Identity;
 using MiniShopApp.WebUI.Models;
@@ -73,7 +74,7 @@ namespace MiniShopApp.WebUI.Controllers
                 else { return RedirectToAction("Index","Home"); }
             }
 
-            CreateMessage("Şifreniz hatalı", "danger");
+            TempData["Message"] = JobManager.CreateMessage("DİKKAT!","Şifreniz hatalı!", "danger");
 
             return View(model);
         }
@@ -107,7 +108,7 @@ namespace MiniShopApp.WebUI.Controllers
                 });
                 //email gönderme işlemi
                 await _emailSender.SendEmailAsync(model.Email, "MiniShopApp Confirm Account!", $"Lütfen email adresinizi onaylamak için <a href='https://localhost:5001{url}'>tıklayınız!</a>");
-                CreateMessage("Kayıt işleminizi tamamlamak için mailinize gönderilen onaylama linkine tıklayınız!","warning");
+                TempData["Message"] = JobManager.CreateMessage("DİKKAT!", "Kayıt işleminizi tamamlamak için mailinize gönderilen onaylama linkine tıklayınız!", "danger");
                 return RedirectToAction("Login", "Account");
             }
 
@@ -119,7 +120,7 @@ namespace MiniShopApp.WebUI.Controllers
         {
             if (userId == null || token==null)
             {
-                CreateMessage("Bir sorun oluştu", "warning");
+                TempData["Message"] = JobManager.CreateMessage("DİKKAT!", "Bir sorun oluştu.", "warning");
                 return View();
             }
 
@@ -131,13 +132,12 @@ namespace MiniShopApp.WebUI.Controllers
                 {
                     //Card oluşturulacak
                     _cardService.InitializeCard(userId);
-
-                    CreateMessage("Hesabınız onaylanmıştır!", "success");
+                    TempData["Message"] = JobManager.CreateMessage("BAŞARILI!", "Hesabınız onaylanmıştır!", "success");;
                 }
                 return View();
             }
 
-            CreateMessage("Hesabınız onaylanamamıştır! Lütfen daha sonra yeniden deneyiniz.","danger");
+            TempData["Message"] = JobManager.CreateMessage("DİKKAT!","Hesabınız onaylanamamıştır! Lütfen daha sonra yeniden deneyiniz.","danger");
             return View();
         }
 
@@ -157,13 +157,13 @@ namespace MiniShopApp.WebUI.Controllers
         {
             if (String.IsNullOrEmpty(email))
             {
-                CreateMessage("Lütfen email adresinizi giriniz", "warning");
+                TempData["Message"] = JobManager.CreateMessage("DİKKAT!", "Lütfen email adresinizi giriniz", "warning");
                 return View();
             }
             var user = await _userManager.FindByEmailAsync(email);
             if (user==null)
             {
-                CreateMessage("Böyle bir email hatası bulunamadı!","danger");
+                TempData["Message"] = JobManager.CreateMessage("DİKKAT!","Böyle bir email hatası bulunamadı!","danger");
                 return View();
             }
 
@@ -175,7 +175,7 @@ namespace MiniShopApp.WebUI.Controllers
             });
 
             await _emailSender.SendEmailAsync(email,"MiniShopApp Reset Password", $"Lütfen parolanızı sıfırlamak için <a href='https://localhost:5001{url}'>TIKLAYINIZ</a>");
-            CreateMessage("Şifre sıfırlama linki kayıtlı mail adresinize gönderilmiştir. Lütfen kontrol ediniz.", "warning");
+            TempData["Message"] = JobManager.CreateMessage("BİLGİLENDİRME!","Şifre sıfırlama linki kayıtlı mail adresinize gönderilmiştir. Lütfen kontrol ediniz.", "warning");
             return RedirectToAction("Index", "Home");
         }
 
@@ -183,7 +183,7 @@ namespace MiniShopApp.WebUI.Controllers
         {
             if (userId == null || token == null)
             {
-                CreateMessage("Bir sorun oluştu, tekrar deneyiniz!","danger");
+                TempData["Message"] = JobManager.CreateMessage("DİKKAT!","Bir sorun oluştu, tekrar deneyiniz!","danger");
                 return RedirectToAction("Index", "Home");
             }
 
@@ -205,7 +205,7 @@ namespace MiniShopApp.WebUI.Controllers
 
             if (user == null)
             {
-                CreateMessage("Bir sorun oluştu. Lütfen bilgileri kontrol ederek yeniden deneyiniz.", "danger");
+                TempData["Message"] = JobManager.CreateMessage("DİKKAT!","Bir sorun oluştu. Lütfen bilgileri kontrol ederek yeniden deneyiniz.", "danger");
                 return View();
             }
 
@@ -221,19 +221,10 @@ namespace MiniShopApp.WebUI.Controllers
                 return RedirectToAction("Login");
             }
 
-            CreateMessage("Bir sorun oluştu. Lütfen Admin'e başvurunuz", "danger");
+            TempData["Message"] = JobManager.CreateMessage("DİKKAT!", "Bir sorun oluştu. Lütfen Admin'e başvurunuz", "danger");
             return Redirect("~/");
 
         }
 
-        private void CreateMessage(string message, string alertType)
-        {
-            var msg = new AlertMessage()
-            {
-                Message = message,
-                AlertType = alertType
-            };
-            TempData["Message"] = JsonConvert.SerializeObject(msg);
-        }
     }
 }
