@@ -139,6 +139,11 @@ namespace MiniShopApp.WebUI
                     pattern: "card",
                     defaults: new { controller = "card", action = "index" }
                     );
+                             endpoints.MapControllerRoute(
+                    name: "orders",
+                    pattern: "orders",
+                    defaults: new { controller = "card", action = "GetOrders" }
+                    );
 
                 endpoints.MapControllerRoute(
                     name: "adminroles",

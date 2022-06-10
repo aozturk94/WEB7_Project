@@ -49,6 +49,38 @@ namespace MiniShopApp.WebUI.Controllers
                 }).ToList()
             });
         }
+        public IActionResult GetOrders()
+        {
+            var userId = _userManager.GetUserId(User);
+            var orders = _orderService.GetOrders(userId);
+            var orderListModel = new List<OrderListModel>();
+            OrderListModel orderModel;
+            foreach (var order in orders)
+            {
+                orderModel = new OrderListModel();
+                orderModel.OrderId = order.Id;
+                orderModel.OrderNumber = order.OrderNumber;
+                orderModel.OrderDate = order.OrderDate;
+                orderModel.FirstName = order.FirstName;
+                orderModel.LastName = order.LastName;
+                orderModel.Address = order.Address;
+                orderModel.City = order.City;
+                orderModel.Phone = order.Phone;
+                orderModel.Email = order.Email;
+                orderModel.OrderState = order.OrderState;
+                orderModel.PaymentType = order.PaymentType;
+                orderModel.OrderItems = order.OrderItems.Select(i => new OrderItemModel()
+                {
+                    OrderItemId = i.Id,
+                    Name = i.Product.Name,
+                    Price = (double)i.Price,
+                    Quantity = i.Quantity,
+                    ImageUrl = i.Product.ImageUrl
+                }).ToList();
+                orderListModel.Add(orderModel);
+            }
+            return View("Orders", orderListModel);
+        }
 
         [HttpPost]
         public IActionResult AddToCart(int productId, int quantity)
@@ -109,6 +141,11 @@ namespace MiniShopApp.WebUI.Controllers
                 };
 
                 //Ödeme alma işlemine başlayacağız.
+                if (!luhnAlgorithm(orderModel.CardNumber))
+                {
+                    TempData["Message"] = JobManager.CreateMessage("DİKKAT!", "Kart numarası hatalıdır!", "danger");
+                    return View(orderModel);
+                }
                 var payment = PaymentProcess(orderModel);
                 if (payment.Status == "success")
                 {
@@ -243,5 +280,54 @@ namespace MiniShopApp.WebUI.Controllers
             return Payment.Create(request, options);
         }
 
+        private bool luhnAlgorithm(string cardNumber)
+        {
+            var cardNumberLength = cardNumber.Length;
+            int total = 0;
+            if (cardNumberLength!=16)
+            {
+                return false;
+            }
+            else
+            {
+                int ovenTotal = 0;
+                int oddTotal = 0;
+
+                for (int i = 0; i < cardNumberLength; i++)
+                {
+                    int nextNumber = Convert.ToInt32(cardNumber[i].ToString());
+                    if (i%2 == 0)
+                    {
+                        oddTotal += Convert.ToInt32(NumberControl((nextNumber * 2).ToString()));
+                    }
+                    else
+                    {
+                        ovenTotal += nextNumber;
+                    }
+
+                }
+                total = ovenTotal + oddTotal;
+            }
+            if (total%10 == 0)
+            {
+                return true;
+            }
+            return false;
+        }
+        private int NumberControl(string number)
+        {
+            int numberLength = number.Length;
+            if (numberLength == 1)
+            {
+                return Convert.ToInt32(number);
+            }
+
+            int total = 0;
+            for (int i = 0; i < numberLength; i++)
+            {
+                total += Convert.ToInt32(number[i].ToString());
+            }
+            return total;
+        }
     }
 }
