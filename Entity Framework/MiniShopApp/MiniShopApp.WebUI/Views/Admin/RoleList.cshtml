@@ -2,7 +2,7 @@
 
 <div class="row">
     <div class="col-md-12">
-        <h6 class="display-4">Admin Roles Managament</h6>
+        <h6 class="display-4">Admin Roles Management</h6>
         <hr />
         <a href="/admin/role/create" class="btn btn-sm btn-primary">Create Role</a>
         <hr />
@@ -23,6 +23,7 @@
                             <td>@role.Id</td>
                             <td>@role.Name</td>
                             <td>
+
                                 <a href="/admin/role/@role.Id" class="btn btn-sm btn-primary mr-1">Edit</a>
 
                                 <form action="/Admin/Role/Delete" method="post" class="d-inline">
@@ -35,7 +36,9 @@
                 }
                 else
                 {
-                    <h3>Kayıtlı Rol Yoktur!</h3>
+                    <div class="alert alert-danger">
+                        <h3>Kayıtlı rol yoktur!</h3>
+                    </div>
                 }
 
             </tbody>

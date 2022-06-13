@@ -12,7 +12,7 @@ namespace MiniShopApp.Business.Abstract
         void InitializeCard(string userId);
         Card GetCardByUserId(string userId);
         void AddToCard(string userId, int productId, int quantity);
-        void DeleteFromCart(string userId, int productId);
-        void DeleteCartLog(int cartId);
+        void DeleteFromCard(string userId, int productId);
+        void ClearCard(int cardId);
     }
 }

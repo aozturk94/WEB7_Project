@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace MiniShopApp.Core
 {
-    public static class JobManager
+    public static class JobManager 
     {
         public static string MakeUrl(string url)
         {
@@ -46,11 +46,11 @@ namespace MiniShopApp.Core
             }
             return randomName;
         }
-        public static string CreateMessage(string title,string message, string alertType)
+        public static string CreateMessage(string title, string message, string alertType)
         {
             var msg = new AlertMessage()
             {
-                Title = title,
+                Title=title,
                 Message = message,
                 AlertType = alertType
             };

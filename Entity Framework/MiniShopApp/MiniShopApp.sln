@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MiniShopApp.Data", "MiniSho
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MiniShopApp.Business", "MiniShopApp.Business\MiniShopApp.Business.csproj", "{EBAD99F1-4A1E-4F96-AF80-26A82D5567A0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniShopApp.Core", "MiniShopApp.Core\MiniShopApp.Core.csproj", "{504C475A-DA3F-45E8-922E-76BD257FB304}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniShopApp.Core", "MiniShopApp.Core\MiniShopApp.Core.csproj", "{5EDD98BF-4D69-462F-A331-23B7C2B6C8C0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +35,10 @@ Global
 		{EBAD99F1-4A1E-4F96-AF80-26A82D5567A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EBAD99F1-4A1E-4F96-AF80-26A82D5567A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EBAD99F1-4A1E-4F96-AF80-26A82D5567A0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{504C475A-DA3F-45E8-922E-76BD257FB304}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{504C475A-DA3F-45E8-922E-76BD257FB304}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{504C475A-DA3F-45E8-922E-76BD257FB304}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{504C475A-DA3F-45E8-922E-76BD257FB304}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5EDD98BF-4D69-462F-A331-23B7C2B6C8C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5EDD98BF-4D69-462F-A331-23B7C2B6C8C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5EDD98BF-4D69-462F-A331-23B7C2B6C8C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5EDD98BF-4D69-462F-A331-23B7C2B6C8C0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

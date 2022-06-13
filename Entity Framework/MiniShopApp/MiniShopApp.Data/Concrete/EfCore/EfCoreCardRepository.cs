@@ -9,45 +9,38 @@ using System.Threading.Tasks;
 
 namespace MiniShopApp.Data.Concrete.EfCore
 {
-    public class EfCoreCardRepository : EfCoreGenericRepository<Card, MiniShopContext>, ICardRepository
+    public class EfCoreCardRepository : EfCoreGenericRepository<Card>, ICardRepository
     {
-        public void DeleteCartLog(int cartId)
+        public EfCoreCardRepository(MiniShopContext context) : base(context)
         {
-            using (var context = new MiniShopContext())
-            {
-                var cmd = @"DELETE FROM CardItems WHERE CardId = @p0";
-                context.Database.ExecuteSqlRaw(cmd, cartId);
-            }
+
+        }
+        private MiniShopContext MiniShopContext
+        {
+            get { return _context as MiniShopContext; }
+        }
+        public void ClearCard(int cardId)
+        {
+            var cmd = @"DELETE FROM CardItems WHERE CardId=@p0";
+            MiniShopContext.Database.ExecuteSqlRaw(cmd, cardId);
         }
 
-        public void DeleteFromCart(int cartId, int productId)
+        public void DeleteFromCard(int cardId, int productId)
         {
-            using (var context = new MiniShopContext())
-            {
-                var cmd = @"DELETE FROM CardItems WHERE CardId = @p0 AND ProductId = @p1";
-                context.Database.ExecuteSqlRaw(cmd, cartId, productId);
-            }
+            var cmd = @"DELETE FROM CardItems WHERE CardId=@p0 AND ProductId=@p1";
+            MiniShopContext.Database.ExecuteSqlRaw(cmd, cardId, productId);
         }
 
         public Card GetByUserId(string userId)
         {
-            using (var context = new MiniShopContext())
-            {
-                return context.Cards
-                    .Include(i => i.CardItems)
-                    .ThenInclude(i => i.Product)
-                    .FirstOrDefault(i => i.UserId == userId);
-            }
+            return MiniShopContext.Cards
+                .Include(i => i.CardItems)
+                .ThenInclude(i => i.Product)
+                .FirstOrDefault(i => i.UserId == userId);
         }
-
         public override void Update(Card entity)
         {
-            using (var context = new MiniShopContext())
-            {
-                context.Cards.Update(entity);
-                context.SaveChanges();
-            }
-            base.Update(entity);
+            MiniShopContext.Cards.Update(entity);
         }
     }
 }

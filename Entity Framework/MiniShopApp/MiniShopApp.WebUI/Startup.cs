@@ -32,7 +32,8 @@ namespace MiniShopApp.WebUI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ApplicationContext>(options => options.UseSqlite("Data Source=MiniShopAppDb"));
+            services.AddDbContext<ApplicationContext>(options => options.UseSqlite(Configuration.GetConnectionString("SqLiteConnection")));
+            services.AddDbContext<MiniShopContext>(options => options.UseSqlite(Configuration.GetConnectionString("SqLiteConnection")));
 
             services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<ApplicationContext>().AddDefaultTokenProviders();
 
@@ -54,37 +55,33 @@ namespace MiniShopApp.WebUI
 
                 //SignIn
                 options.SignIn.RequireConfirmedEmail = true;
-                
+            }); 
 
-            });
-
-            services.ConfigureApplicationCookie(options => {
+            services.ConfigureApplicationCookie(options =>
+            {
                 options.LoginPath = "/account/login";
                 options.LogoutPath = "/account/logout";
                 options.AccessDeniedPath = "/account/accessdenied";
-
                 options.SlidingExpiration = true;
-                options.ExpireTimeSpan = TimeSpan.FromMinutes(10);
-
+                options.ExpireTimeSpan = TimeSpan.FromMinutes(20);
                 options.Cookie = new CookieBuilder()
                 {
                     HttpOnly = true,
                     Name = "MiniShopApp.Security.Cookie",
                     SameSite = SameSiteMode.Strict
                 };
+            });
+            //services.AddScoped<IProductRepository, EfCoreProductRepository>();
+            //services.AddScoped<ICategoryRepository, EfCoreCategoryRepository>();
+            //services.AddScoped<ICardRepository, EfCoreCardRepository>();
+            //services.AddScoped<IOrderRepository, EfCoreOrderRepository>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
 
-                });
-
-            services.AddScoped<IProductRepository, EfCoreProductRepository>();
-            services.AddScoped<ICategoryRepository, EfCoreCategoryRepository>();
-            services.AddScoped<ICardRepository, EfCoreCardRepository>();
-            services.AddScoped<IOrderRepository, EfCoreOrderRepository>();
-
-            //Proje boyunca ICategoryService çaðrýldýðýnda, CategoryManager'i kullan.
             services.AddScoped<IProductService, ProductManager>();
             services.AddScoped<ICategoryService, CategoryManager>();
             services.AddScoped<ICardService, CardManager>();
             services.AddScoped<IOrderService, OrderManager>();
+
 
 
             services.AddScoped<IEmailSender, SmtpEmailSender>(i=>new SmtpEmailSender(
@@ -105,11 +102,10 @@ namespace MiniShopApp.WebUI
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, UserManager<User> userManager, RoleManager<IdentityRole> roleManager)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env,UserManager<User> userManager, RoleManager<IdentityRole> roleManager, ICardService cardService)
         {
             if (env.IsDevelopment())
             {
-                SeedDatabase.Seed();
                 app.UseDeveloperExceptionPage();
             }
             else
@@ -129,30 +125,31 @@ namespace MiniShopApp.WebUI
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
+                    name: "orders",
+                    pattern: "orders",
+                    defaults: new { controller = "Card", action = "GetOrders" }
+                    );
+
+                endpoints.MapControllerRoute(
                     name: "checkout",
                     pattern: "checkout",
-                    defaults: new { controller = "Card", action = "Checkout" }
+                    defaults: new { controller = "Card", action = "CheckOut" }
                     );
 
                 endpoints.MapControllerRoute(
                     name: "card",
                     pattern: "card",
-                    defaults: new { controller = "card", action = "index" }
-                    );
-                             endpoints.MapControllerRoute(
-                    name: "orders",
-                    pattern: "orders",
-                    defaults: new { controller = "card", action = "GetOrders" }
+                    defaults: new { controller = "Card", action = "Index" }
                     );
 
                 endpoints.MapControllerRoute(
-                    name: "adminroles",
+                    name: "adminusers",
                     pattern: "admin/user/list",
                     defaults: new { controller = "Admin", action = "UserList" }
                     );
 
                 endpoints.MapControllerRoute(
-                    name: "adminusertcreate",
+                    name: "adminusercreate",
                     pattern: "admin/user/create",
                     defaults: new { controller = "Admin", action = "UserCreate" }
                     );
@@ -218,9 +215,8 @@ namespace MiniShopApp.WebUI
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
 
-            //Buraya kullanýcý bilgilerini oluþturacak metodumuzu çaðýran kodu yazacaðýz.
-
-            SeedIdentity.Seed(userManager, roleManager, Configuration).Wait();
+            //Buraya kullanýcý bilgilerini oluþturacak metodumuz çaðýran kodu yazacaðýz.
+            SeedIdentity.Seed(userManager, roleManager, cardService, Configuration).Wait();
         }
     }
 }

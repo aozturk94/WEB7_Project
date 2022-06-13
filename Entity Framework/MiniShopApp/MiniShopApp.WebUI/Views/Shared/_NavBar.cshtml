@@ -6,7 +6,7 @@
                     aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between" id="navbarNavDarkDropdown">
+            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                 <div>
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
@@ -16,24 +16,26 @@
                         @if (User.Identity.IsAuthenticated)
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" href="card">Cart</a>
+                                <a href="/card" class="nav-link text-dark">Card</a>
                             </li>
-
-
+                            <li class="nav-item">
+                                <a href="/orders" class="nav-link text-dark">Orders</a>
+                            </li>
                             if (User.IsInRole("Admin"))
                             {
                                 <li class="nav-item">
                                     <a href="/admin/products" class="nav-link text-dark">Admin Products</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="/admin/role/list" class="nav-link text-dark">Admin Roles</a>
+                                    <a href="/admin/role/list" class="nav-link text-dark">Roles</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="/admin/user/list" class="nav-link text-dark">Admin User</a>
+                                    <a href="/admin/user/list" class="nav-link text-dark">Users</a>
                                 </li>
                             }
-
                         }
+
+
                     </ul>
                 </div>
                 <div>
@@ -49,21 +51,15 @@
                         }
                         else
                         {
-
-                    <li class="nav-item dropdown">
-                        <a href="/account/login" class="nav-link text-dark dropdown-toggle" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">@User.Identity.Name</a>
-                        <ul class="dropdown-menu dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
-                            <li class="dropdown-item">
-                                <a class="nav-link text-dark" href="/orders">Orders</a>
+                            <li class="nav-item">
+                                <a href="/account/manage" class="nav-link text-dark">@User.Identity.Name</a>
                             </li>
-                            <li class="dropdown-item">
+                            <li class="nav-item">
                                 <a href="/account/logout" class="nav-link text-dark">Logout</a>
                             </li>
-                        </ul>
-                    </li>
-
-
                         }
+
+
                     </ul>
                 </div>
             </div>

@@ -1,6 +1,6 @@
 ﻿namespace MiniShopApp.Entity
 {
-    public class OrderItems
+    public class OrderItem
     {
         public int Id { get; set; }
         public int OrderId { get; set; }
