@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MiniShopApp.Business.Abstract;
+using MiniShopApp.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,9 +19,30 @@ namespace MiniShopApp.WebAPI.Controllers
             _productService = productService;
         }
 
-        public IActionResult GetProducts()
+        [HttpGet]
+        public  async Task<IActionResult> GetProducts()
         {
-            return null;
+            var products = await _productService.GetAll();
+            return Ok(products);
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetProduct(int id)
+        {
+            var product = await _productService.GetById(id);
+            if (product == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(product);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateProduct(Product entity)
+        {
+            await _productService.CreateAsync(entity);
+            return CreatedAtAction(nameof(GetProduct), new { id = entity.ProductId}, entity);
         }
     }
 }
