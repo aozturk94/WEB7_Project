@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MiniShopApp.Business", "Min
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MiniShopApp.Core", "MiniShopApp.Core\MiniShopApp.Core.csproj", "{5EDD98BF-4D69-462F-A331-23B7C2B6C8C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniShopApp.WebAPI", "MiniShopApp.WebAPI\MiniShopApp.WebAPI.csproj", "{06294687-AECE-4B13-B5CE-916FEB6DC7BC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniShopApp.WebApi", "MiniShopApp.WebApi\MiniShopApp.WebApi.csproj", "{3294E6D5-0AF5-4D19-8FB8-E39ED27A188D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,10 +41,10 @@ Global
 		{5EDD98BF-4D69-462F-A331-23B7C2B6C8C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5EDD98BF-4D69-462F-A331-23B7C2B6C8C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5EDD98BF-4D69-462F-A331-23B7C2B6C8C0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{06294687-AECE-4B13-B5CE-916FEB6DC7BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{06294687-AECE-4B13-B5CE-916FEB6DC7BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{06294687-AECE-4B13-B5CE-916FEB6DC7BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{06294687-AECE-4B13-B5CE-916FEB6DC7BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3294E6D5-0AF5-4D19-8FB8-E39ED27A188D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3294E6D5-0AF5-4D19-8FB8-E39ED27A188D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3294E6D5-0AF5-4D19-8FB8-E39ED27A188D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3294E6D5-0AF5-4D19-8FB8-E39ED27A188D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

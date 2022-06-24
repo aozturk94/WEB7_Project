@@ -32,9 +32,9 @@ namespace MiniShopApp.Business.Concrete
             return await _unitOfWork.Categories.GetAll();
         }
 
-        public Category GetById(int id)
+        public async Task<Category> GetById(int id)
         {
-            throw new NotImplementedException();
+            return null;
         }
 
         public void Update(Category entity)

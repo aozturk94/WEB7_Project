@@ -73,6 +73,7 @@ namespace MiniShopApp.WebUI.Controllers
 
             TempData["Message"]=JobManager.CreateMessage("DİKKAT","Şifreniz hatalı!", "danger");
             return View(model);
+            
         }
         public IActionResult Register()
         {

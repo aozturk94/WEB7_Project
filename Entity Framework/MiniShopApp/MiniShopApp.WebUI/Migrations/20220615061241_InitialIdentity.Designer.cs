@@ -9,7 +9,7 @@ using MiniShopApp.WebUI.Identity;
 namespace MiniShopApp.WebUI.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20220615061250_InitialIdentity")]
+    [Migration("20220615061241_InitialIdentity")]
     partial class InitialIdentity
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

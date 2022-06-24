@@ -1,6 +1,6 @@
 using System;
 
-namespace MiniShopApp.WebAPI
+namespace MiniShopApp.WebApi
 {
     public class WeatherForecast
     {

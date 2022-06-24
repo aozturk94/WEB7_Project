@@ -97,5 +97,10 @@ namespace MiniShopApp.Business.Concrete
             _unitOfWork.Save();
         }
 
+        public async Task UpdateProductAsync(Product entityToUpdate, Product entity)
+        {
+            _unitOfWork.Products.UpdateProduct(entityToUpdate, entity);
+            await _unitOfWork.SaveAsync();
+        }
     }
 }

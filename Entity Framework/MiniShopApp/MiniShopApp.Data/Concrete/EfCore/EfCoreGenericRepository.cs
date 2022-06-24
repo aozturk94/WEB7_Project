@@ -26,7 +26,8 @@ namespace MiniShopApp.Data.Concrete.EfCore
 
         public async Task CreateAsync(TEntity entity)
         {
-           await  _context.Set<TEntity>().AddAsync(entity);
+            await _context.Set<TEntity>().AddAsync(entity);
+
         }
 
         public void Delete(TEntity entity)

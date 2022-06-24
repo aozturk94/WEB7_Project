@@ -17,10 +17,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace MiniShopApp.WebAPI
+namespace MiniShopApp.WebApi
 {
     public class Startup
     {
+        readonly string CorsPolicyName = "myAllowOrigins";
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -31,13 +32,7 @@ namespace MiniShopApp.WebAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddDbContext<MiniShopContext>(options => options.UseSqlServer(Configuration.GetConnectionString("MsSqlConnection")));
             services.AddDbContext<MiniShopContext>(options => options.UseSqlite(Configuration.GetConnectionString("SqLiteConnection")));
-            services.AddControllers();
-            //services.AddSwaggerGen(c =>
-            //{
-            //    c.SwaggerDoc("v1", new OpenApiInfo { Title = "MiniShopApp.WebAPI", Version = "v1" });
-            //});
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
@@ -45,7 +40,24 @@ namespace MiniShopApp.WebAPI
             services.AddScoped<ICategoryService, CategoryManager>();
             services.AddScoped<ICardService, CardManager>();
             services.AddScoped<IOrderService, OrderManager>();
+            services.AddControllers();
 
+            services.AddCors(options => options.AddPolicy(
+                name: CorsPolicyName,
+                builder =>
+                {
+                    builder
+                    .AllowAnyOrigin()
+                    .AllowAnyHeader()
+                    .AllowAnyMethod();
+                }
+                )
+            );
+
+            //services.AddSwaggerGen(c =>
+            //{
+            //    c.SwaggerDoc("v1", new OpenApiInfo { Title = "MiniShopApp.WebApi", Version = "v1" });
+            //});
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -55,7 +67,7 @@ namespace MiniShopApp.WebAPI
             {
                 app.UseDeveloperExceptionPage();
                 //app.UseSwagger();
-                //app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "MiniShopApp.WebAPI v1"));
+                //app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "MiniShopApp.WebApi v1"));
             }
 
             app.UseHttpsRedirection();
@@ -63,6 +75,8 @@ namespace MiniShopApp.WebAPI
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseCors(CorsPolicyName);
 
             app.UseEndpoints(endpoints =>
             {

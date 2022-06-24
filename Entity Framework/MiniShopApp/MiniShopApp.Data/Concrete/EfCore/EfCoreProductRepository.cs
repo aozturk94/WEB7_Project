@@ -148,5 +148,13 @@ namespace MiniShopApp.Data.Concrete.EfCore
                     .ThenInclude(i => i.Category)
                     .FirstOrDefault();
         }
+
+        public Product UpdateProduct(Product entityToUpdate, Product entity)
+        {
+            entityToUpdate.Name = entity.Name;
+            entityToUpdate.Price = entity.Price;
+            entityToUpdate.Description = entity.Description;
+            return entityToUpdate;
+        }
     }
 }

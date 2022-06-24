@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace MiniShopApp.WebAPI
+namespace MiniShopApp.WebApi
 {
     public class Program
     {
